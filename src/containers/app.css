@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+}
+
+.page {
+    text-align: center;
+}
+
+.content {
+    margin-top: 70px;
+}
+
+.firstSection {
+    position: relative;
+    background-color: lightblue;
+    height: calc(100vh - 70px);
+}
+
+.secondSection {
+    position: relative;
+    background-color: lightcyan;
+    height: calc(100vh - 70px);
+}
+
+.thirdSection {
+    position: relative;
+    background-color: lightpink;
+    height: calc(100vh - 70px);
+}
+
+.next {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+}

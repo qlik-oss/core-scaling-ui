@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  engine:
+    image: qlikea/engine:12.156.0
+    restart: always
+    command: -S AcceptEULA=${ACCEPT_EULA} -S DocumentDirectory=/data/apps
+    ports:
+      - "9076:9076"
+    volumes: 
+      - ./data:/data/apps
