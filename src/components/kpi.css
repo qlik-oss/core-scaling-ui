@@ -1,0 +1,25 @@
+.kpiContainer {
+  position: relative;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  color: #696969;
+  text-align: center;
+  background: #d3d3d3;
+  margin: 100px 50px;
+  font-size: 4em;
+}
+
+@media only screen and (max-width: 51.25em) {
+  .circle {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    margin: 50px 25px;
+  }
+}

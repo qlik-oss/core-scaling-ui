@@ -1,0 +1,129 @@
+.sectionContainer {
+  height: 100%;
+}
+
+.innerContainer {
+  height: 70%;
+  background: linear-gradient(-135deg, #f8f8f8 15px, transparent 0) 0 15px,
+    linear-gradient(135deg, #f8f8f8 15px, #d3d3d3 0) 0 15px;
+  background-color: #f8f8f8;
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 30px 30px;
+}
+.timelineContainer {
+  height: 30%;
+}
+
+@media only screen and (max-width: 600px) {
+  .timelineContainer {
+    height: 20%;
+  }
+  .innerContainer {
+    height: 80%;
+  }
+}
+
+.headerContainer {
+  width: 100%;
+  height: 40%;
+  text-align: left;
+  font-weight: 800;
+  color: #696969;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .headerContainer {
+    height: 20%;
+  }
+}
+
+.mainHeader {
+  font-size: 8vw;
+  margin-left: 2%;
+  margin-top: -1%;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainHeader {
+    font-size: 10vw;
+  }
+}
+
+.subHeader {
+  font-size: 6vw;
+  margin-left: 8%;
+  margin-top: -3%;
+}
+
+@media only screen and (max-width: 600px) {
+  .subHeader {
+    font-size: 8vw;
+  }
+}
+
+.dataContainer {
+  height: 60%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+@media only screen and (max-width: 600px) {
+  .dataContainer {
+    display: unset;
+    justify-content: unset;
+    align-items: unset;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .dataContainer {
+    height: 80%;
+  }
+}
+
+.kpiContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+  .kpiContainer {
+    width: 100%;
+  }
+}
+
+.textContainer {
+  height: 70%;
+  width: 30%;
+  text-align: left;
+}
+
+@media only screen and (max-width: 1200px) {
+  .textContainer {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .textContainer {
+    font-size: 4vw;
+    height: 30%;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.textContainer p {
+  width: 80%;
+  margin-left: 5%;
+}
+
+.bullet:hover {
+  cursor: pointer;
+  background-color: white;
+}

@@ -1,35 +1,37 @@
-html, body {
-    margin: 0;
+html,
+body {
+  margin: 0;
+  font-family: "Muli", sans-serif;
 }
 
 .page {
-    text-align: center;
+  text-align: center;
 }
 
 .content {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
 .firstSection {
-    position: relative;
-    background-color: lightblue;
-    height: calc(100vh - 70px);
+  position: relative;
+  background-color: #d3d3d3;
+  height: calc(100vh - 70px);
 }
 
 .secondSection {
-    position: relative;
-    background-color: lightcyan;
-    height: calc(100vh - 70px);
+  position: relative;
+  background-color: lightcyan;
+  height: calc(100vh - 70px);
 }
 
 .thirdSection {
-    position: relative;
-    background-color: lightpink;
-    height: calc(100vh - 70px);
+  position: relative;
+  background-color: lightpink;
+  height: calc(100vh - 70px);
 }
 
 .next {
-    position: absolute;
-    bottom: 0;
-    right: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
 }

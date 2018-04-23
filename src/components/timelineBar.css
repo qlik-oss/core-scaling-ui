@@ -1,0 +1,96 @@
+.wrapper {
+  position: relative;
+  height: 100%;
+  margin: 0 26px;
+  overflow: hidden;
+  transform: translateY(75%);
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    transform: unset;
+  }
+}
+
+.timeline {
+  position: absolute;
+  width: 3410px;
+  height: 2px;
+  background: #696969;
+  top: 44px;
+  z-index: 1;
+}
+
+.timeline ol {
+  list-style: none;
+}
+
+.timeline li {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+
+.timeline li span {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: 2px solid #696969;
+  background-color: #d3d3d3;
+}
+
+.navigationButtons li {
+  position: absolute;
+  bottom: auto;
+  transform: translateY(-45%);
+  border: 2px solid #696969;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  transition: border-color 0.3s;
+  height: 50px;
+  width: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .navigationButtons li {
+    top: 36%;
+  }
+}
+
+.navigationButtons li.navPrev {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-left-style: hidden;
+  left: 0;
+}
+
+.navigationButtons li.navNext {
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
+  border-right-style: hidden;
+  right: 0;
+}
+
+.navigationButtons li.enabled {
+  cursor: pointer;
+  color: #7b9d6f;
+}
+
+.navigationButtons li.disabled {
+  cursor: not-allowed;
+  color: rgb(223, 223, 223);
+}
+
+.outer {
+  height: 100px;
+}

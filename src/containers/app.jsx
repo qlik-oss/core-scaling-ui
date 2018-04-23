@@ -5,7 +5,7 @@ import enigmaConfig from '../enigma-config';
 import styles from './app.css';
 import Header from './header';
 import CustomLink from '../components/link';
-import KPI from '../components/kpi';
+import FirstSection from './firstSection';
 
 export default class App extends Component {
   constructor(...args) {
@@ -44,8 +44,7 @@ export default class App extends Component {
         <div className={styles.content}>
           <ScrollableAnchor id="section1">
             <div className={styles.firstSection}>
-              <h2>Hello Africa, how are you doing?</h2>
-              <KPI app={this.state.app} />
+              <FirstSection app={this.state.app} />
               <div className={styles.next}>
                 <CustomLink title="Next" linkTo="#section2" />
               </div>
