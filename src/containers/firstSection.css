@@ -3,16 +3,12 @@
 }
 
 .innerContainer {
-  height: 70%;
-  background: linear-gradient(-135deg, #f8f8f8 15px, transparent 0) 0 15px,
-    linear-gradient(135deg, #f8f8f8 15px, #d3d3d3 0) 0 15px;
+  height: 85%;
   background-color: #f8f8f8;
-  background-position: left bottom;
-  background-repeat: repeat-x;
-  background-size: 30px 30px;
+  padding-bottom: 32px;
 }
 .timelineContainer {
-  height: 30%;
+  height: 15%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -25,6 +21,7 @@
 }
 
 .headerContainer {
+  font-family: "Muli script=all rev=1", "Adobe Blank";
   width: 100%;
   height: 40%;
   text-align: left;
@@ -41,8 +38,9 @@
 
 .mainHeader {
   font-size: 8vw;
-  margin-left: 2%;
+  margin-left: 5%;
   margin-top: -1%;
+  text-shadow: 2px 2px #d3d3d3;
 }
 
 @media only screen and (max-width: 600px) {
@@ -52,9 +50,8 @@
 }
 
 .subHeader {
-  font-size: 6vw;
-  margin-left: 8%;
-  margin-top: -3%;
+  font-size: 3vw;
+  margin-left: 5%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -67,12 +64,21 @@
   height: 60%;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
+
+  background: linear-gradient(135deg, #f8f8f8 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(225deg, #f8f8f8 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(315deg, rgb(255, 153, 153) 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(45deg, rgb(255, 153, 153) 25%, rgba(0, 0, 0, 0) 25%),
+    #f8f8f8;
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 34px 34px;
 }
 
 @media only screen and (max-width: 600px) {
   .dataContainer {
-    display: unset;
+    display: inline-grid;
     justify-content: unset;
     align-items: unset;
   }
@@ -86,19 +92,18 @@
 
 .kpiContainer {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
   width: 70%;
 }
 
 @media only screen and (max-width: 600px) {
   .kpiContainer {
     width: 100%;
+    align-items: flex-start;
   }
 }
 
 .textContainer {
-  height: 70%;
   width: 30%;
   text-align: left;
 }
@@ -126,4 +131,28 @@
 .bullet:hover {
   cursor: pointer;
   background-color: white;
+}
+
+/* .zigzagContainer {
+  height: 32px;
+  background: linear-gradient(135deg, #f8f8f8 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(225deg, #f8f8f8 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(315deg, rgb(255, 51, 51) 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(45deg, rgb(255, 51, 51) 25%, rgba(0, 0, 0, 0) 25%), #994d00;
+  background-position: -50px 0, -50px 0, 0 0, 0 0;
+  background-size: 34px 32px;
+} */
+
+.zigzagContainer2 {
+  height: 32px;
+  background: linear-gradient(
+      135deg,
+      rgb(255, 153, 153) 25%,
+      rgba(0, 0, 0, 0) 25%
+    ),
+    linear-gradient(225deg, rgb(255, 153, 153) 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(315deg, #d3d3d3 25%, rgba(0, 0, 0, 0) 25%),
+    linear-gradient(45deg, #d3d3d3 25%, rgba(0, 0, 0, 0) 25%), #ff5c33;
+  background-position: -50px 0, -50px 0, 0 0, 0 0;
+  background-size: 34px 32px;
 }

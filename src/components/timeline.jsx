@@ -21,3 +21,7 @@ Timeline.propTypes = {
   items: PropTypes.array.isRequired,
   startIndex: PropTypes.number.isRequired,
 };
+
+Timeline.defaultProps = {
+  width: 0,
+};

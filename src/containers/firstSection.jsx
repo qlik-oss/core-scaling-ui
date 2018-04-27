@@ -30,13 +30,24 @@ class FirstSection extends React.Component {
     this.setState({ worldUrbanization });
   }
 
+  async updateUrbanizedCountries() {
+    const layout = await this.state.urbanizedCountriesModel.getLayout();
+    const mostUrbItem = layout.qHyperCube.qDataPages[0].qMatrix[0];
+    const minUrbItem =
+      layout.qHyperCube.qDataPages[0].qMatrix[layout.qHyperCube.qDataPages[0].qMatrix.length - 1];
+    this.setState({
+      mostUrbanized: { country: mostUrbItem[0].qText, nbr: mostUrbItem[1].qText },
+      leastUrbanized: { country: minUrbItem[0].qText, nbr: minUrbItem[1].qText },
+    });
+  }
+
   async createModel() {
     try {
       // create the models
       /* eslint-disable-next-line max-len */
       const totalUrbanAfricaNbrModel = await this.props.app.createSessionObject(totalUrbanAfricaNbr);
       const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(totalUrbanWorldNbr);
-      const tableModel = await this.props.app.createSessionObject(urbanizedCountries);
+      const urbanizedCountriesModel = await this.props.app.createSessionObject(urbanizedCountries);
       const yearModel = await this.props.app.createSessionObject(years);
 
       // Select year
@@ -46,11 +57,11 @@ class FirstSection extends React.Component {
       yearModel.selectListObjectValues('/qListObjectDef', [yearItem], false);
       this.setState({ selectedIndex: yearItem });
 
-      const tableLayout = await tableModel.getLayout();
-      const mostUrbItem = tableLayout.qHyperCube.qDataPages[0].qMatrix[0];
+      const urbanizedCountriesLayout = await urbanizedCountriesModel.getLayout();
+      const mostUrbItem = urbanizedCountriesLayout.qHyperCube.qDataPages[0].qMatrix[0];
       const minUrbItem =
-        tableLayout.qHyperCube.qDataPages[0].qMatrix[
-          tableLayout.qHyperCube.qDataPages[0].qMatrix.length - 1
+        urbanizedCountriesLayout.qHyperCube.qDataPages[0].qMatrix[
+          urbanizedCountriesLayout.qHyperCube.qDataPages[0].qMatrix.length - 1
         ];
 
       const totalUrbanAfricaNbrLayout = await totalUrbanAfricaNbrModel.getLayout();
@@ -63,6 +74,7 @@ class FirstSection extends React.Component {
         yearModel,
         totalUrbanAfricaNbrModel,
         totalUrbanWorldNbrModel,
+        urbanizedCountriesModel,
         yearLayout,
         mostUrbanized: { country: mostUrbItem[0].qText, nbr: mostUrbItem[1].qText },
         leastUrbanized: { country: minUrbItem[0].qText, nbr: minUrbItem[1].qText },
@@ -73,6 +85,7 @@ class FirstSection extends React.Component {
 
       totalUrbanAfricaNbrModel.on('changed', () => this.updateTotalUrbanAfrica());
       totalUrbanWorldNbrModel.on('changed', () => this.updateTotalUrbanWorld());
+      urbanizedCountriesModel.on('changed', () => this.updateUrbanizedCountries());
     } catch (error) {
       // console.log(error);
     }
@@ -116,39 +129,48 @@ class FirstSection extends React.Component {
         />
       </li>
     ));
+    const selectedYear = this.state.yearLayout.qListObject.qDataPages[0].qMatrix[
+      this.state.selectedIndex
+    ][0].qText;
     return (
       <div className={styles.sectionContainer}>
         <div className={styles.innerContainer}>
           <div className={styles.headerContainer}>
-            <div className={styles.mainHeader}>Africa</div>
-            <div className={styles.subHeader}>Urbanization</div>
+            <div className={styles.subHeader}>Urbanization in</div>
+            <div className={styles.mainHeader}>AFRICA</div>
           </div>
           <div className={styles.dataContainer}>
             <div className={styles.textContainer}>
+              <p>Did you know?</p>
               <p>
-                Did you know that {year} the most urbanized country in Africa was{' '}
-                {this.state.mostUrbanized.country} with {this.state.mostUrbanized.nbr} urbanization.
-                The least urbanized country with only {this.state.leastUrbanized.nbr} urbanization
-                is {this.state.leastUrbanized.country}
+                <b>{this.state.mostUrbanized.country}</b> was the most urbanized African country{' '}
+                {selectedYear} with <b>{this.state.mostUrbanized.nbr}</b> urbanization.
+              </p>
+              <p>
+                <b>{this.state.leastUrbanized.country}</b> was the least urbanized African country{' '}
+                {selectedYear} with only <b>{this.state.leastUrbanized.nbr}</b> urbanization.
               </p>
             </div>
             <div className={styles.kpiContainer}>
               <KPI
                 nbr={this.state.africanUrbanization}
-                // text={`${
-                //   this.state.africanUrbanization
-                // } of the population in Africa lives in urban areas.`}
+                text={`
+                Urban population in Africa ${selectedYear}`}
+                animate
               />
               <KPI
                 nbr={this.state.worldUrbanization}
-                // text={`${
-                //   this.state.worldUrbanization
-                // } of the World population lives in urban areas.`}
+                text={`Urban population worldwide ${selectedYear}`}
+                animate
               />
-              {/* <KPI nbr="2007" text="to be decided." /> */}
-              <KPI nbr="2007" text="to be decided." />
+              <KPI
+                nbr="2008"
+                text="When more than half of the world's population live in urban areas"
+              />
             </div>
           </div>
+          {/* <div className={styles.zigzagContainer} /> */}
+          <div className={styles.zigzagContainer2} />
         </div>
         <div className={styles.timelineContainer}>
           <ContainerDimensions>

@@ -15,7 +15,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    configureAnchors({ offset: -70, scrollDuration: 300 });
+    configureAnchors({ offset: -35, scrollDuration: 300 });
   }
 
   async getApp() {
@@ -38,6 +38,7 @@ export default class App extends Component {
     if (this.state.error) {
       return <p>Oops, something went wrong.{this.state.error} </p>;
     }
+
     return (
       <div className={styles.page}>
         <Header />

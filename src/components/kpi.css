@@ -1,25 +1,34 @@
 .kpiContainer {
   position: relative;
-  width: 100%;
+  width: 80%;
   font-size: 2rem;
+  margin-right: 1.5%;
 }
 
-.circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  color: #696969;
-  text-align: center;
-  background: #d3d3d3;
-  margin: 100px 50px;
-  font-size: 4em;
+.kpiContainer svg {
+  width: 300px;
+  height: 300px;
 }
 
-@media only screen and (max-width: 51.25em) {
-  .circle {
-    width: 150px;
-    height: 150px;
-    line-height: 150px;
-    margin: 50px 25px;
+@media only screen and (max-width: 1200px) {
+  .kpiContainer svg {
+    width: 200px;
+    height: 200px;
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .kpiContainer svg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.kpiContainer text {
+  font-size: 3em;
+}
+
+.kpiText {
+  font-size: 50%;
+  margin-bottom: 10%;
 }

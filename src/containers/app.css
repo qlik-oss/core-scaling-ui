@@ -9,25 +9,25 @@ body {
 }
 
 .content {
-  margin-top: 70px;
+  margin-top: 35px;
 }
 
 .firstSection {
   position: relative;
   background-color: #d3d3d3;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 35px);
 }
 
 .secondSection {
   position: relative;
   background-color: lightcyan;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 35px);
 }
 
 .thirdSection {
   position: relative;
   background-color: lightpink;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 35px);
 }
 
 .next {
