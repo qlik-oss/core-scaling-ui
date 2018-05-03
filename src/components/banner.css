@@ -1,0 +1,10 @@
+.banner {
+  position: absolute;
+  top: -65px;
+  left: 57%;
+}
+
+.cloudText {
+  font-family: Muli;
+  font-weight: 600;
+}

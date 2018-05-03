@@ -41,7 +41,7 @@ class KPI extends React.Component {
                   }}
                   attributeName="offset"
                   values={this.state.animatePath}
-                  dur="1s"
+                  dur="0.5s"
                   begin="0s"
                 />
               </stop>
@@ -52,7 +52,7 @@ class KPI extends React.Component {
                   }}
                   attributeName="offset"
                   values={this.state.animatePath}
-                  dur="1s"
+                  dur="0.5s"
                   begin="0s"
                 />
               </stop>

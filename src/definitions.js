@@ -136,7 +136,7 @@ const totalUrbanWorldNbr = {
       {
         qDef: {
           qDef:
-            "num(sum({$<Africa = >}[Urban population [SP.URB.TOTL]]])/sum({$<Africa = >}[Population, total [SP.POP.TOTL]]]), '####0%')",
+            "num((sum({$<Africa = >}[Urban population [SP.URB.TOTL]]]) - sum({$<Africa = {1}>}[Urban population [SP.URB.TOTL]]])) / (sum({$<Africa = >}[Population, total [SP.POP.TOTL]]]) - sum({$<Africa = {1}>}[Population, total [SP.POP.TOTL]]])),'####0%')",
           qLabel: 'Total Urban Population, world perspective',
         },
         qSortBy: {

@@ -6,6 +6,7 @@ import styles from './app.css';
 import Header from './header';
 import CustomLink from '../components/link';
 import FirstSection from './firstSection';
+import Drawer from '../components/drawer';
 
 export default class App extends Component {
   constructor(...args) {
@@ -15,7 +16,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    configureAnchors({ offset: -35, scrollDuration: 300 });
+    configureAnchors({ offset: -35, scrollDuration: 800 });
   }
 
   async getApp() {
@@ -46,14 +47,11 @@ export default class App extends Component {
           <ScrollableAnchor id="section1">
             <div className={styles.firstSection}>
               <FirstSection app={this.state.app} />
-              <div className={styles.next}>
-                <CustomLink title="Next" linkTo="#section2" />
-              </div>
+              <Drawer title="Life Expectancy" linkTo="#section2" />
             </div>
           </ScrollableAnchor>
           <ScrollableAnchor id="section2">
             <div className={styles.secondSection}>
-              Hello Africa
               <div className={styles.next}>
                 <CustomLink title="Next" linkTo="#section3" />
               </div>

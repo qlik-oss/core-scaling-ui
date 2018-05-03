@@ -26,4 +26,5 @@ Currently under heavy development.
 ## The data
 
 The data used in the UI is from [The World Bank Open Data](https://data.worldbank.org/).
-World Development Indicators: Urban Population, Rural population and Population, total, Life expectancy at birth, total (years), Access to electricity, rural (% of rural population)
+World Development Indicators: Urban Population, Rural population and Population, total, Life expectancy at birth, total (years), Access to electricity, rural (% of rural population).
+Also State of the World´s cities 2006/7. United Nations Human Settlements Programme. London:Earthscan Publications;2006

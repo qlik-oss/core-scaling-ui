@@ -1,0 +1,69 @@
+.house {
+  position: absolute;
+  top: 61%;
+  left: 23%;
+  /* transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); */
+}
+
+@media only screen and (max-width: 600px) {
+  .house {
+    visibility: hidden;
+  }
+}
+
+@keyframes lightUp {
+  from {
+    fill: #d8d8d8;
+  }
+  10%,
+  80% {
+    fill: #d8d8d8;
+  }
+  90% {
+    fill: #ffffb2;
+  }
+  to {
+    fill: #ffffb2;
+  }
+}
+
+@keyframes lightDown {
+  from {
+    fill: #ffffb2;
+  }
+  10%,
+  80% {
+    fill: #ffffb2;
+  }
+  90% {
+    fill: #d8d8d8;
+  }
+  to {
+    fill: #d8d8d8;
+  }
+}
+
+.slowLight {
+  animation: lightUp 10s infinite alternate;
+}
+
+.fastLight {
+  animation: lightUp 5s infinite alternate;
+}
+
+.slowerLight {
+  animation: lightUp 20s infinite alternate;
+}
+
+.slowLightDown {
+  animation: lightDown 15s infinite alternate;
+}
+
+.fastLightDown {
+  animation: lightDown 7s infinite alternate;
+}
+
+.slowerLightDown {
+  animation: lightDown 23s infinite alternate;
+}

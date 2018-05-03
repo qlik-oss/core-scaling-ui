@@ -1,0 +1,38 @@
+.cloud1 {
+  width: 200x;
+  height: 300px;
+  position: absolute;
+  top: 120px;
+  z-index: 100;
+  -webkit-animation: move 20s linear infinite;
+  -moz-animation: move 20s linear infinite;
+  -o-animation: move 20s linear infinite;
+  animation: move 20s linear infinite;
+}
+
+.cloud2 {
+  width: 200x;
+  height: 300px;
+  position: absolute;
+  top: 172px;
+  z-index: 200;
+  right: 0px;
+}
+
+@keyframes move {
+  from {
+    transform: translateX(-1450px);
+  }
+  to {
+    transform: translateX(350px);
+  }
+}
+
+@-webkit-keyframes move {
+  from {
+    -webkit-transform: translateX(-1450px);
+  }
+  to {
+    -webkit-transform: translateX(350px);
+  }
+}

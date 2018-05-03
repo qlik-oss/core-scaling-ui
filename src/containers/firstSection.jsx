@@ -5,6 +5,10 @@ import KPI from '../components/kpi';
 import Timeline from '../components/timeline';
 import { years, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr } from '../definitions';
 import styles from './firstSection.css';
+import DidYouKnow from '../resources/didyouknow.svg';
+import House from '../components/house';
+import Clouds from '../components/clouds';
+import Banner from '../components/banner';
 
 const year = '2016';
 
@@ -139,17 +143,25 @@ class FirstSection extends React.Component {
             <div className={styles.subHeader}>Urbanization in</div>
             <div className={styles.mainHeader}>AFRICA</div>
           </div>
-          <div className={styles.dataContainer}>
-            <div className={styles.textContainer}>
-              <p>Did you know?</p>
+          <div className={styles.textContainer}>
+            <DidYouKnow className={styles.didyouknow} />
+            <div className={styles.infotext}>
               <p>
                 <b>{this.state.mostUrbanized.country}</b> was the most urbanized African country{' '}
                 {selectedYear} with <b>{this.state.mostUrbanized.nbr}</b> urbanization.
               </p>
+            </div>
+            <div className={styles.infotext}>
               <p>
                 <b>{this.state.leastUrbanized.country}</b> was the least urbanized African country{' '}
                 {selectedYear} with only <b>{this.state.leastUrbanized.nbr}</b> urbanization.
               </p>
+            </div>
+          </div>
+          <div className={styles.cloudAndKpiContainer}>
+            <div className={styles.cloudContainer}>
+              <Banner />
+              <Clouds />
             </div>
             <div className={styles.kpiContainer}>
               <KPI
@@ -160,7 +172,7 @@ class FirstSection extends React.Component {
               />
               <KPI
                 nbr={this.state.worldUrbanization}
-                text={`Urban population worldwide ${selectedYear}`}
+                text={`Urban population rest of the world ${selectedYear}`}
                 animate
               />
               <KPI
@@ -169,9 +181,13 @@ class FirstSection extends React.Component {
               />
             </div>
           </div>
-          {/* <div className={styles.zigzagContainer} /> */}
-          <div className={styles.zigzagContainer2} />
+          <House />
         </div>
+        {/* <div className={styles.}> */}
+        {/* <div className={styles.zigzag}>
+            <div className={styles.zigzagLeft} />
+            <div className={styles.zigzagRight} />
+          </div> */}
         <div className={styles.timelineContainer}>
           <ContainerDimensions>
             <Timeline items={yearItems} startIndex={this.state.selectedIndex} />

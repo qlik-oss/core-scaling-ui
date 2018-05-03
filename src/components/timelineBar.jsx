@@ -34,10 +34,6 @@ class TimelineBar extends React.Component {
     }
   };
 
-  handleKeyUp = () => {
-    // TODO
-  };
-
   scrollTo = (position) => {
     const maxPosition = Math.min(this.props.visibleWidth - this.props.totalWidth, 0);
     this.setState({
@@ -79,12 +75,10 @@ class TimelineBar extends React.Component {
             <li
               className={`${styles.navPrev} ${prevButtonEnabled}`}
               onClick={() => this.handleClick('prev')}
-              // onKeyUp={() => this.handleKeyUp('prev')}
             />
             <li
               className={`${styles.navNext} ${nextButtonEnabled}`}
               onClick={() => this.handleClick('next')}
-              // onKeyUp={() => this.handleKeyUp('next')}
             />
           </ul>
         </div>

@@ -1,15 +1,15 @@
 {
-    "presets": [
-        [
-            "env",
-            {
-                "targets": {
-                    "browsers": ["last 2 versions"]
-                },
-                "exclude": [ "transform-regenerator" ],
-            }
-        ], "react"],
-    "plugins": [
-        "babel-plugin-transform-class-properties"
-      ]
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions"]
+        },
+        "exclude": ["transform-regenerator"]
+      }
+    ],
+    "react"
+  ],
+  "plugins": ["babel-plugin-transform-class-properties"]
 }

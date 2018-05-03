@@ -16,7 +16,7 @@
   position: absolute;
   width: 3410px;
   height: 2px;
-  background: #696969;
+  background: #6f6f6f;
   top: 44px;
   z-index: 1;
 }
@@ -44,7 +44,7 @@
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 50%;
-  border: 2px solid #696969;
+  border: 2px solid #6f6f6f;
   background-color: #d3d3d3;
 }
 
@@ -52,7 +52,7 @@
   position: absolute;
   bottom: auto;
   transform: translateY(-100%);
-  border: 2px solid #696969;
+  border: 2px solid #6f6f6f;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
