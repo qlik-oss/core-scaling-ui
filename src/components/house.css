@@ -1,6 +1,6 @@
 .house {
   position: absolute;
-  top: 61%;
+  top: 64.5%;
   left: 23%;
   /* transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%); */
@@ -48,22 +48,30 @@
   animation: lightUp 10s infinite alternate;
 }
 
+.slowerLight {
+  animation: lightUp 20s infinite alternate;
+}
+
 .fastLight {
   animation: lightUp 5s infinite alternate;
 }
 
-.slowerLight {
-  animation: lightUp 20s infinite alternate;
+.fasterLight {
+  animation: lightUp 2s infinite alternate;
 }
 
 .slowLightDown {
   animation: lightDown 15s infinite alternate;
 }
 
+.slowerLightDown {
+  animation: lightDown 23s infinite alternate;
+}
+
 .fastLightDown {
   animation: lightDown 7s infinite alternate;
 }
 
-.slowerLightDown {
-  animation: lightDown 23s infinite alternate;
+.fasterLightDown {
+  animation: lightDown 3s infinite alternate;
 }

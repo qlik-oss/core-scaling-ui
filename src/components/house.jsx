@@ -48,7 +48,7 @@ export default function House() {
               id="Group-3"
               transform="translate(57.000000, 84.000000)"
               fill="#D8D8D8"
-              className={styles.slowerLight}
+              className={styles.fasterLight}
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -64,7 +64,7 @@ export default function House() {
               id="Group-3"
               transform="translate(33.000000, 103.000000)"
               fill="#D8D8D8"
-              className={styles.slowLight}
+              className={styles.slowerLight}
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -88,7 +88,7 @@ export default function House() {
               id="Group-3"
               transform="translate(33.000000, 123.000000)"
               fill="#D8D8D8"
-              className={styles.slowLightDown}
+              className={styles.slowerLightDown}
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -100,7 +100,7 @@ export default function House() {
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
-            <g id="Group-3" transform="translate(8.000000, 123.000000)" fill="#7FAFCA">
+            <g id="Group-3" transform="translate(8.000000, 123.000000)" fill="#7FAFCA" className={styles.fasterLightDown}>
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
             <g id="Group-3" transform="translate(33.000000, 143.000000)" fill="#D8D8D8">
@@ -131,7 +131,7 @@ export default function House() {
               <rect id="Rectangle-11" x="0" y="0" width="42" height="13" />
             </g>
             <g id="Penthouse-windows" transform="translate(13.000000, 34.000000)">
-              <rect id="Rectangle-12" fill="#D8D8D8" x="0" y="0" width="10.8035714" height="11" />
+              <rect id="Rectangle-12" fill="#D8D8D8" x="0" y="0" width="10.8035714" height="11" className={styles.slowLight} />
               <rect
                 id="Rectangle-12"
                 fill="#7FAFCA"
