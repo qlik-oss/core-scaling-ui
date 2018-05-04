@@ -6,11 +6,11 @@
   transform: translateY(20%);
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .wrapper {
     transform: unset;
   }
-}
+} */
 
 .timeline {
   position: absolute;
@@ -61,11 +61,11 @@
   width: 25px;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .navigationButtons li {
     top: 57%;
   }
-}
+} */
 
 .navigationButtons li.navPrev {
   border-bottom-right-radius: 50px;

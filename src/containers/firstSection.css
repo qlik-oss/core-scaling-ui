@@ -6,39 +6,25 @@
   display: flex;
   height: 85%;
   background: #f8f8f8;
-  /* background-color: #f8f8f8;
-  background-image: linear-gradient(
-    left,
-    lightblue,
-    lightblue 20%,
-    transparent 20%,
-    transparent 100%
-  );
-  background-image: -webkit-linear-gradient(
-    left,
-    lightblue,
-    lightblue 20%,
-    transparent 20%,
-    transparent 100%
-  ); */
 }
 .timelineContainer {
   height: 15%;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .timelineContainer {
     height: 20%;
   }
   .innerContainer {
     flex-direction: column;
   }
-}
+} */
 
 .headerContainer {
   position: absolute;
   top: 17%;
-  left: 18%;
+  left: 23%;
+  width: 45%;
   /* font-size: 50px; */
   color: #6f6f6f;
   transform: translate(-50%, -50%);
@@ -53,11 +39,11 @@
   z-index: 1000; */
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .headerContainer {
     top: 4%;
   }
-}
+} */
 
 .mainHeader {
   font-size: 8vw;
@@ -78,12 +64,12 @@
   text-shadow: 2px 2px #d3d3d3;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .subHeader {
     font-size: unset;
     margin: 0;
   }
-}
+} */
 
 .cloudAndKpiContainer {
   display: flex;
@@ -105,21 +91,10 @@
 
 .kpiContainer {
   width: 100%;
-  height: 50%;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  /* background: linear-gradient(
-        -135deg,
-        rgba(221, 174, 32, 0.3) 15px,
-        transparent 0
-      )
-      0 15px,
-    linear-gradient(135deg, rgba(221, 174, 32, 0.3) 15px, #d3d3d3 0) 0 15px;
-  background-position: left bottom;
-  background-repeat: repeat-x;
-  background-size: 30px 30px;
-  justify-content: flex-end; */
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 600px) {
@@ -154,31 +129,28 @@
   font-weight: 800;
 }
 
-@media only screen and (max-width: 1200px) {
-  /* .textContainer {
-    height: 100%;
-  } */
-}
-
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .textContainer {
     width: 100%;
     background: unset;
     height: 90%;
   }
-}
+} */
 
 .didyouknow {
-  width: 145px;
-  height: 100px;
+  width: 30%;
+  height: 14%;
+  min-width: 142px;
+  background-image: url("../resources/didyouknow.svg");
+  background-repeat: no-repeat;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .didyouknow {
     width: 70px;
     height: 50px;
   }
-}
+} */
 
 .infotext {
   display: flex;
@@ -189,7 +161,7 @@
   margin-bottom: 3%;
   background: #3e8dba50;
 }
-
+/* 
 @media only screen and (max-width: 600px) {
   .infotext {
     width: 90%;
@@ -198,7 +170,7 @@
     padding: 6px;
     font-size: small;
   }
-}
+} */
 
 .house {
   position: absolute;
@@ -207,12 +179,12 @@
   /* transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%); */
 }
-
+/* 
 @media only screen and (max-width: 600px) {
   .house {
     visibility: hidden;
   }
-}
+} */
 
 .bullet:hover {
   cursor: pointer;

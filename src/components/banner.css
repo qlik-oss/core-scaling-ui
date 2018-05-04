@@ -1,7 +1,8 @@
 .banner {
   position: absolute;
+  width: 40%;
   top: -17%;
-  left: 57%;
+  left: 58%;
 }
 
 .cloudText {

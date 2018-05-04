@@ -5,7 +5,6 @@ import KPI from '../components/kpi';
 import Timeline from '../components/timeline';
 import { years, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr } from '../definitions';
 import styles from './firstSection.css';
-import DidYouKnow from '../resources/didyouknow.svg';
 import House from '../components/house';
 import Clouds from '../components/clouds';
 import Banner from '../components/banner';
@@ -144,7 +143,7 @@ class FirstSection extends React.Component {
             <div className={styles.mainHeader}>AFRICA</div>
           </div>
           <div className={styles.textContainer}>
-            <DidYouKnow className={styles.didyouknow} />
+            <div className={styles.didyouknow} />
             <div className={styles.infotext}>
               <p>
                 <b>{this.state.mostUrbanized.country}</b> was the most urbanized African country{' '}

@@ -1,8 +1,12 @@
-.cloud1 {
-  width: 200x;
-  height: 300px;
+.bigCloud {
+  width: 50%;
+}
+
+.movingCloud {
+  width: 30%;
+  width: 30%;
+  top: 55%;
   position: absolute;
-  top: 120px;
   z-index: 100;
   -webkit-animation: move 20s linear infinite;
   -moz-animation: move 20s linear infinite;
@@ -10,13 +14,13 @@
   animation: move 20s linear infinite;
 }
 
-.cloud2 {
-  width: 200x;
-  height: 300px;
+.staticCloud {
+  width: 10%;
+  height: 77%;
   position: absolute;
-  top: 172px;
+  top: 43%;
   z-index: 200;
-  right: 0px;
+  right: 0;
 }
 
 @keyframes move {

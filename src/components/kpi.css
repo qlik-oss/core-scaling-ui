@@ -1,39 +1,31 @@
 .kpiContainer {
-  position: relative;
-  /* width: 80%; */
-  width: 220px;
+  width: 100%;
+  max-width: 20%;
   font-size: 2rem;
   text-align: left;
-  margin: 60px;
-  /* margin-right: 1.5%; */
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 6%;
 }
-
+/* 
 @media only screen and (max-width: 600px) {
   .kpiContainer {
     width: 80%;
     margin: 0px;
   }
-}
+} */
 
 .kpiContainer svg {
-  width: 220px;
-  height: 220px;
+  max-height: 220px;
   font-weight: 700;
 }
 
-@media only screen and (max-width: 1200px) {
-  .kpiContainer svg {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .kpiContainer svg {
     width: 100px;
     height: 100px;
   }
-}
+} */
 
 .kpiContainer text {
   font-size: 3em;
@@ -45,8 +37,8 @@
   margin-bottom: 10%;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .kpiText {
     font-size: small;
   }
-}
+} */

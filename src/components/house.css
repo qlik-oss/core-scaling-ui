@@ -1,16 +1,15 @@
 .house {
   position: absolute;
-  top: 64.5%;
+  top: 66%;
   left: 23%;
-  /* transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%); */
+  height: 19%;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .house {
     visibility: hidden;
   }
-}
+} */
 
 @keyframes lightUp {
   from {
