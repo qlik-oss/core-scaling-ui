@@ -13,7 +13,6 @@ body {
 }
 
 .firstSection {
-  position: relative;
   background-color: #d3d3d3;
   height: calc(100vh - 35px);
 }
