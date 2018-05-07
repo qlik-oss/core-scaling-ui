@@ -167,26 +167,26 @@ class FirstSection extends React.Component {
                 nbr={this.state.africanUrbanization}
                 text={`
                 Urban population in Africa ${selectedYear}`}
+                bgColor="#3E8DBA"
+                fillColor="#AEDBF4"
                 animate
               />
               <KPI
                 nbr={this.state.worldUrbanization}
                 text={`Urban population rest of the world ${selectedYear}`}
+                bgColor="#F68F00"
+                fillColor="#FFAF41"
                 animate
               />
               <KPI
                 nbr="2008"
                 text="When more than half of the world's population live in urban areas"
+                fillColor="#FE4C00"
               />
             </div>
           </div>
           <House />
         </div>
-        {/* <div className={styles.}> */}
-        {/* <div className={styles.zigzag}>
-            <div className={styles.zigzagLeft} />
-            <div className={styles.zigzagRight} />
-          </div> */}
         <div className={styles.timelineContainer}>
           <ContainerDimensions>
             <Timeline items={yearItems} startIndex={this.state.selectedIndex} />

@@ -33,8 +33,8 @@ class KPI extends React.Component {
         <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
           <g>
             <linearGradient id={this.props.nbr} x1="0.5" y1="1" x2="0.5" y2="0">
-              <stop offset="0%" stopOpacity="1" stopColor={this.props.bgColor} />
-              <stop offset={this.props.nbr} stopOpacity="1" stopColor={this.props.bgColor}>
+              <stop offset="0%" stopOpacity="1" stopColor={this.props.fillColor} />
+              <stop offset={this.props.nbr} stopOpacity="1" stopColor={this.props.fillColor}>
                 <animate
                   ref={(svg1) => {
                     this.svg1 = svg1;
@@ -45,7 +45,7 @@ class KPI extends React.Component {
                   begin="0s"
                 />
               </stop>
-              <stop offset={this.props.nbr} stopOpacity="1" stopColor={this.props.fillColor}>
+              <stop offset={this.props.nbr} stopOpacity="1" stopColor={this.props.bgColor}>
                 <animate
                   ref={(svg2) => {
                     this.svg2 = svg2;
@@ -56,9 +56,16 @@ class KPI extends React.Component {
                   begin="0s"
                 />
               </stop>
-              <stop offset="100%" stopOpacity="1" stopColor={this.props.fillColor} />
+              <stop offset="100%" stopOpacity="1" stopColor={this.props.bgColor} />
             </linearGradient>
-            <circle cx="250" cy="250" r="245" fill={`url(#${this.props.nbr})`} />
+            <circle
+              cx="250"
+              cy="250"
+              r="245"
+              fill={`url(#${this.props.nbr})`}
+              stroke="white"
+              strokeWidth="10"
+            />
             <text x="50%" y="50%" textAnchor="middle" dy="0.3em" fill="white">
               {this.props.nbr}
             </text>

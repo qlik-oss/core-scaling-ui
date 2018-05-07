@@ -121,13 +121,6 @@
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 5%;
-  /* background-color: #f8f8f8;
-  background: linear-gradient(-135deg, #3e8dba60 15px, transparent 0) 0 15px,
-    linear-gradient(135deg, #3e8dba60 15px, #d3d3d3 0) 0 15px;
-  background-color: #3e8dba60;
-  background-position: left bottom;
-  background-repeat: repeat-x;
-  background-size: 30px 30px; */
 }
 
 .textContainer b {
