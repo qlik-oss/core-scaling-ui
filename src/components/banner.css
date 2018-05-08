@@ -5,7 +5,21 @@
   left: 58%;
 }
 
+@media only screen and (max-width: 600px) {
+  .banner {
+    width: 60%;
+    top: -36%;
+    left: 36%;
+  }
+}
+
 .cloudText {
   font-family: Muli;
   font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  .cloudText {
+    font-size: x-large;
+  }
 }

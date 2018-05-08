@@ -7,25 +7,11 @@
   margin-right: 2%;
   margin-top: 6%;
 }
-/* 
-@media only screen and (max-width: 600px) {
-  .kpiContainer {
-    width: 80%;
-    margin: 0px;
-  }
-} */
 
 .kpiContainer svg {
   max-height: 220px;
   font-weight: 700;
 }
-
-/* @media only screen and (max-width: 600px) {
-  .kpiContainer svg {
-    width: 100px;
-    height: 100px;
-  }
-} */
 
 .kpiContainer text {
   font-size: 3em;
@@ -37,8 +23,8 @@
   margin-bottom: 10%;
 }
 
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .kpiText {
     font-size: small;
   }
-} */
+}
