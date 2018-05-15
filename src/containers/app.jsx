@@ -33,11 +33,11 @@ export default class App extends Component {
   }
 
   render() {
-    if (!this.state.app) {
-      return null;
-    }
     if (this.state.error) {
       return <p>Oops, something went wrong.{this.state.error} </p>;
+    }
+    if (!this.state.app) {
+      return null;
     }
 
     return (
