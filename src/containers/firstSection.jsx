@@ -104,6 +104,12 @@ class FirstSection extends React.Component {
       return null;
     }
 
+    const bannerText = [
+      'In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.', 
+      'text 2',
+      'text 3'
+    ];
+
     const selectedItemStyle = {
       backgroundColor: '#f8f8f8',
       width: '35px',
@@ -159,7 +165,7 @@ class FirstSection extends React.Component {
           </div>
           <div className={styles.cloudAndKpiContainer}>
             <div className={styles.cloudContainer}>
-              <Banner />
+              <Banner text={bannerText} color="#74AECB"/>
               <Clouds />
             </div>
             <div className={styles.kpiContainer}>
