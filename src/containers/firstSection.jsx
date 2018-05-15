@@ -145,8 +145,8 @@ class FirstSection extends React.Component {
       <div className={styles.sectionContainer}>
         <div className={styles.innerContainer}>
           <div className={styles.headerContainer}>
-            <div className={styles.subHeader}>Urbanization in</div>
-            <div className={styles.mainHeader}>AFRICA</div>
+            <div className={styles.mainHeader}>African</div>
+            <div className={styles.subHeader}>Urbanization</div>
           </div>
           <div className={styles.textContainer}>
             <div className={styles.didyouknow} />

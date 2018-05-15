@@ -20,7 +20,7 @@
   position: absolute;
   top: 17%;
   left: 23%;
-  width: 45%;
+  width: 47%;
   color: #6f6f6f;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -37,14 +37,13 @@
 
 .mainHeader {
   font-size: 8vw;
-  margin-left: 21%;
-  margin-top: -1%;
+  margin-left: 10%;
   text-shadow: 2px 2px #d3d3d3;
 }
 
 .subHeader {
-  font-size: 3vw;
-  margin-left: 3%;
+  font-size: 5vw;
+  margin-left: 17%;
   text-shadow: 2px 2px #d3d3d3;
 }
 
