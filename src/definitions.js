@@ -58,6 +58,36 @@ const africanCountries = {
   },
 };
 
+const allCountries2 = {
+  qInfo: {
+    qType: 'react-filterbox',
+  },
+  qListObjectDef: {
+    qDef: {
+      qFieldLabels: ['Country Name'],
+      qFieldDefs: ['Country Name'],
+      autoSort: true,
+      qSortCriterias: [
+        {
+          qSortByState: 1,
+          qSortByAscii: 1,
+          qSortByNumeric: 1,
+          qSortByLoadOrder: 1,
+        },
+      ],
+    },
+    qShowAlternatives: true,
+    qInitialDataFetch: [
+      {
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 0,
+        qHeight: 1000,
+      },
+    ],
+  },
+};
+
 const urbanizedCountries = {
   qInfo: {
     qType: 'kpi',
@@ -150,4 +180,4 @@ const totalUrbanWorldNbr = {
   },
 };
 
-export { years, africanCountries, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr };
+export { years, africanCountries, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr, allCountries2 };

@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import ContainerDimensions from 'react-container-dimensions';
 import KPI from '../components/kpi';
 import Timeline from '../components/timeline';
-import { years, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr } from '../definitions';
+import { years, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr, allCountries2 } from '../definitions';
 import styles from './firstSection.css';
 import House from '../components/house';
 import Clouds from '../components/clouds';
 import Banner from '../components/banner';
+import Filterbox from '../components/filterbox';
 
 const year = '2016';
 
@@ -52,6 +53,9 @@ class FirstSection extends React.Component {
       const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(totalUrbanWorldNbr);
       const urbanizedCountriesModel = await this.props.app.createSessionObject(urbanizedCountries);
       const yearModel = await this.props.app.createSessionObject(years);
+      const allCountries3 = await this.props.app.createSessionObject(allCountries2);
+
+      const cLayout = await allCountries3.getLayout();
 
       // Select year
       const yearLayout = await yearModel.getLayout();
@@ -84,6 +88,7 @@ class FirstSection extends React.Component {
         africanUrbanization,
         worldUrbanization,
         loaded: true,
+        cLayout
       });
 
       totalUrbanAfricaNbrModel.on('changed', () => this.updateTotalUrbanAfrica());
@@ -149,7 +154,8 @@ class FirstSection extends React.Component {
             <div className={styles.subHeader}>Urbanization</div>
           </div>
           <div className={styles.textContainer}>
-            <div className={styles.didyouknow} />
+            <Filterbox data={this.state.cLayout}/>
+            {/* <div className={styles.didyouknow} />
             <div className={styles.infotext}>
               <p>
                 <b>{this.state.mostUrbanized.country}</b> was the most urbanized African country{' '}
@@ -161,7 +167,7 @@ class FirstSection extends React.Component {
                 <b>{this.state.leastUrbanized.country}</b> was the least urbanized African country{' '}
                 {selectedYear} with only <b>{this.state.leastUrbanized.nbr}</b> urbanization.
               </p>
-            </div>
+            </div> */}
           </div>
           <div className={styles.cloudAndKpiContainer}>
             <div className={styles.cloudContainer}>
