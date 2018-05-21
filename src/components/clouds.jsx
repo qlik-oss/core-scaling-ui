@@ -12,8 +12,6 @@ export default function Clouds() {
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
-        <title>Stort moln</title>
-        <desc>Created with Sketch.</desc>
         <defs />
         <g id="Page-1" stroke="none" strokeWidth="1" fill="blue" fillRule="evenodd">
           <g
@@ -62,8 +60,6 @@ export default function Clouds() {
         height="133px"
         viewBox="0 0 406 133"
       >
-        <title>vänster moln</title>
-        <desc>Created with Sketch.</desc>
         <defs />
         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g
@@ -108,8 +104,6 @@ export default function Clouds() {
         height="136px"
         viewBox="0 0 145 136"
       >
-        <title>Moln till höger</title>
-        <desc>Created with Sketch.</desc>
         <defs />
         <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g

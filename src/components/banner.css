@@ -23,3 +23,18 @@
     font-size: x-large;
   }
 }
+
+.dots {
+  cursor: pointer;
+}
+
+Text{
+  fill: #fff;
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+
+@keyframes fade-in {
+  from {fill: #74AECB;}
+  to {fill: #fff;}
+}

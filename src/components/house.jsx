@@ -13,8 +13,6 @@ export default function House() {
       className="house"
       enableBackground="new 0 0 82 198"
     >
-      <title>House 1</title>
-      <desc>Created with Sketch.</desc>
       <defs />
       <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="First-page-urbanization-Copy-4" transform="translate(-462.000000, -643.000000)">
