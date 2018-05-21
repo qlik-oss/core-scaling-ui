@@ -1,0 +1,74 @@
+.innerContainer {
+  display: flex;
+  height: 100%;
+  width: 100vw;
+}
+
+.headerContainer {
+  position: absolute;
+  top: 17%;
+  left: 23%;
+  width: 48%;
+  color: #6f6f6f;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-weight: 900;
+  text-align: left;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 600px) {
+  .headerContainer {
+    top: 11%;
+    left: 27%;
+  }
+}
+
+.mainHeader {
+  font-size: 8vw;
+  margin-left: 10%;
+  text-shadow: 2px 2px #d3d3d3;
+}
+
+.subHeader {
+  font-size: 5vw;
+  margin-left: 17%;
+  text-shadow: 2px 2px #d3d3d3;
+}
+
+.textContainer {
+  width: 25%;
+  background: #3e8dba90;
+  text-align: left;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+  .textContainer {
+    width: 31%;
+    font-size: small;
+  }
+}
+
+.textContainer b {
+  font-weight: 800;
+}
+
+.cloudAndKpiContainer {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(rgba(2, 138, 225, 0.6), rgba(221, 174, 32, 0.6));
+}
+
+@media only screen and (max-width: 600px) {
+  .cloudAndKpiContainer {
+    width: 69%;
+  }
+}

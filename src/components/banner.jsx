@@ -1,11 +1,11 @@
 import React from 'react';
 import Text from 'react-svg-text';
-import styles from './banner.css';
+import './banner.css';
 
 export default function Banner() {
   return (
     <svg
-      className={styles.banner}
+      className="banner"
       width="485px"
       height="235px"
       viewBox="0 0 485 235"
@@ -69,7 +69,7 @@ export default function Banner() {
         textAnchor="middle"
         width="320"
         fill="#fff"
-        className={styles.cloudText}
+        className="cloudText"
       >
         In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the
         world.

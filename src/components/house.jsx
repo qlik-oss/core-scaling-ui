@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './house.css';
+import './house.css';
 
 export default function House() {
   return (
@@ -10,7 +10,7 @@ export default function House() {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      className={styles.house}
+      className="house"
       enableBackground="new 0 0 82 198"
     >
       <title>House 1</title>
@@ -23,7 +23,7 @@ export default function House() {
             <rect id="Penthouse-floor" fill="#6F6F6F" x="9" y="28" width="63" height="25" />
             <rect id="Top-level" fill="#6F6F6F" x="20" y="24" width="42" height="4" />
             <g
-              className={styles.slowLight}
+              className="slowLight"
               id="Group-3"
               transform="translate(33.000000, 64.000000)"
               fill="#D8D8D8"
@@ -40,7 +40,7 @@ export default function House() {
               id="Group-3"
               transform="translate(33.000000, 84.000000)"
               fill="#D8D8D8"
-              className={styles.slowLight}
+              className="slowLight"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -48,7 +48,7 @@ export default function House() {
               id="Group-3"
               transform="translate(57.000000, 84.000000)"
               fill="#D8D8D8"
-              className={styles.fasterLight}
+              className="fasterLight"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -56,7 +56,7 @@ export default function House() {
               id="Group-3"
               transform="translate(8.000000, 84.000000)"
               fill="#D8D8D8"
-              className={styles.fastLight}
+              className="fastLight"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -64,7 +64,7 @@ export default function House() {
               id="Group-3"
               transform="translate(33.000000, 103.000000)"
               fill="#D8D8D8"
-              className={styles.slowerLight}
+              className="slowerLight"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -72,7 +72,7 @@ export default function House() {
               id="Group-3"
               transform="translate(57.000000, 103.000000)"
               fill="#D8D8D8"
-              className={styles.slowLightDown}
+              className="slowLightDown"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -80,7 +80,7 @@ export default function House() {
               id="Group-3"
               transform="translate(8.000000, 103.000000)"
               fill="#D8D8D8"
-              className={styles.fastLight}
+              className="fastLight"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -88,7 +88,7 @@ export default function House() {
               id="Group-3"
               transform="translate(33.000000, 123.000000)"
               fill="#D8D8D8"
-              className={styles.slowerLightDown}
+              className="slowerLightDown"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -96,11 +96,16 @@ export default function House() {
               id="Group-3"
               transform="translate(57.000000, 123.000000)"
               fill="#D8D8D8"
-              className={styles.slowerLight}
+              className="slowerLight"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
-            <g id="Group-3" transform="translate(8.000000, 123.000000)" fill="#7FAFCA" className={styles.fasterLightDown}>
+            <g
+              id="Group-3"
+              transform="translate(8.000000, 123.000000)"
+              fill="#7FAFCA"
+              className="fasterLightDown"
+            >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
             <g id="Group-3" transform="translate(33.000000, 143.000000)" fill="#D8D8D8">
@@ -110,7 +115,7 @@ export default function House() {
               id="Group-3"
               transform="translate(57.000000, 143.000000)"
               fill="#D8D8D8"
-              className={styles.slowLightDown}
+              className="slowLightDown"
             >
               <rect id="Rectangle-11" x="0" y="0" width="18" height="13" />
             </g>
@@ -121,7 +126,7 @@ export default function House() {
               id="first-floor-windows"
               transform="translate(8.000000, 163.000000)"
               fill="#D8D8D8"
-              className={styles.fastLight}
+              className="fastLight"
             >
               <rect id="Rectangle-11" x="25" y="0" width="18" height="13" />
               <rect id="Rectangle-11" x="49" y="0" width="18" height="13" />
@@ -131,7 +136,15 @@ export default function House() {
               <rect id="Rectangle-11" x="0" y="0" width="42" height="13" />
             </g>
             <g id="Penthouse-windows" transform="translate(13.000000, 34.000000)">
-              <rect id="Rectangle-12" fill="#D8D8D8" x="0" y="0" width="10.8035714" height="11" className={styles.slowLight} />
+              <rect
+                id="Rectangle-12"
+                fill="#D8D8D8"
+                x="0"
+                y="0"
+                width="10.8035714"
+                height="11"
+                className="slowLight"
+              />
               <rect
                 id="Rectangle-12"
                 fill="#7FAFCA"
@@ -147,7 +160,7 @@ export default function House() {
                 y="0"
                 width="10.8035714"
                 height="11"
-                className={styles.slowerLight}
+                className="slowerLight"
               />
               <rect
                 id="Rectangle-12"
