@@ -30,31 +30,46 @@ const years = {
 
 const africanCountries = {
   qInfo: {
-    qType: 'react-filterbox',
+    qType: 'table',
   },
-  qListObjectDef: {
-    qDef: {
-      qFieldLabels: ['Africa'],
-      qFieldDefs: ['Africa'],
-      autoSort: true,
-      qSortCriterias: [
-        {
-          qSortByState: 1,
-          qSortByAscii: 1,
-          qSortByNumeric: 1,
-          qSortByLoadOrder: 1,
+  qHyperCubeDef: {
+    qDimensions: [
+      {
+        qDef: {
+          qFieldDefs: ['Country Name'],
+          qLabel: 'Country Name',
+          qSortCriterias: [
+            {
+              qSortByNumeric: 1,
+            },
+          ],
         },
-      ],
-    },
-    qShowAlternatives: true,
+      },
+    ],
+    qMeasures: [
+      {
+        qDef: {
+          qDef: "Avg({$<Africa={'1'}>}Africa)",
+          qLabel: "African Countries",
+          qReverseSort: false,
+        },
+        autoSort: true,
+        qSortBy: {
+          qSortByNumeric: -1,
+        },
+      },
+    ],
+    qInterColumnSortOrder: [1, 0],
     qInitialDataFetch: [
       {
         qTop: 0,
+        qHeight: 500,
         qLeft: 0,
-        qWidth: 0,
-        qHeight: 1000,
+        qWidth: 17,
       },
     ],
+    qSuppressMissing: true,
+    qSuppressZero: true,
   },
 };
 
@@ -180,4 +195,4 @@ const totalUrbanWorldNbr = {
   },
 };
 
-export { years, africanCountries, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr, allCountries2 };
+export { years, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr, allCountries2, africanCountries };

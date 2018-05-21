@@ -1,7 +1,6 @@
 import React from 'react';
 import Text from 'react-svg-text';
 import styles from './filterbox.css';
-import { allCountries2 } from '../definitions';
 
 class Filterbox extends React.Component {
   constructor(props) {
@@ -13,19 +12,21 @@ class Filterbox extends React.Component {
   }
 
   selectCountry = (index) => {
+    this.props.model.clearSelections('/qHyperCubeDef');
+    this.props.model.selectHyperCubeValues('/qHyperCubeDef', 0, [index], false);
     this.setState({selected: index});
   };
 
   clearSelection = () => {
+    this.props.model.clearSelections('/qHyperCubeDef');
     this.setState({selected: null});
   };
 
   render() {
 
-    const cont = this.props.data.qListObject.qDataPages[0].qMatrix;
-    const allCountries = ['Sweden', 'Denmark', 'Finland'];
+    const countriesMatrix = this.props.layout.qHyperCube.qDataPages[0].qMatrix;
 
-    const countries = cont.map((country, i) => {
+    const countries = countriesMatrix.map((country, i) => {
       return (  
         <div onClick={() => this.selectCountry(i)} key={i} title={country[0].qText}>
           <span className={styles.listText}>{country[0].qText}</span>

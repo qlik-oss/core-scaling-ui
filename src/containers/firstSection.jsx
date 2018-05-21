@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ContainerDimensions from 'react-container-dimensions';
 import KPI from '../components/kpi';
 import Timeline from '../components/timeline';
-import { years, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr, allCountries2 } from '../definitions';
+import { years, urbanizedCountries, totalUrbanAfricaNbr, totalUrbanWorldNbr, africanCountries } from '../definitions';
 import styles from './firstSection.css';
 import House from '../components/house';
 import Clouds from '../components/clouds';
@@ -53,9 +53,8 @@ class FirstSection extends React.Component {
       const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(totalUrbanWorldNbr);
       const urbanizedCountriesModel = await this.props.app.createSessionObject(urbanizedCountries);
       const yearModel = await this.props.app.createSessionObject(years);
-      const allCountries3 = await this.props.app.createSessionObject(allCountries2);
-
-      const cLayout = await allCountries3.getLayout();
+      const africanCountriesModel = await this.props.app.createSessionObject(africanCountries);
+      const africanCountriesLayout = await africanCountriesModel.getLayout();
 
       // Select year
       const yearLayout = await yearModel.getLayout();
@@ -87,8 +86,9 @@ class FirstSection extends React.Component {
         leastUrbanized: { country: minUrbItem[0].qText, nbr: minUrbItem[1].qText },
         africanUrbanization,
         worldUrbanization,
-        loaded: true,
-        cLayout
+        africanCountriesModel,
+        africanCountriesLayout,
+        loaded: true
       });
 
       totalUrbanAfricaNbrModel.on('changed', () => this.updateTotalUrbanAfrica());
@@ -154,7 +154,7 @@ class FirstSection extends React.Component {
             <div className={styles.subHeader}>Urbanization</div>
           </div>
           <div className={styles.textContainer}>
-            <Filterbox data={this.state.cLayout}/>
+            <Filterbox layout={this.state.africanCountriesLayout} model={this.state.africanCountriesModel}/>
             {/* <div className={styles.didyouknow} />
             <div className={styles.infotext}>
               <p>
