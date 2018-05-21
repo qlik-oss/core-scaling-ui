@@ -23,10 +23,7 @@ class Filterbox extends React.Component {
   };
 
   render() {
-
-    const countriesMatrix = this.props.layout.qHyperCube.qDataPages[0].qMatrix;
-
-    const countries = countriesMatrix.map((country, i) => {
+    const countries = this.props.layout.qHyperCube.qDataPages[0].qMatrix.map((country, i) => {
       return (  
         <div onClick={() => this.selectCountry(i)} key={i} title={country[0].qText}>
           <span className={styles.listText}>{country[0].qText}</span>
