@@ -45,7 +45,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 5%;
+  padding-bottom: 10%;
 }
 
 @media only screen and (max-width: 600px) {
