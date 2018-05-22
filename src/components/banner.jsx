@@ -11,6 +11,15 @@ class Banner extends React.Component {
     };
   }
 
+  // Setting style on dummy element used for svg text measurements by react-svg-text.
+  componentDidMount() {
+    const textEl = document.getElementById("__react_svg_text_measurement_id");
+    if (textEl) {
+      textEl.parentElement.style.position = "absolute";
+      textEl.parentElement.style.left = "-999em";
+    }
+  }
+
   dotClick = index => {
     this.setState({ slideCount: index });
   };
