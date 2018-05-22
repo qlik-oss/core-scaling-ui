@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 import Filterbox from "../components/filterbox";
-import {
-  africanCountries
-} from "../definitions";
-import './section.css';
+import { africanCountries } from "../definitions";
+import "./section.css";
 
 class SecondSection extends React.Component {
   constructor(...args) {
@@ -40,12 +39,19 @@ class SecondSection extends React.Component {
     return (
       <div className="innerContainer">
         <div className="textContainer">
-          <Filterbox layout={this.state.africanCountriesLayout} model={this.state.africanCountriesModel} />
+          <Filterbox
+            layout={this.state.africanCountriesLayout}
+            model={this.state.africanCountriesModel}
+          />
         </div>
         <div className="cloudAndKpiContainer" />
       </div>
     );
   }
 }
+
+SecondSection.propTypes = {
+  app: PropTypes.object.isRequired
+};
 
 export default SecondSection;
