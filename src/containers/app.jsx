@@ -146,12 +146,14 @@ class App extends Component {
           </ViewPager>
           <House />
           <div className="timelineContainer">
-            <ContainerDimensions>
-              <Timeline
-                items={yearItems}
-                startIndex={this.state.selectedIndex}
-              />
-            </ContainerDimensions>
+            <div className="zigzagBackground">
+              <ContainerDimensions>
+                <Timeline
+                  items={yearItems}
+                  startIndex={this.state.selectedIndex}
+                />
+              </ContainerDimensions>
+            </div>
           </div>
         </div>
       </div>

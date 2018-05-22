@@ -35,8 +35,14 @@ main {
 }
 
 .timelineContainer {
-  height: 16%;
-  top: -1%;
+  height: 15%;
+  background-color: #f68f00;
+  position: relative;
+}
+
+.zigzagBackground {
   background-image: url("../resources/zigzag.svg");
+  top: -7%;
+  height: 100%;
   position: relative;
 }
