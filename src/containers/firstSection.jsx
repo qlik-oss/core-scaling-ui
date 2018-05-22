@@ -4,8 +4,7 @@ import KPI from "../components/kpi";
 import {
   urbanizedCountries,
   totalUrbanAfricaNbr,
-  totalUrbanWorldNbr,
-  africanCountries
+  totalUrbanWorldNbr
 } from "../definitions";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
@@ -66,8 +65,6 @@ class FirstSection extends React.Component {
         urbanizedCountries
       );
 
-      const africanCountriesModel = await this.props.app.createSessionObject(africanCountries);
-      const africanCountriesLayout = await africanCountriesModel.getLayout();
       const urbanizedCountriesLayout = await urbanizedCountriesModel.getLayout();
       const mostUrbItem =
         urbanizedCountriesLayout.qHyperCube.qDataPages[0].qMatrix[0];
@@ -98,8 +95,6 @@ class FirstSection extends React.Component {
         },
         africanUrbanization,
         worldUrbanization,
-        africanCountriesModel,
-        africanCountriesLayout,
         loaded: true
       });
 
