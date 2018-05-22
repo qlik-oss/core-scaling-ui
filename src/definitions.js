@@ -33,6 +33,7 @@ const africanCountries = {
     qType: 'table',
   },
   qHyperCubeDef: {
+    qStateName: 'secondSectionState',
     qDimensions: [
       {
         qDef: {

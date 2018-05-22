@@ -1,6 +1,6 @@
 import React from 'react';
 import Text from 'react-svg-text';
-import styles from './filterbox.css';
+import './filterbox.css';
 
 class Filterbox extends React.Component {
   constructor(props) {
@@ -26,19 +26,19 @@ class Filterbox extends React.Component {
     const countries = this.props.layout.qHyperCube.qDataPages[0].qMatrix.map((country, i) => {
       return (  
         <div onClick={() => this.selectCountry(i)} key={i} title={country[0].qText}>
-          <span className={styles.listText}>{country[0].qText}</span>
-          <span className={styles.listIcon}>{i === this.state.selected ? '✔' : null}</span>
+          <span className="listText">{country[0].qText}</span>
+          <span className="listIcon">{i === this.state.selected ? '✔' : null}</span>
         </div>
       )
     });
 
     return (
-      <div className={styles.filterbox}>
-        <div className={styles.title}>Country</div>
-        <div className={styles.list}>
+      <div className="filterbox">
+        <div className="title">Country</div>
+        <div className="list">
           {countries}
         </div>
-        <div className={styles.clearSelection} onClick={() => this.clearSelection()}>
+        <div className="clearSelection" onClick={() => this.clearSelection()}>
           <span>Clear selection</span>
           <span>✖</span>
         </div>

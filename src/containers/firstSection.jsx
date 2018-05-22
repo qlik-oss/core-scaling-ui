@@ -129,8 +129,7 @@ class FirstSection extends React.Component {
     return (
       <div className="innerContainer">
         <div className="textContainer">
-          <Filterbox layout={this.state.africanCountriesLayout} model={this.state.africanCountriesModel} />
-          {/*<div className="didyouknow" />
+          <div className="didyouknow" />
           <div className="infotext">
             <p>
               <b>{this.state.mostUrbanized.country}</b> was the most urbanized
@@ -144,7 +143,7 @@ class FirstSection extends React.Component {
               African country {this.props.selectedYear} with only{" "}
               <b>{this.state.leastUrbanized.nbr}</b>{" "}
             </p>
-          </div> */}
+          </div>
         </div>
         <div className="cloudAndKpiContainer">
           <div className="cloudContainer">
