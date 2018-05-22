@@ -35,6 +35,7 @@ class App extends Component {
         item => item[0].qText === year
       )[0].qElemNumber;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
+      app.addAlternateState('secondSectionState');
       this.setState({
         app,
         yearModel,
@@ -139,7 +140,9 @@ class App extends Component {
                   />
                 </View>
                 <View className="view">
-                  <SecondSection />
+                  <SecondSection 
+                    app={this.state.app}
+                  />
                 </View>
               </Track>
             </Frame>
