@@ -1,13 +1,24 @@
-import React from 'react';
-import styles from './header.css';
-import CustomLink from '../components/link';
+import React from "react";
+import PropTypes from "prop-types";
+import "./header.css";
 
-export default function Header() {
+export default function Header(props) {
   return (
-    <div className={styles.header}>
-      <CustomLink title="1" linkTo="#section1" />
-      <CustomLink title="2" linkTo="#section2" />
-      <CustomLink title="3" linkTo="#section3" />
+    <div className="header">
+      <button
+        onClick={() => {
+          props.onClick("urbanization");
+        }}
+      />
+      <button
+        onClick={() => {
+          props.onClick("lifeexpectancy");
+        }}
+      />
     </div>
   );
 }
+
+Header.propTypes = {
+  onClick: PropTypes.func.isRequired
+};

@@ -1,4 +1,4 @@
-.kpiContainer {
+.kpi {
   width: 100%;
   max-width: 20%;
   font-size: 2rem;
@@ -8,12 +8,12 @@
   margin-top: 6%;
 }
 
-.kpiContainer svg {
+.kpi svg {
   max-height: 220px;
   font-weight: 700;
 }
 
-.kpiContainer text {
+.kpi text {
   font-size: 3em;
 }
 

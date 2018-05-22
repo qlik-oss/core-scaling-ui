@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Motion, spring } from 'react-motion';
-import styles from './timelineBar.css';
+import './timelineBar.css';
 
 const labelWidth = 32;
 class TimelineBar extends React.Component {
@@ -43,12 +43,11 @@ class TimelineBar extends React.Component {
   };
 
   render() {
-    const prevButtonEnabled = this.state.position < 0 ? styles.enabled : styles.disabled;
-    const nextButtonEnabled =
-      this.state.position > this.state.maxPosition ? styles.enabled : styles.disabled;
+    const prevButtonEnabled = this.state.position < 0 ? 'enabled' : 'disabled';
+    const nextButtonEnabled = this.state.position > this.state.maxPosition ? 'enabled' : 'disabled';
     return (
-      <div className={styles.outer} style={{ width: `${this.props.width}px` }}>
-        <div className={styles.wrapper}>
+      <div className="outer" style={{ width: `${this.props.width}px` }}>
+        <div className="wrapper">
           <Motion
             style={{
               X: spring(this.state.position, {
@@ -59,7 +58,7 @@ class TimelineBar extends React.Component {
           >
             {({ X }) => (
               <div
-                className={styles.timeline}
+                className="timeline"
                 style={{
                   WebkitTransform: `translate3d(${X}, 0, 0)px`,
                   transform: `translate3d(${X}px, 0, 0)`,
@@ -70,14 +69,14 @@ class TimelineBar extends React.Component {
             )}
           </Motion>
         </div>
-        <div className={styles.navigation}>
-          <ul className={styles.navigationButtons}>
+        <div className="navigation">
+          <ul className="navigationButtons">
             <li
-              className={`${styles.navPrev} ${prevButtonEnabled}`}
+              className={`navPrev ${prevButtonEnabled}`}
               onClick={() => this.handleClick('prev')}
             />
             <li
-              className={`${styles.navNext} ${nextButtonEnabled}`}
+              className={`navNext ${nextButtonEnabled}`}
               onClick={() => this.handleClick('next')}
             />
           </ul>
