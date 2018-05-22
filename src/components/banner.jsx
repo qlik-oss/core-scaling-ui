@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Text from "react-svg-text";
 import "./banner.css";
 
@@ -36,7 +37,7 @@ class Banner extends React.Component {
       const color = this.state.slideCount === i ? "#FFFFFF" : "#D8D8D8";
       return (
         <circle
-          key={i}
+          key={text.id}
           fill={color}
           cx={position}
           cy="6"
@@ -50,7 +51,7 @@ class Banner extends React.Component {
       if (this.state.slideCount === i) {
         return (
           <Text
-            key={i}
+            key={text.id}
             x="24"
             y="100"
             dx="0"
@@ -61,10 +62,11 @@ class Banner extends React.Component {
             fill="#fff"
             className="cloudText"
           >
-            {text}
+            {text.text}
           </Text>
         );
       }
+      return null;
     });
 
     return (
@@ -154,5 +156,10 @@ class Banner extends React.Component {
     );
   }
 }
+
+Banner.propTypes = {
+  text: PropTypes.array.isRequired,
+  color: PropTypes.string.isRequired
+};
 
 export default Banner;
