@@ -116,9 +116,13 @@ class FirstSection extends React.Component {
     }
 
     const bannerText = [
-      "In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.",
-      "text 2",
-      "text 3"
+      {
+        text:
+          "In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.",
+        id: 1
+      },
+      { text: "text 2", id: 2 },
+      { text: "text 3", id: 3 }
     ];
 
     return (
