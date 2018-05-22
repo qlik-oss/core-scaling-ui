@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './clouds.css';
+import './clouds.css';
 
 export default function Clouds() {
   return (
-    <div className={styles.bigCloud}>
+    <div className="bigCloud">
       <svg
         width="639px"
         height="201px"
@@ -50,7 +50,7 @@ export default function Clouds() {
         </g>
       </svg>
       <svg
-        className={styles.movingCloud}
+        className="movingCloud"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -94,7 +94,7 @@ export default function Clouds() {
         </g>
       </svg>
       <svg
-        className={styles.staticCloud}
+        className="staticCloud"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

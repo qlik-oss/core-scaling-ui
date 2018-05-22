@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TimelineBar from './timelineBar';
+import '../containers/firstSection.css';
 
 export default function Timeline(props) {
   const visibleWidth = props.width;

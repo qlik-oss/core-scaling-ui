@@ -1,8 +1,14 @@
 .house {
   position: absolute;
-  top: 66%;
+  top: 74%;
   left: 23%;
   height: 19%;
+}
+
+@media only screen and (max-width: 600px) {
+  .house {
+    top: 67%;
+  }
 }
 
 @keyframes lightUp {

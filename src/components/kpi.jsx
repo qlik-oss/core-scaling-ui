@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './kpi.css';
+import './kpi.css';
 
 class KPI extends React.Component {
   constructor(...args) {
@@ -29,7 +29,7 @@ class KPI extends React.Component {
 
   render() {
     return (
-      <div className={styles.kpiContainer}>
+      <div className="kpi">
         <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
           <g>
             <linearGradient id={this.props.nbr} x1="0.5" y1="1" x2="0.5" y2="0">
@@ -71,7 +71,7 @@ class KPI extends React.Component {
             </text>
           </g>
         </svg>
-        <div className={styles.kpiText}>{this.props.text}</div>
+        <div className="kpiText">{this.props.text}</div>
       </div>
     );
   }
