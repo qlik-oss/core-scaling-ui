@@ -1,10 +1,11 @@
-import React from 'react';
-import styles from './clouds.css';
+import React from "react";
+import "./clouds.css";
 
 export default function Clouds() {
   return (
-    <div className={styles.bigCloud}>
+    <div>
       <svg
+        className="bigCloud"
         width="639px"
         height="201px"
         viewBox="0 0 639 201"
@@ -13,7 +14,13 @@ export default function Clouds() {
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <defs />
-        <g id="Page-1" stroke="none" strokeWidth="1" fill="blue" fillRule="evenodd">
+        <g
+          id="Page-1"
+          stroke="none"
+          strokeWidth="1"
+          fill="blue"
+          fillRule="evenodd"
+        >
           <g
             id="First-page-urbanization-Copy-11"
             transform="translate(-1073.000000, -163.000000)"
@@ -50,7 +57,7 @@ export default function Clouds() {
         </g>
       </svg>
       <svg
-        className={styles.movingCloud}
+        className="movingCloud"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -61,7 +68,13 @@ export default function Clouds() {
         viewBox="0 0 406 133"
       >
         <defs />
-        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+        <g
+          id="Page-1"
+          stroke="none"
+          strokeWidth="1"
+          fill="none"
+          fillRule="evenodd"
+        >
           <g
             id="First-page-urbanization-Copy-11"
             transform="translate(-581.000000, -361.000000)"
@@ -94,7 +107,7 @@ export default function Clouds() {
         </g>
       </svg>
       <svg
-        className={styles.staticCloud}
+        className="staticCloud"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -105,7 +118,13 @@ export default function Clouds() {
         viewBox="0 0 145 136"
       >
         <defs />
-        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+        <g
+          id="Page-1"
+          stroke="none"
+          strokeWidth="1"
+          fill="none"
+          fillRule="evenodd"
+        >
           <g
             id="First-page-urbanization-Copy-11"
             transform="translate(-1775.000000, -296.000000)"
@@ -115,7 +134,10 @@ export default function Clouds() {
               id="Moln"
               transform="translate(1487.500000, 316.000000) scale(1, -1) translate(-1487.500000, -316.000000) translate(581.000000, 138.000000)"
             >
-              <g id="Moln-till-höger" transform="translate(1194.000000, 62.000000)">
+              <g
+                id="Moln-till-höger"
+                transform="translate(1194.000000, 62.000000)"
+              >
                 <rect
                   id="Rectangle-Copy-5"
                   transform="translate(281.000000, 45.500000) scale(1, -1) translate(-281.000000, -45.500000) "

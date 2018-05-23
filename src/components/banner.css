@@ -1,8 +1,9 @@
 .banner {
   position: absolute;
   width: 40%;
-  top: -17%;
+  top: -14%;
   left: 58%;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 600px) {
@@ -28,13 +29,17 @@
   cursor: pointer;
 }
 
-Text{
+Text {
   fill: #fff;
   animation-name: fade-in;
   animation-duration: 1s;
 }
 
 @keyframes fade-in {
-  from {fill: #74AECB;}
-  to {fill: #fff;}
+  from {
+    fill: #74aecb;
+  }
+  to {
+    fill: #fff;
+  }
 }
