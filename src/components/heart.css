@@ -1,12 +1,16 @@
 .heart {
   position: absolute;
   bottom: 0;
-  right: -50px;
+  right: -80px;
+  width: 160px;
+  height: 140px;
 }
 
 @media only screen and (max-width: 600px) {
   .heart {
-    height: 42px;
+    height: 45px;
+    width: 50px;
+    right: -25px;
   }
 }
 
