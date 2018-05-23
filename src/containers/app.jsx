@@ -21,6 +21,11 @@ class App extends Component {
     this.getApp();
   }
 
+  onViewChange = view => {
+    if (view[0] === 0) this.setState({ subHeader: subHeaders[0] });
+    else if (view[0] === 1) this.setState({ subHeader: subHeaders[1] });
+  };
+
   async getApp() {
     const session = enigma.create(enigmaConfig);
 
@@ -51,10 +56,8 @@ class App extends Component {
   scrollTo = item => {
     if (item === "urbanization") {
       this.track.scrollTo(0);
-      this.setState({ subHeader: subHeaders[0] });
     } else if (item === "lifeexpectancy") {
       this.track.scrollTo(1);
-      this.setState({ subHeader: subHeaders[1] });
     }
   };
 
@@ -132,6 +135,9 @@ class App extends Component {
                 infinite
                 contain
                 className="track"
+                onViewChange={view => {
+                  this.onViewChange(view);
+                }}
               >
                 <View className="view">
                   <FirstSection
