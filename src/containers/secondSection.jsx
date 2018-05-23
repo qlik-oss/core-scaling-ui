@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Filterbox from "../components/filterbox";
+import Heart from "../components/heart";
 import { africanCountries } from "../definitions";
 import "./section.css";
 
@@ -43,6 +44,7 @@ class SecondSection extends React.Component {
             layout={this.state.africanCountriesLayout}
             model={this.state.africanCountriesModel}
           />
+          <Heart />
         </div>
         <div className="cloudAndKpiContainer" />
       </div>
