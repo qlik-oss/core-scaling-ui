@@ -7,7 +7,6 @@ import Header from "./header";
 import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
 import Timeline from "../components/timeline";
-import House from "../components/house";
 import { years } from "../definitions";
 import "./app.css";
 
@@ -40,7 +39,7 @@ class App extends Component {
         item => item[0].qText === year
       )[0].qElemNumber;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
-      app.addAlternateState('secondSectionState');
+      app.addAlternateState("secondSectionState");
       this.setState({
         app,
         yearModel,
@@ -146,14 +145,11 @@ class App extends Component {
                   />
                 </View>
                 <View className="view">
-                  <SecondSection 
-                    app={this.state.app}
-                  />
+                  <SecondSection app={this.state.app} />
                 </View>
               </Track>
             </Frame>
           </ViewPager>
-          <House />
           <div className="timelineContainer">
             <div className="zigzagBackground">
               <ContainerDimensions>

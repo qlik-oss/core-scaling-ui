@@ -1,13 +1,13 @@
 .house {
   position: absolute;
-  top: 74%;
-  left: 23%;
-  height: 19%;
+  bottom: 0;
+  right: -41px;
+  height: 198px;
 }
 
 @media only screen and (max-width: 600px) {
   .house {
-    top: 67%;
+    height: 100px;
   }
 }
 
