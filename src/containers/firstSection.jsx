@@ -130,18 +130,18 @@ class FirstSection extends React.Component {
         <div className="textContainer">
           <div className="didyouknow" />
           <div className="infotext">
-            <p>
+            <div>
               <b>{this.state.mostUrbanized.country}</b> was the most urbanized
               African country {this.props.selectedYear} with{" "}
               <b>{this.state.mostUrbanized.nbr}</b> urbanization.
-            </p>
+            </div>
           </div>
           <div className="infotext">
-            <p>
+            <div>
               <b>{this.state.leastUrbanized.country}</b> was the least urbanized
               African country {this.props.selectedYear} with only{" "}
               <b>{this.state.leastUrbanized.nbr}</b>{" "}
-            </p>
+            </div>
           </div>
         </div>
         <div className="cloudAndKpiContainer">

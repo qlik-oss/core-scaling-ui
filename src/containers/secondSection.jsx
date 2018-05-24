@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Filterbox from "../components/filterbox";
+import Clouds from "../components/clouds";
+import Banner from "../components/banner";
+import LifeExpectancyKpi from "../components/lifeExpectancyKpi";
 import { africanCountries } from "../definitions";
 import "./section.css";
+import "./secondSection.css";
 
 class SecondSection extends React.Component {
   constructor(...args) {
@@ -36,15 +40,44 @@ class SecondSection extends React.Component {
       return null;
     }
 
+    const bannerText = [
+      {
+        text:
+          "In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.",
+        id: 1
+      },
+      { text: "text 2", id: 2 },
+      { text: "text 3", id: 3 }
+    ];
+
     return (
-      <div className="innerContainer">
+      <div className="innerContainer sectionTwo">
         <div className="textContainer">
           <Filterbox
             layout={this.state.africanCountriesLayout}
             model={this.state.africanCountriesModel}
           />
         </div>
-        <div className="cloudAndKpiContainer" />
+        <div className="cloudAndKpiContainer">
+          <div className="cloudContainer">
+            <Banner text={bannerText} color="#F4A644" />
+            <Clouds />
+          </div>
+          <div className="contentWrapper">
+            <LifeExpectancyKpi />
+            <div className="infoWrapper">
+              <div className="didyouknow" />
+              <div className="infotext">
+                <div>
+                  <b>Egypt</b> life expectancy in <b>2016</b> has risen with <b>45%</b> compared to <b>1960</b>.
+                  <br />
+                  <br />
+                  While urbanization compared to <b>1960</b> is up <b>200%</b>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

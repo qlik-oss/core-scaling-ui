@@ -24,10 +24,11 @@
 
 .didyouknow {
   width: 142px;
-  height: 14%;
+  height: 67px;
   background-image: url("../resources/didyouknow.png");
   background-repeat: no-repeat;
   background-size: contain;
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -40,11 +41,12 @@
 .infotext {
   display: flex;
   flex-direction: column;
-  width: 65%;
   border-radius: 8px;
   padding: 10px;
-  margin-bottom: 3%;
-  background: #3e8dba50;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.28);
+  text-align: left;
+  color: #656565;
 }
 
 .bullet:hover {

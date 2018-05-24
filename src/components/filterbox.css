@@ -1,5 +1,5 @@
 .filterbox {
-  width: 80%;
+  width: 100%;
   height: 60%;
   color: #fff;
   display: flex;
@@ -12,7 +12,7 @@
 }
 
 .list {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
   flex: 1 1 auto;
   margin-bottom: 8px;
@@ -57,7 +57,7 @@
   display: flex;
   justify-content: space-between;
   flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
   padding: 8px 10px;
   font-size: 18px;

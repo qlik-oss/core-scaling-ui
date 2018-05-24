@@ -36,7 +36,7 @@ Text {
 
 @keyframes fade-in {
   from {
-    fill: #74aecb;
+    fill: transparent;
   }
   to {
     fill: #fff;
