@@ -7,7 +7,6 @@ import Header from "./header";
 import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
 import Timeline from "../components/timeline";
-import House from "../components/house";
 import { years } from "../definitions";
 import "./app.css";
 
@@ -20,6 +19,11 @@ class App extends Component {
     this.state = { subHeader: subHeaders[0], app: null, error: null };
     this.getApp();
   }
+
+  onViewChange = view => {
+    if (view[0] === 0) this.setState({ subHeader: subHeaders[0] });
+    else if (view[0] === 1) this.setState({ subHeader: subHeaders[1] });
+  };
 
   async getApp() {
     const session = enigma.create(enigmaConfig);
@@ -35,7 +39,7 @@ class App extends Component {
         item => item[0].qText === year
       )[0].qElemNumber;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
-      app.addAlternateState('secondSectionState');
+      app.addAlternateState("secondSectionState");
       this.setState({
         app,
         yearModel,
@@ -51,10 +55,8 @@ class App extends Component {
   scrollTo = item => {
     if (item === "urbanization") {
       this.track.scrollTo(0);
-      this.setState({ subHeader: subHeaders[0] });
     } else if (item === "lifeexpectancy") {
       this.track.scrollTo(1);
-      this.setState({ subHeader: subHeaders[1] });
     }
   };
 
@@ -132,6 +134,9 @@ class App extends Component {
                 infinite
                 contain
                 className="track"
+                onViewChange={view => {
+                  this.onViewChange(view);
+                }}
               >
                 <View className="view">
                   <FirstSection
@@ -140,14 +145,11 @@ class App extends Component {
                   />
                 </View>
                 <View className="view">
-                  <SecondSection 
-                    app={this.state.app}
-                  />
+                  <SecondSection app={this.state.app} />
                 </View>
               </Track>
             </Frame>
           </ViewPager>
-          <House />
           <div className="timelineContainer">
             <div className="zigzagBackground">
               <ContainerDimensions>

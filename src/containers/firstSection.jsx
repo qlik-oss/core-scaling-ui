@@ -8,6 +8,7 @@ import {
 } from "../definitions";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
+import House from "../components/house";
 import "./firstSection.css";
 import "./section.css";
 
@@ -143,6 +144,7 @@ class FirstSection extends React.Component {
               <b>{this.state.leastUrbanized.nbr}</b>{" "}
             </div>
           </div>
+          <House />
         </div>
         <div className="cloudAndKpiContainer">
           <div className="cloudContainer">

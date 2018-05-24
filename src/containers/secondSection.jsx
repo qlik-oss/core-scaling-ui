@@ -4,6 +4,7 @@ import Filterbox from "../components/filterbox";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
 import LifeExpectancyKpi from "../components/lifeExpectancyKpi";
+import Heart from "../components/heart";
 import { africanCountries } from "../definitions";
 import "./section.css";
 import "./secondSection.css";
@@ -57,6 +58,7 @@ class SecondSection extends React.Component {
             layout={this.state.africanCountriesLayout}
             model={this.state.africanCountriesModel}
           />
+          <Heart />
         </div>
         <div className="cloudAndKpiContainer">
           <div className="cloudContainer">

@@ -1,0 +1,30 @@
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: -80px;
+  width: 160px;
+  height: 140px;
+}
+
+@media only screen and (max-width: 600px) {
+  .heart {
+    height: 45px;
+    width: 50px;
+    right: -25px;
+  }
+}
+
+#pulsepath {
+  stroke-dasharray: 600, 500;
+  animation: pulse 5s infinite linear;
+  filter: url(#glow);
+}
+
+@keyframes pulse {
+  from {
+    stroke-dashoffset: 1100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
