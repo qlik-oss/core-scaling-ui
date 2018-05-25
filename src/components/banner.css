@@ -1,16 +1,26 @@
 .banner {
   position: absolute;
   width: 40%;
-  top: -14%;
-  left: 58%;
+  max-width: 520px;
+  min-width: 270px;
+  height: auto;
+  top: -40px;
+  right: 40px;
   z-index: 10;
+}
+
+@media only screen and (max-width: 1200px) {
+  .banner {
+    top: -30px;
+    right: 30px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .banner {
-    width: 60%;
-    top: -36%;
-    left: 36%;
+    min-width: 190px;
+    top: -20px;
+    right: 5px;
   }
 }
 
@@ -21,7 +31,7 @@
 
 @media only screen and (max-width: 600px) {
   .cloudText {
-    font-size: x-large;
+    font-size: large;
   }
 }
 
@@ -37,7 +47,7 @@ Text {
 
 @keyframes fade-in {
   from {
-    fill: #74aecb;
+    fill: transparent;
   }
   to {
     fill: #fff;

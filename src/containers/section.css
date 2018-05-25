@@ -9,12 +9,12 @@
   top: 17%;
   left: 23%;
   width: 48%;
-  color: #6f6f6f;
+  color: #fff;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  font-weight: 900;
   text-align: left;
   z-index: 1000;
+  text-shadow: 7px 7px 0 rgba(0, 0, 0, 0.1);
 }
 
 @media only screen and (max-width: 600px) {
@@ -27,25 +27,26 @@
 .mainHeader {
   font-size: 8vw;
   margin-left: 10%;
-  text-shadow: 2px 2px #d3d3d3;
+  font-weight: 900;
 }
 
 .subHeader {
   font-size: 5vw;
   margin-left: 17%;
-  text-shadow: 2px 2px #d3d3d3;
+  font-weight: 700;
 }
 
 .textContainer {
   width: 25%;
-  background: #3e8dba90;
+  max-width: 300px;
+  background: #75adc8;
+  border-right: 4px solid white;
   text-align: left;
   font-weight: 600;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-end;
-  padding-bottom: 10%;
+  padding: 0 2% 10% 2%;
   position: relative;
 }
 
@@ -63,13 +64,13 @@
 .cloudAndKpiContainer {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  flex: 1 1 auto;
   height: 100%;
-  background: linear-gradient(rgba(2, 138, 225, 0.6), rgba(221, 174, 32, 0.6));
+  background: linear-gradient(rgba(2, 138, 225, 0.4), rgba(221, 174, 32, 0.4));
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1200px) {
   .cloudAndKpiContainer {
-    width: 69%;
+    max-width: 71%;
   }
 }

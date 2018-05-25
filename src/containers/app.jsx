@@ -121,7 +121,7 @@ class App extends Component {
         />
         <div className="content">
           <div className="headerContainer">
-            <div className="mainHeader">African</div>
+            <div className="mainHeader">AFRICAN</div>
             <div className="subHeader">{this.state.subHeader}</div>
           </div>
           <ViewPager tag="main">

@@ -1,5 +1,12 @@
 .bigCloud {
   filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+  width: 170%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .bigCloud {
+    width: 110%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -7,6 +14,7 @@
     width: 50%;
   }
 }
+
 
 .movingCloud {
   width: 30%;
