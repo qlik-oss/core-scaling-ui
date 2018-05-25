@@ -105,7 +105,8 @@ class SecondSection extends React.Component {
               <div className="didyouknow" />
               <div className="infotext">
                 <div>
-                  <b>Egypt</b> life expectancy in <b>2016</b> has risen with <b>45%</b> compared to <b>1960</b>.
+                  <b>Egypt</b> life expectancy in <b>2016</b> has risen with{" "}
+                  <b>45%</b> compared to <b>1960</b>.
                   <br />
                   <br />
                   While urbanization compared to <b>1960</b> is up <b>200%</b>.

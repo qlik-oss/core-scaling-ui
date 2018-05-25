@@ -1,119 +1,116 @@
-.kpi-wrapper {
-    display: flex;
-    color: white;
-    font-size: 30px;
-    max-width: 680px;
-    padding: 0 20px;
-    box-sizing: border-box;
-    /* max-width: 700px; */
+.kpiWrapper {
+  display: flex;
+  color: white;
+  font-size: 30px;
+  max-width: 680px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-.middle-area {
-    margin: auto 10px;
+.middleArea {
+  margin: auto 10px;
 }
 
 .kpiTitle {
-    text-shadow: 1px 2px 3px #808080;
+  text-shadow: 1px 2px 3px #808080;
 }
 
-.circle-wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+.circleWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 
-.kpi-circle {
-    height: 125px;
-    width: 125px;
-    border-radius: 50%;
-    border: 5px solid white;
-    line-height: 115px;
-    font-size: 70px;
-    font-weight: bold;
-    position: relative;
+.kpiCircle {
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  border: 5px solid white;
+  line-height: 115px;
+  font-size: 70px;
+  font-weight: bold;
+  position: relative;
 }
 
-.kpi-circle span {
-    position: absolute;
-    width: 100%;
-    bottom: -28px;
-    right: 0;
-    font-size: 16px;
-    font-weight: normal;
+.kpiCircle span {
+  position: absolute;
+  width: 100%;
+  bottom: -28px;
+  right: 0;
+  font-size: 16px;
+  font-weight: normal;
 }
 
-.kpi-circle.woman {
-    background-color: #FFA515;
+.kpiCircle.woman {
+  background-color: #ffa515;
 }
 
-.kpi-circle.man {
-    background-color: #75ADC8;
+.kpiCircle.man {
+  background-color: #75adc8;
 }
 
 @media only screen and (max-width: 1300px) {
-    .kpi-wrapper {
-        max-width: 400px;
-    }
+  .kpiWrapper {
+    max-width: 400px;
+  }
 
-    .kpi-circle {
-        height: 80px;
-        width: 80px;
-        line-height: 80px;
-        font-size: 40px;
-    }
+  .kpiCircle {
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    font-size: 40px;
+  }
 
-    .kpi-circle span {
-        display: none;
-    }
+  .kpiCircle span {
+    display: none;
+  }
 
-    .middle-area {
-        min-width: 190px;
-    }
+  .middleArea {
+    min-width: 190px;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
-    .kpi-wrapper {
-        /* max-width: 100% !important; */
-        margin-bottom: 40px;
-    }
+  .kpiWrapper {
+    margin-bottom: 40px;
+  }
 
-    .kpiTitle {
-        font-size: 20px;
-    }
+  .kpiTitle {
+    font-size: 20px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .middle-area {
-        min-width: 0;
-    }
+  .middleArea {
+    min-width: 0;
+  }
 
-    .kpi-wrapper {
-        font-size: 16px;
-    }
+  .kpiWrapper {
+    font-size: 16px;
+  }
 
-    .kpi-wrapper svg {
-        display: none;
-    }
+  .kpiWrapper svg {
+    display: none;
+  }
 
-    .circle-wrapper {
-        justify-content: space-around;
-    }
+  .circleWrapper {
+    justify-content: space-around;
+  }
 
-    .kpi-circle {
-        height: 60px;
-        width: 60px;
-        line-height: 60px;
-        font-size: 30px;
-    }
+  .kpiCircle {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    font-size: 30px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
-    .kpi-circle {
-        height: 40px;
-        width: 40px;
-        line-height: 40px;
-        font-size: 20px;
-        border-width: 3px;
-    }
+  .kpiCircle {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    border-width: 3px;
+  }
 }
-
