@@ -25,11 +25,9 @@ class SecondSection extends React.Component {
 
   async updateAvgLifeExp() {
     const avgLifeExpFemaleLayout = await this.state.avgLifeExpFemaleModel.getLayout();
-    const avgLifeExpFemaleNbr =
-      avgLifeExpFemaleLayout.qHyperCube.qGrandTotalRow[0].qText;
+    const avgLifeExpFemaleNbr = this.getNbr(avgLifeExpFemaleLayout);
     const avgLifeExpMaleLayout = await this.state.avgLifeExpMaleModel.getLayout();
-    const avgLifeExpMaleNbr =
-      avgLifeExpMaleLayout.qHyperCube.qGrandTotalRow[0].qText;
+    const avgLifeExpMaleNbr = this.getNbr(avgLifeExpMaleLayout);
     this.setState({ avgLifeExpFemaleNbr, avgLifeExpMaleNbr });
   }
 
@@ -48,10 +46,8 @@ class SecondSection extends React.Component {
       const avgLifeExpFemaleLayout = await avgLifeExpFemaleModel.getLayout();
       const avgLifeExpMaleLayout = await avgLifeExpMaleModel.getLayout();
 
-      const avgLifeExpFemaleNbr =
-        avgLifeExpFemaleLayout.qHyperCube.qGrandTotalRow[0].qText;
-      const avgLifeExpMaleNbr =
-        avgLifeExpMaleLayout.qHyperCube.qGrandTotalRow[0].qText;
+      const avgLifeExpFemaleNbr = this.getNbr(avgLifeExpFemaleLayout);
+      const avgLifeExpMaleNbr = this.getNbr(avgLifeExpMaleLayout);
 
       this.setState({
         africanCountriesModel,
@@ -69,6 +65,14 @@ class SecondSection extends React.Component {
       // console.log(error);
     }
   }
+
+  getNbr = layout => {
+    const nbr = layout.qHyperCube.qGrandTotalRow[0].qNum;
+    if (nbr !== "NaN") {
+      return Math.round(nbr);
+    }
+    return "-";
+  };
 
   render() {
     if (!this.state.loaded) {
@@ -100,7 +104,11 @@ class SecondSection extends React.Component {
             <Clouds />
           </div>
           <div className="contentWrapper">
-            <LifeExpectancyKpi />
+            <LifeExpectancyKpi
+              year={this.props.selectedYear}
+              femaleNbr={this.state.avgLifeExpFemaleNbr}
+              maleNbr={this.state.avgLifeExpMaleNbr}
+            />
             <div className="infoWrapper">
               <div className="didyouknow" />
               <div className="infotext">
@@ -121,7 +129,8 @@ class SecondSection extends React.Component {
 }
 
 SecondSection.propTypes = {
-  app: PropTypes.object.isRequired
+  app: PropTypes.object.isRequired,
+  selectedYear: PropTypes.string.isRequired
 };
 
 export default SecondSection;

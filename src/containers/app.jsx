@@ -145,7 +145,10 @@ class App extends Component {
                   />
                 </View>
                 <View className="view">
-                  <SecondSection app={this.state.app} />
+                  <SecondSection
+                    app={this.state.app}
+                    selectedYear={selectedYear}
+                  />
                 </View>
               </Track>
             </Frame>
