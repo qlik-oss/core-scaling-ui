@@ -13,7 +13,12 @@ class Filterbox extends React.Component {
 
   selectCountry = index => {
     this.props.model.clearSelections("/qHyperCubeDef");
-    this.props.model.selectHyperCubeValues("/qHyperCubeDef", 0, [index], false);
+    this.props.model.selectHyperCubeCells(
+      "/qHyperCubeDef",
+      [index],
+      [0],
+      false
+    );
     this.setState({ selected: index });
   };
 
