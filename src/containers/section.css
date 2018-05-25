@@ -39,7 +39,7 @@
 .textContainer {
   width: 25%;
   max-width: 300px;
-  background: rgba(62, 141, 186, 0.6);
+  background: #75ADC8;
   border-right: 4px solid white;
   text-align: left;
   font-weight: 600;

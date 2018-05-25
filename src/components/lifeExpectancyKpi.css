@@ -50,12 +50,6 @@
     background-color: #75ADC8;
 }
 
-@media only screen and (min-width: 800px) {
-    .middle-area {
-        min-width: 300px;
-    }
-}
-
 @media only screen and (max-width: 1300px) {
     .kpi-wrapper {
         max-width: 400px;
@@ -86,18 +80,30 @@
     .kpiTitle {
         font-size: 20px;
     }
+}
 
-    /* .kpi-circle {
+@media only screen and (max-width: 600px) {
+    .middle-area {
+        min-width: 0;
+    }
+
+    .kpi-wrapper {
+        font-size: 16px;
+    }
+
+    .kpi-wrapper svg {
+        display: none;
+    }
+
+    .circle-wrapper {
+        justify-content: space-around;
+    }
+
+    .kpi-circle {
         height: 60px;
         width: 60px;
         line-height: 60px;
         font-size: 30px;
-    } */
-}
-
-@media only screen and (max-width: 600px) {
-    .kpi-wrapper {
-        font-size: 16px;
     }
 }
 

@@ -73,7 +73,7 @@ class Banner extends React.Component {
       <svg
         className="banner"
         width="485px"
-        height="235px"
+        height="180px"
         viewBox="0 0 485 235"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"

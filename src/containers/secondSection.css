@@ -12,15 +12,15 @@
   min-width: 300px;
 }
 
-.sectionTwo .textContainer {
-  padding-bottom: 5%;
-}
-
 .sectionTwo .infotext {
   max-width: 350px;
 }
 
 @media only screen and (max-width: 1100px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+
   .infoWrapper {
     margin-bottom: 20px;
     min-width: 0;
@@ -32,8 +32,9 @@
   }
 }
 
-@media only screen and (max-width: 1100px) {
-  .contentWrapper {
-    flex-direction: column;
+@media only screen and (max-width: 600px) {
+  .infotext {
+    font-size: 10px;
   }
 }
+

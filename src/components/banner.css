@@ -1,7 +1,7 @@
 .banner {
   position: absolute;
   width: 40%;
-  top: -14%;
+  top: -40px;
   left: 58%;
   z-index: 10;
 }

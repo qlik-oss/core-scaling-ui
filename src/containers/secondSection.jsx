@@ -62,7 +62,7 @@ class SecondSection extends React.Component {
         </div>
         <div className="cloudAndKpiContainer">
           <div className="cloudContainer">
-            <Banner text={bannerText} color="#F4A644" />
+            <Banner text={bannerText} color="#FFA515" />
             <Clouds />
           </div>
           <div className="contentWrapper">

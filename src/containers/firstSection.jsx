@@ -148,7 +148,7 @@ class FirstSection extends React.Component {
         </div>
         <div className="cloudAndKpiContainer">
           <div className="cloudContainer">
-            <Banner text={bannerText} color="#74AECB" />
+            <Banner text={bannerText} color="#75ADC8" />
             <Clouds />
           </div>
           <div className="kpiContainer">
