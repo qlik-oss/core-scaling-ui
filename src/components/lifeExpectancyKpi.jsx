@@ -41,18 +41,10 @@ class LiftExpectancyKpi extends React.Component {
                   </g>
               </g>
           </g>
-      </svg>
+        </svg>
       </div>
     );
   }
 }
-
-LiftExpectancyKpi.propTypes = {
-
-};
-
-LiftExpectancyKpi.defaultProps = {
-
-};
 
 export default LiftExpectancyKpi;
