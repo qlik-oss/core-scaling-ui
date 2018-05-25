@@ -45,15 +45,15 @@ class LiftExpectancyKpi extends React.Component {
         </svg>
         <div className="middleArea">
           <span className="kpiTitle">
-            Average life expectancy <b>2016</b>
+            Average life expectancy <b>{this.props.year}</b>
           </span>
           <div className="circleWrapper">
             <div className="kpiCircle woman">
-              67
+              {this.props.femaleNbr}
               <span>years</span>
             </div>
             <div className="kpiCircle man">
-              63
+              {this.props.maleNbr}
               <span>years</span>
             </div>
           </div>
@@ -94,5 +94,12 @@ class LiftExpectancyKpi extends React.Component {
     );
   }
 }
+
+LiftExpectancyKpi.propTypes = {
+  year: PropTypes.string.isRequired,
+  femaleNbr: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  maleNbr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+};
 
 export default LiftExpectancyKpi;
