@@ -10,7 +10,8 @@ import {
   avgLifeExpFemale,
   avgLifeExpMale,
   lifeExpRate,
-  urbanizationRate
+  urbanizationRate,
+  lifeExpCountries
 } from "../definitions";
 import "./section.css";
 import "./secondSection.css";
@@ -52,17 +53,26 @@ class SecondSection extends React.Component {
       const urbRateModel = await this.props.app.createSessionObject(
         urbanizationRate
       );
+      const lifeExpCountriesModel = await this.props.app.createSessionObject(
+        lifeExpCountries
+      );
 
       const africanCountriesLayout = await africanCountriesModel.getLayout();
       const avgLifeExpFemaleLayout = await avgLifeExpFemaleModel.getLayout();
       const avgLifeExpMaleLayout = await avgLifeExpMaleModel.getLayout();
       const lifeExpRateLayout = await lifeExpRateModel.getLayout();
       const urbRateLayout = await urbRateModel.getLayout();
+      const lifeExpLayout = await lifeExpCountriesModel.getLayout();
 
       const avgLifeExpFemaleNbr = this.getNbr(avgLifeExpFemaleLayout);
       const avgLifeExpMaleNbr = this.getNbr(avgLifeExpMaleLayout);
       const lifeExpRateNbr = this.getText(lifeExpRateLayout);
       const urbRateNbr = this.getText(urbRateLayout);
+      const longestLifeExp = lifeExpLayout.qHyperCube.qDataPages[0].qMatrix[0];
+      const shortestLifeExp =
+        lifeExpLayout.qHyperCube.qDataPages[0].qMatrix[
+          lifeExpLayout.qHyperCube.qDataPages[0].qMatrix.length - 1
+        ];
 
       this.setState({
         africanCountriesModel,
@@ -75,6 +85,14 @@ class SecondSection extends React.Component {
         avgLifeExpMaleNbr,
         lifeExpRateNbr,
         urbRateNbr,
+        longestLifeExp: {
+          country: longestLifeExp[0].qText,
+          nbr: longestLifeExp[1].qText
+        },
+        shortestLifeExp: {
+          country: shortestLifeExp[0].qText,
+          nbr: shortestLifeExp[1].qText
+        },
         loaded: true
       });
 
@@ -126,12 +144,24 @@ class SecondSection extends React.Component {
 
     const bannerText = [
       {
-        text:
-          "In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.",
+        text: `${
+          this.state.longestLifeExp.country
+        } is the African country where you live the longest, 
+          ${this.state.longestLifeExp.nbr} years.`,
         id: 1
       },
-      { text: "text 2", id: 2 },
-      { text: "text 3", id: 3 }
+      {
+        text: `However, ${
+          this.state.shortestLifeExp.country
+        } is not really there yet. Here you can expect to live only 
+        ${this.state.shortestLifeExp.nbr} years.`,
+        id: 2
+      },
+      {
+        text:
+          "Rwanda had a severe dip in the life expectancy early 90's, going down from 51 to only 27 years. It has however doubled over the last 20 years.",
+        id: 3
+      }
     ];
 
     return (
