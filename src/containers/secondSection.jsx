@@ -119,14 +119,6 @@ class SecondSection extends React.Component {
     this.setState({ urbRateNbr });
   }
 
-  getNbr = layout => {
-    const nbr = layout.qHyperCube.qGrandTotalRow[0].qNum;
-    if (nbr !== "NaN") {
-      return Math.round(nbr);
-    }
-    return "-";
-  };
-
   render() {
     if (!this.state.loaded) {
       return null;
