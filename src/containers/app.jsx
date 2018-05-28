@@ -78,15 +78,17 @@ class App extends Component {
     }
 
     const selectedItemStyle = {
-      backgroundColor: "#f8f8f8",
-      width: "35px",
-      height: "35px",
-      bottom: "-19px"
+      backgroundColor: "#fff",
+      border: "2px solid #EA8622",
+      boxShadow: "0 0 0 2px #fff",
+      width: "24px",
+      height: "24px",
+      bottom: "-12px"
     };
 
     const normalItemStyle = {
-      width: "18px",
-      height: "18px",
+      width: "22px",
+      height: "22px",
       bottom: "-10px"
     };
 
@@ -154,14 +156,14 @@ class App extends Component {
             </Frame>
           </ViewPager>
           <div className="timelineContainer">
-            <div className="zigzagBackground">
+            {/* <div className="zigzagBackground"> */}
               <ContainerDimensions>
                 <Timeline
                   items={yearItems}
                   startIndex={this.state.selectedIndex}
                 />
               </ContainerDimensions>
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
