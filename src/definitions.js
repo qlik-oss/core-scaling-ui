@@ -209,6 +209,52 @@ const avgLifeExpMale = {
   }
 };
 
+const lifeExpRate = {
+  qInfo: {
+    qType: "kpiHyperCube"
+  },
+  qHyperCubeDef: {
+    qMeasures: [
+      {
+        qDef: {
+          qDef:
+            "num((sum([Life expectancy at birth, total (years)])-sum({<Year = {'1960'}>}[Life expectancy at birth, total (years)]))/sum({<Year = {'1960'}>}[Life expectancy at birth, total (years)]), '####0%')",
+          qLabel: "Life expectancy rate"
+        },
+        qSortBy: {
+          SortByLoadOrder: 1,
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: false
+  }
+};
+
+const urbanizationRate = {
+  qInfo: {
+    qType: "kpiHyperCube"
+  },
+  qHyperCubeDef: {
+    qMeasures: [
+      {
+        qDef: {
+          qDef:
+            "num((sum([Urban population [SP.URB.TOTL]]])-sum({<Year = {'1960'}>}[Urban population [SP.URB.TOTL]]]))/sum({<Year = {'1960'}>}[Urban population [SP.URB.TOTL]]]), '####0%')",
+          qLabel: "Life expectancy rate"
+        },
+        qSortBy: {
+          SortByLoadOrder: 1,
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: false
+  }
+};
+
 export {
   years,
   africanCountries,
@@ -216,5 +262,7 @@ export {
   totalUrbanAfricaNbr,
   totalUrbanWorldNbr,
   avgLifeExpFemale,
-  avgLifeExpMale
+  avgLifeExpMale,
+  lifeExpRate,
+  urbanizationRate
 };
