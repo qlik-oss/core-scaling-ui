@@ -55,7 +55,6 @@ class FirstSection extends React.Component {
   async createModel() {
     try {
       // create the models
-      /* eslint-disable-next-line max-len */
       const totalUrbanAfricaNbrModel = await this.props.app.createSessionObject(
         totalUrbanAfricaNbr
       );

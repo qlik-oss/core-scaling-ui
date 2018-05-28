@@ -255,6 +255,52 @@ const urbanizationRate = {
   }
 };
 
+const lifeExpCountries = {
+  qInfo: {
+    qType: "kpi"
+  },
+  qHyperCubeDef: {
+    qDimensions: [
+      {
+        qDef: {
+          qFieldDefs: ["Country Name"],
+          qLabel: "Country Name",
+          qSortCriterias: [
+            {
+              qSortByNumeric: 1
+            }
+          ]
+        }
+      }
+    ],
+    qMeasures: [
+      {
+        qDef: {
+          qDef:
+            "Max({<Africa = {1}, [Country Name] = >}[Life expectancy at birth, total (years)])",
+          qLabel: "Life expectancy by countries",
+          qReverseSort: false
+        },
+        autoSort: true,
+        qSortBy: {
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qInterColumnSortOrder: [1, 0],
+    qInitialDataFetch: [
+      {
+        qTop: 0,
+        qHeight: 500,
+        qLeft: 0,
+        qWidth: 17
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: true
+  }
+};
+
 export {
   years,
   africanCountries,
@@ -264,5 +310,6 @@ export {
   avgLifeExpFemale,
   avgLifeExpMale,
   lifeExpRate,
-  urbanizationRate
+  urbanizationRate,
+  lifeExpCountries
 };
