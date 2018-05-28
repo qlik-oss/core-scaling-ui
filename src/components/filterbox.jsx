@@ -20,11 +20,19 @@ class Filterbox extends React.Component {
       false
     );
     this.setState({ selected: index });
+    if (this.props.selectedValueCallback) {
+      this.props.selectedValueCallback(
+        this.props.layout.qHyperCube.qDataPages[0].qMatrix[index][0].qText
+      );
+    }
   };
 
   clearSelection = () => {
     this.props.model.clearSelections("/qHyperCubeDef");
     this.setState({ selected: null });
+    if (this.props.selectedValueCallback) {
+      this.props.selectedValueCallback("");
+    }
   };
 
   render() {
@@ -63,7 +71,12 @@ class Filterbox extends React.Component {
 
 Filterbox.propTypes = {
   model: PropTypes.object.isRequired,
-  layout: PropTypes.object.isRequired
+  layout: PropTypes.object.isRequired,
+  selectedValueCallback: PropTypes.func
+};
+
+Filterbox.defaultProps = {
+  selectedValueCallback: null
 };
 
 export default Filterbox;
