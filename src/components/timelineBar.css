@@ -1,18 +1,19 @@
 .wrapper {
   position: relative;
   height: 70%;
-  margin: 0 26px;
+  margin: 0 25px;
   overflow: hidden;
   transform: translateY(20%);
 }
 
 .timeline {
   position: absolute;
-  width: 3410px;
-  height: 2px;
-  background: #6f6f6f;
+  width: 3411px;
+  height: 3px;
+  background: #f5c391;
   top: 44px;
   z-index: 1;
+  color: #fff;
 }
 
 .timeline ol {
@@ -23,7 +24,7 @@
   position: absolute;
   bottom: 0;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 22px;
   cursor: pointer;
 }
 
@@ -38,22 +39,20 @@
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 50%;
-  border: 2px solid #6f6f6f;
-  background-color: #d3d3d3;
+  background-color: #f5c391;
 }
 
 .navigationButtons li {
   position: absolute;
   bottom: auto;
   transform: translateY(-100%);
-  border: 2px solid #6f6f6f;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
   transition: border-color 0.3s;
   height: 50px;
   width: 25px;
-  background-color: #d3d3d3;
+  background-color: #f5c391;
 }
 
 .navigationButtons li.navPrev {
@@ -75,6 +74,10 @@
   color: #7b9d6f;
 }
 
+.navigationButtons li.enabled:hover {
+  background-color: #fff;
+}
+
 .navigationButtons li.disabled {
   cursor: not-allowed;
   color: rgb(223, 223, 223);
@@ -82,4 +85,20 @@
 
 .outer {
   height: 100px;
+  position: relative;
+}
+
+.outer::after {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: white;
+  content: "";
+}
+
+.bullet:hover {
+  cursor: pointer;
+  background-color: #fff;
 }
