@@ -4,6 +4,7 @@ body {
   font-family: "Muli";
   height: 100vh;
   user-select: none;
+  overflow: hidden;
 }
 
 .page {
@@ -18,13 +19,7 @@ body {
 }
 
 main {
-  height: 90%;
-}
-
-@media only screen and (max-width: 600px) {
-  main {
-    height: 85%;
-  }
+  height: calc(100% - 105px);
 }
 
 .frame {
@@ -40,7 +35,7 @@ main {
 }
 
 .timelineContainer {
-  height: 10%;
+  height: 105px;
   background-color: #f68f00;
   position: relative;
 }
@@ -71,22 +66,6 @@ main {
   background-position: left top;
   background-repeat: repeat-x;
   background-size: 22px 32px;
-}
-
-@media only screen and (max-width: 600px) {
-  .timelineContainer {
-    height: 15%;
-  }
-}
-
-.zigzagBackground {
-  background-image: url("../resources/zigzag.svg");
-  top: -7%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 /* Style the scrollbar */
