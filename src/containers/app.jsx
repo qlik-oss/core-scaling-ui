@@ -30,7 +30,7 @@ class App extends Component {
 
     try {
       const global = await session.open();
-      const app = await global.openDoc("Shared-Africa-Urbanization.qvf");
+      const app = await global.getActiveDoc();
       const yearModel = await app.createSessionObject(years);
       // Select year
       const yearLayout = await yearModel.getLayout();
