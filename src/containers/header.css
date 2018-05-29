@@ -16,10 +16,28 @@
   left: 0px;
 }
 
-.link {
-  color: black;
+.headerButton {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  margin: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.header a {
-  margin: 0 1%;
+.headerButton:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.headerButton.active {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.buttonImage {
+  width: 35px;
+  height: 38px;
 }

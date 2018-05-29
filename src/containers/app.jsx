@@ -120,6 +120,7 @@ class App extends Component {
           onClick={e => {
             this.scrollTo(e);
           }}
+          activePage={this.state.subHeader}
         />
         <div className="content">
           <div className="headerContainer">
