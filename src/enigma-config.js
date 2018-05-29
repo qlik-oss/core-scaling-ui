@@ -7,5 +7,4 @@ const config = {
   url: `${location.protocol.replace('http', 'ws')}${backendAdress}`,
 };
 
-
 module.exports = config;
