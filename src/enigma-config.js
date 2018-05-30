@@ -4,7 +4,7 @@ const backendAdress = process.env.NODE_ENV === 'production' ? `${process.env.BAC
 
 const config = {
   schema: qixSchema,
-  url: `${location.protocol.replace('http', 'ws')}${backendAdress}`,
+  url: `${window.location.protocol.replace('http', 'ws')}${backendAdress}`,
 };
 
 module.exports = config;
