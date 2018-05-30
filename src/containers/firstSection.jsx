@@ -4,7 +4,9 @@ import KPI from "../components/kpi";
 import {
   urbanizedCountries,
   totalUrbanAfricaNbr,
-  totalUrbanWorldNbr
+  totalUrbanWorldNbr,
+  urbanLandArea,
+  urbanLandAreaAfrica
 } from "../definitions";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
@@ -64,6 +66,12 @@ class FirstSection extends React.Component {
       const urbanizedCountriesModel = await this.props.app.createSessionObject(
         urbanizedCountries
       );
+      const urbanLandAreaModel = await this.props.app.createSessionObject(
+        urbanLandArea
+      );
+      const urbanLandAreaAfricaModel = await this.props.app.createSessionObject(
+        urbanLandAreaAfrica
+      );
 
       const urbanizedCountriesLayout = await urbanizedCountriesModel.getLayout();
       const mostUrbItem =
@@ -81,6 +89,14 @@ class FirstSection extends React.Component {
       const worldUrbanization =
         totalUrbanWorldNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
 
+      const urbanLandAreaLayout = await urbanLandAreaModel.getLayout();
+      const urbanLandAreaNbr =
+        urbanLandAreaLayout.qHyperCube.qGrandTotalRow[0].qText;
+
+      const urbanLandAreaAfricaLayout = await urbanLandAreaAfricaModel.getLayout();
+      const urbanLandAreaAfricaNbr =
+        urbanLandAreaAfricaLayout.qHyperCube.qGrandTotalRow[0].qText;
+
       this.setState({
         totalUrbanAfricaNbrModel,
         totalUrbanWorldNbrModel,
@@ -95,6 +111,8 @@ class FirstSection extends React.Component {
         },
         africanUrbanization,
         worldUrbanization,
+        urbanLandAreaNbr,
+        urbanLandAreaAfricaNbr,
         loaded: true
       });
 
@@ -121,8 +139,19 @@ class FirstSection extends React.Component {
           "In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.",
         id: 1
       },
-      { text: "text 2", id: 2 },
-      { text: "text 3", id: 3 }
+      {
+        text: `${
+          this.state.urbanLandAreaNbr
+        } of the world's land surface is covered with urban areas. The same number for Africa is ${
+          this.state.urbanLandAreaAfricaNbr
+        }.`,
+        id: 2
+      },
+      {
+        text:
+          "Nigeria has the 9th largest urban population in the world, passing 90 million in 2016",
+        id: 3
+      }
     ];
 
     return (

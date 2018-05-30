@@ -301,6 +301,52 @@ const lifeExpCountries = {
   }
 };
 
+const urbanLandArea = {
+  qInfo: {
+    qType: "kpiHyperCube"
+  },
+  qHyperCubeDef: {
+    qMeasures: [
+      {
+        qDef: {
+          qDef:
+            "num(Max({<[Year] = >}[Urban land area (sq. km)])/Max({<[Year] = >}[Land area (sq. km)]), '####0%')",
+          qLabel: "Urban Land Area %"
+        },
+        qSortBy: {
+          SortByLoadOrder: 1,
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: false
+  }
+};
+
+const urbanLandAreaAfrica = {
+  qInfo: {
+    qType: "kpiHyperCube"
+  },
+  qHyperCubeDef: {
+    qMeasures: [
+      {
+        qDef: {
+          qDef:
+            "num(Max({<Africa = {1}, [Year] = >}[Urban land area (sq. km)])/Max({<Africa = {1}, [Year] = >}[Land area (sq. km)]), '####0%')",
+          qLabel: "Urban Land Area %"
+        },
+        qSortBy: {
+          SortByLoadOrder: 1,
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: false
+  }
+};
+
 export {
   years,
   africanCountries,
@@ -311,5 +357,7 @@ export {
   avgLifeExpMale,
   lifeExpRate,
   urbanizationRate,
-  lifeExpCountries
+  lifeExpCountries,
+  urbanLandArea,
+  urbanLandAreaAfrica
 };
