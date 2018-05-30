@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/core-scaling-ui
     docker:
-      - image: circleci/node:9.11
+      - image: circleci/node:9
     steps:
       - checkout
       - run:
