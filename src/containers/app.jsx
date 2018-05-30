@@ -47,7 +47,6 @@ class App extends Component {
         selectedIndex: yearItem
       });
     } catch (error) {
-      // console.log(error);
       this.setState({ error });
     }
   }
@@ -71,7 +70,12 @@ class App extends Component {
 
   render() {
     if (this.state.error) {
-      return <p>Oops, something went wrong.{this.state.error} </p>;
+      return (
+        <div className="errorWrapper">
+          <span className="errorText">Oops, something went wrong.</span>
+          <span>{String(this.state.error)}</span>
+        </div>
+      );
     }
     if (!this.state.app) {
       return null;
