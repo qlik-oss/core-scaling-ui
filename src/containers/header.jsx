@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./header.css";
+import houseImg from "../resources/house.svg";
+import heartImg from "../resources/heart.svg";
 
 export default function Header(props) {
   return (
@@ -16,7 +18,7 @@ export default function Header(props) {
       >
         <img
           className="buttonImage"
-          src="src/resources/house.svg"
+          src={houseImg}
           alt="Urbanization button"
         />
       </button>
@@ -31,7 +33,7 @@ export default function Header(props) {
       >
         <img
           className="buttonImage"
-          src="src/resources/heart.svg"
+          src={heartImg}
           alt="Life Expectancy button"
         />
       </button>
