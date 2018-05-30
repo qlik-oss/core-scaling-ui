@@ -2,43 +2,44 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./header.css";
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="header">
-        <div
-          title="Urbanization"
-          className={`headerButton ${
-            this.props.activePage === "Urbanization" ? "active" : ""
-          }`}
-          onClick={() => {
-            this.props.onClick("urbanization");
-          }}
-        >
-          <img className="buttonImage" src="src/resources/house.svg" />
-        </div>
-        <div
-          title="Life Expectancy"
-          className={`headerButton ${
-            this.props.activePage === "Life Expectancy" ? "active" : ""
-          }`}
-          onClick={() => {
-            this.props.onClick("lifeexpectancy");
-          }}
-        >
-          <img className="buttonImage" src="src/resources/heart.svg" />
-        </div>
-      </div>
-    );
-  }
+export default function Header(props) {
+  return (
+    <div className="header">
+      <button
+        title="Urbanization"
+        className={`headerButton ${
+          props.activePage === "Urbanization" ? "active" : ""
+        }`}
+        onClick={() => {
+          props.onClick("urbanization");
+        }}
+      >
+        <img
+          className="buttonImage"
+          src="src/resources/house.svg"
+          alt="Urbanization button"
+        />
+      </button>
+      <button
+        title="Life Expectancy"
+        className={`headerButton ${
+          props.activePage === "Life Expectancy" ? "active" : ""
+        }`}
+        onClick={() => {
+          props.onClick("lifeexpectancy");
+        }}
+      >
+        <img
+          className="buttonImage"
+          src="src/resources/heart.svg"
+          alt="Life Expectancy button"
+        />
+      </button>
+    </div>
+  );
 }
 
 Header.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  activePage: PropTypes.string.isRequired
 };
-
-export default Header;
