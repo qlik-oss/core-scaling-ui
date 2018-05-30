@@ -70,10 +70,14 @@ class App extends Component {
 
   render() {
     if (this.state.error) {
+      const msg =
+        this.state.error instanceof Event
+          ? "Failed to establish a connection to an Engine"
+          : this.state.error.message;
       return (
         <div className="errorWrapper">
           <span className="errorText">Oops, something went wrong.</span>
-          <span>{String(this.state.error)}</span>
+          <span>{msg}</span>
         </div>
       );
     }
