@@ -47,7 +47,6 @@ class App extends Component {
         selectedIndex: yearItem
       });
     } catch (error) {
-      // console.log(error);
       this.setState({ error });
     }
   }
@@ -71,7 +70,16 @@ class App extends Component {
 
   render() {
     if (this.state.error) {
-      return <p>Oops, something went wrong.{this.state.error} </p>;
+      const msg =
+        this.state.error instanceof Event
+          ? "Failed to establish a connection to an Engine"
+          : this.state.error.message;
+      return (
+        <div className="errorWrapper">
+          <span className="errorText">Oops, something went wrong.</span>
+          <span>{msg}</span>
+        </div>
+      );
     }
     if (!this.state.app) {
       return null;
