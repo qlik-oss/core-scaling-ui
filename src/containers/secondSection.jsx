@@ -101,7 +101,7 @@ class SecondSection extends React.Component {
       lifeExpRateModel.on("changed", () => this.updateLifeExpRate());
       urbRateModel.on("changed", () => this.updateUrbRate());
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   }
 
