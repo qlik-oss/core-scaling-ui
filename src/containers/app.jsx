@@ -13,6 +13,8 @@ import "./app.css";
 const year = "2016";
 const subHeaders = ["Urbanization", "Life Expectancy"];
 
+let counter = 0;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +46,8 @@ class App extends Component {
         app,
         yearModel,
         yearLayout,
-        selectedIndex: yearItem
+        selectedIndex: yearItem,
+        lastItem: yearItem
       });
     } catch (error) {
       this.setState({ error });
@@ -67,6 +70,19 @@ class App extends Component {
     );
     this.setState({ selectedIndex: item[0].qElemNumber });
   };
+
+  interval = setInterval(() => {
+    if (counter > this.state.lastItem) {
+      counter = 0;
+    }
+    this.state.yearModel.selectListObjectValues(
+      "/qListObjectDef",
+      [counter],
+      false
+    );
+    this.setState({ selectedIndex: counter });
+    counter++;
+  }, 1000);
 
   render() {
     if (this.state.error) {
