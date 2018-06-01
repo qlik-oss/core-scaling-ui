@@ -44,3 +44,17 @@
   width: 35px;
   height: 38px;
 }
+
+.coreLogo {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 550px) {
+  .coreLogo {
+    display: none;
+  }
+}
