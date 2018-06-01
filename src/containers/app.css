@@ -88,6 +88,27 @@ main {
   padding-bottom: 20px;
 }
 
+.underConstructionBanner {
+  position: absolute;
+  right: -61px;
+  top: 64px;
+  width: 325px;
+  height: 45px;
+  color: #fff;
+  background: #ef471d;
+  z-index: 2;
+  transform: rotate(41deg);
+  text-align: center;
+  font-size: 17px;
+}
+
+.underConstructionInner {
+  border: 1px dashed #fff;
+  margin: 2px;
+  height: 38px;
+  line-height: 38px;
+}
+
 /* Style the scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
