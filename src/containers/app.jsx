@@ -30,7 +30,10 @@ class App extends Component {
 
     try {
       const global = await session.open();
-      const app = process.env.NODE_ENV === 'production' ? await global.getActiveDoc() : await global.openDoc('Shared-Africa-Urbanization.qvf');
+      const app =
+        process.env.NODE_ENV === "production"
+          ? await global.getActiveDoc()
+          : await global.openDoc("Shared-Africa-Urbanization.qvf");
       const yearModel = await app.createSessionObject(years);
       // Select year
       const yearLayout = await yearModel.getLayout();
@@ -124,6 +127,9 @@ class App extends Component {
 
     return (
       <div className="page">
+        <div className="underConstructionBanner">
+          <div className="underConstructionInner">UNDER CONSTRUCTION</div>
+        </div>
         <Header
           onClick={e => {
             this.scrollTo(e);
