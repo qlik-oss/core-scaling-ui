@@ -7,14 +7,17 @@ import Header from "./header";
 import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
 import Timeline from "../components/timeline";
-import { years } from "../definitions";
+import Filterbox from "../components/filterbox";
+import House from "../components/house";
+import Heart from "../components/heart";
+import { africanCountries, years } from "../definitions";
 import "./app.css";
 
 const year = "2016";
 const startPlayYear = "1990";
 let startPlayItem = null;
 let lastItem = null;
-const subHeaders = ["Urbanization", "Life Expectancy"];
+const subHeaders = ["Urbanization", "Life Quality"];
 let interval = 0;
 
 class App extends Component {
@@ -22,6 +25,7 @@ class App extends Component {
     super(props);
     this.state = {
       subHeader: subHeaders[0],
+      firstView: true,
       app: null,
       error: null
     };
@@ -29,8 +33,10 @@ class App extends Component {
   }
 
   onViewChange = view => {
-    if (view[0] === 0) this.setState({ subHeader: subHeaders[0] });
-    else if (view[0] === 1) this.setState({ subHeader: subHeaders[1] });
+    if (view[0] === 0)
+      this.setState({ subHeader: subHeaders[0], firstView: true });
+    else if (view[0] === 1)
+      this.setState({ subHeader: subHeaders[1], firstView: false });
   };
 
   async getApp() {
@@ -54,17 +60,27 @@ class App extends Component {
       )[0].qElemNumber;
       lastItem = yearItem;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
-      app.addAlternateState("secondSectionState");
+      // app.addAlternateState("secondSectionState");
+      const africanCountriesModel = await app.createSessionObject(
+        africanCountries
+      );
+      const africanCountriesLayout = await africanCountriesModel.getLayout();
       this.setState({
         app,
         yearModel,
         yearLayout,
+        africanCountriesModel,
+        africanCountriesLayout,
         selectedIndex: yearItem
       });
     } catch (error) {
       this.setState({ error });
     }
   }
+
+  selectedCountry = country => {
+    this.setState({ selectedCountry: country });
+  };
 
   scrollTo = item => {
     if (item === "urbanization") {
@@ -173,38 +189,51 @@ class App extends Component {
             <div className="mainHeader">AFRICAN</div>
             <div className="subHeader">{this.state.subHeader}</div>
           </div>
-          <ViewPager tag="main">
-            <Frame className="frame">
-              <Track
-                ref={c => {
-                  this.track = c;
-                }}
-                viewsToShow={1}
-                infinite
-                contain
-                className="track"
-                onViewChange={view => {
-                  this.onViewChange(view);
-                }}
-              >
-                <View className="view">
-                  <FirstSection
-                    app={this.state.app}
-                    selectedYear={selectedYear}
-                    playTimelineFunc={play => {
-                      this.playTimeline(play);
-                    }}
-                  />
-                </View>
-                <View className="view">
-                  <SecondSection
-                    app={this.state.app}
-                    selectedYear={selectedYear}
-                  />
-                </View>
-              </Track>
-            </Frame>
-          </ViewPager>
+          <div className="innerContainer">
+            <div className="textContainer">
+              <Filterbox
+                layout={this.state.africanCountriesLayout}
+                model={this.state.africanCountriesModel}
+                selectedValueCallback={country => this.selectedCountry(country)}
+              />
+              <House show={this.state.firstView} />
+              <Heart show={!this.state.firstView} />
+            </div>
+            <ViewPager tag="main">
+              <Frame className="frame">
+                <Track
+                  ref={c => {
+                    this.track = c;
+                  }}
+                  viewsToShow={1}
+                  infinite
+                  swipeThreshold={1}
+                  contain
+                  className="track"
+                  onViewChange={view => {
+                    this.onViewChange(view);
+                  }}
+                >
+                  <View className="view">
+                    <FirstSection
+                      app={this.state.app}
+                      selectedYear={selectedYear}
+                      playTimelineFunc={play => {
+                        this.playTimeline(play);
+                      }}
+                    />
+                  </View>
+                  <View className="view">
+                    <SecondSection
+                      app={this.state.app}
+                      selectedYear={selectedYear}
+                      selectedCountry={this.state.selectedCountry}
+                    />
+                  </View>
+                </Track>
+              </Frame>
+            </ViewPager>
+          </div>
           <div className="timelineContainer">
             <ContainerDimensions>
               <Timeline

@@ -27,10 +27,6 @@ body {
   height: calc(100vh - 50px);
 }
 
-main {
-  height: calc(100% - 105px);
-}
-
 .frame {
   height: 100%;
 }
@@ -47,6 +43,7 @@ main {
   height: 105px;
   background-color: #f68f00;
   position: relative;
+  z-index: 2;
 }
 
 .timelineContainer::after {

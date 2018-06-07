@@ -24,6 +24,13 @@
   }
 }
 
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 20%;
+}
+
 .didyouknow {
   width: 142px;
   height: 67px;
@@ -49,4 +56,5 @@
   background: rgba(255, 255, 255, 0.28);
   text-align: left;
   color: #656565;
+  overflow: hidden;
 }

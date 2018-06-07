@@ -1,17 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import KPI from "../components/kpi";
 import {
   urbanizedCountries,
-  totalUrbanAfricaNbr,
-  totalUrbanWorldNbr,
   urbanLandArea,
   urbanLandAreaAfrica,
   scatterplot
 } from "../definitions";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
-import House from "../components/house";
 import PlayPause from "../components/playPause";
 import "./firstSection.css";
 import "./section.css";
@@ -25,20 +21,6 @@ class FirstSection extends React.Component {
 
   componentDidMount() {
     this.createModel();
-  }
-
-  async updateTotalUrbanAfrica() {
-    const kpiHyperCubeLayout = await this.state.totalUrbanAfricaNbrModel.getLayout();
-    const africanUrbanization =
-      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ africanUrbanization });
-  }
-
-  async updateTotalUrbanWorld() {
-    const kpiHyperCubeLayout = await this.state.totalUrbanWorldNbrModel.getLayout();
-    const worldUrbanization =
-      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ worldUrbanization });
   }
 
   async updateUrbanizedCountries() {
@@ -65,12 +47,6 @@ class FirstSection extends React.Component {
   async createModel() {
     try {
       // create the models
-      const totalUrbanAfricaNbrModel = await this.props.app.createSessionObject(
-        totalUrbanAfricaNbr
-      );
-      const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(
-        totalUrbanWorldNbr
-      );
       const urbanizedCountriesModel = await this.props.app.createSessionObject(
         urbanizedCountries
       );
@@ -92,14 +68,6 @@ class FirstSection extends React.Component {
           urbanizedCountriesLayout.qHyperCube.qDataPages[0].qMatrix.length - 1
         ];
 
-      const totalUrbanAfricaNbrLayout = await totalUrbanAfricaNbrModel.getLayout();
-      const africanUrbanization =
-        totalUrbanAfricaNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
-
-      const totalUrbanWorldNbrLayout = await totalUrbanWorldNbrModel.getLayout();
-      const worldUrbanization =
-        totalUrbanWorldNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
-
       const urbanLandAreaLayout = await urbanLandAreaModel.getLayout();
       const urbanLandAreaNbr =
         urbanLandAreaLayout.qHyperCube.qGrandTotalRow[0].qText;
@@ -111,8 +79,6 @@ class FirstSection extends React.Component {
       const scatterplotLayout = await scatterplotModel.getLayout();
 
       this.setState({
-        totalUrbanAfricaNbrModel,
-        totalUrbanWorldNbrModel,
         urbanizedCountriesModel,
         scatterplotModel,
         mostUrbanized: {
@@ -123,18 +89,12 @@ class FirstSection extends React.Component {
           country: minUrbItem[0].qText,
           nbr: minUrbItem[1].qText
         },
-        africanUrbanization,
-        worldUrbanization,
         urbanLandAreaNbr,
         urbanLandAreaAfricaNbr,
         scatterplotLayout,
         loaded: true
       });
 
-      totalUrbanAfricaNbrModel.on("changed", () =>
-        this.updateTotalUrbanAfrica()
-      );
-      totalUrbanWorldNbrModel.on("changed", () => this.updateTotalUrbanWorld());
       urbanizedCountriesModel.on("changed", () =>
         this.updateUrbanizedCountries()
       );
@@ -176,60 +136,35 @@ class FirstSection extends React.Component {
     ];
 
     return (
-      <div className="innerContainer">
-        <div className="textContainer">
-          <div className="didyouknow" />
-          <div className="infotext">
-            <div>
-              <b>{this.state.mostUrbanized.country}</b> was the most urbanized
-              African country {this.props.selectedYear} with{" "}
-              <b>{this.state.mostUrbanized.nbr}</b> urbanization.
-            </div>
-          </div>
-          <div className="infotext">
-            <div>
-              <b>{this.state.leastUrbanized.country}</b> was the least urbanized
-              African country {this.props.selectedYear} with only{" "}
-              <b>{this.state.leastUrbanized.nbr}</b>{" "}
-            </div>
-          </div>
-          <House />
+      <div className="cloudAndKpiContainer">
+        <div className="cloudContainer">
+          <Banner text={bannerText} color="#75ADC8" />
+          <Clouds />
         </div>
-        <div className="cloudAndKpiContainer">
-          <div className="cloudContainer">
-            <Banner text={bannerText} color="#75ADC8" />
-            <Clouds />
-          </div>
-          <div className="kpiContainer">
-            <PlayPause
-              toggle={this.state.isPlaying}
-              onClick={() => {
-                this.togglePlay();
-              }}
-            />
-            <Scatterplot layout={this.state.scatterplotLayout} />
-            {/* <KPI
-              nbr={this.state.africanUrbanization}
-              text={`
-                Urban population in Africa ${this.props.selectedYear}`}
-              bgColor="#3E8DBA"
-              fillColor="#AEDBF4"
-              animate
-            />
-            <KPI
-              nbr={this.state.worldUrbanization}
-              text={`Urban population rest of the world ${
-                this.props.selectedYear
-              }`}
-              bgColor="#F68F00"
-              fillColor="#FFAF41"
-              animate
-            />
-            <KPI
-              nbr="2008"
-              text="When more than half of the world's population live in urban areas"
-              fillColor="#FE4C00"
-            /> */}
+        <div className="kpiContainer">
+          <PlayPause
+            toggle={this.state.isPlaying}
+            onClick={() => {
+              this.togglePlay();
+            }}
+          />
+          <Scatterplot layout={this.state.scatterplotLayout} />
+          <div className="infoContainer">
+            <div className="didyouknow" />
+            <div className="infotext">
+              <div>
+                <b>{this.state.mostUrbanized.country}</b> was the most urbanized
+                African country {this.props.selectedYear} with{" "}
+                <b>{this.state.mostUrbanized.nbr}</b> urbanization.
+              </div>
+            </div>
+            <div className="infotext">
+              <div>
+                <b>{this.state.leastUrbanized.country}</b> was the least
+                urbanized African country {this.props.selectedYear} with only{" "}
+                <b>{this.state.leastUrbanized.nbr}</b>{" "}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Filterbox from "../components/filterbox";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
+import KPI from "../components/kpi";
 import LifeExpectancyKpi from "../components/lifeExpectancyKpi";
-import Heart from "../components/heart";
 import {
-  africanCountries,
+  totalUrbanAfricaNbr,
+  totalUrbanWorldNbr,
   avgLifeExpFemale,
   avgLifeExpMale,
   lifeExpRate,
@@ -19,7 +19,7 @@ import "./secondSection.css";
 class SecondSection extends React.Component {
   constructor(...args) {
     super(...args);
-    this.state = { loaded: false, selectedCountry: "" };
+    this.state = { loaded: false };
   }
 
   componentDidMount() {
@@ -36,10 +36,27 @@ class SecondSection extends React.Component {
 
   getText = layout => layout.qHyperCube.qGrandTotalRow[0].qText;
 
+  async updateTotalUrbanAfrica() {
+    const kpiHyperCubeLayout = await this.state.totalUrbanAfricaNbrModel.getLayout();
+    const africanUrbanization =
+      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
+    this.setState({ africanUrbanization });
+  }
+
+  async updateTotalUrbanWorld() {
+    const kpiHyperCubeLayout = await this.state.totalUrbanWorldNbrModel.getLayout();
+    const worldUrbanization =
+      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
+    this.setState({ worldUrbanization });
+  }
+
   async createModel() {
     try {
-      const africanCountriesModel = await this.props.app.createSessionObject(
-        africanCountries
+      const totalUrbanAfricaNbrModel = await this.props.app.createSessionObject(
+        totalUrbanAfricaNbr
+      );
+      const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(
+        totalUrbanWorldNbr
       );
       const avgLifeExpFemaleModel = await this.props.app.createSessionObject(
         avgLifeExpFemale
@@ -57,7 +74,12 @@ class SecondSection extends React.Component {
         lifeExpCountries
       );
 
-      const africanCountriesLayout = await africanCountriesModel.getLayout();
+      const totalUrbanAfricaNbrLayout = await totalUrbanAfricaNbrModel.getLayout();
+      const africanUrbanization =
+        totalUrbanAfricaNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
+      const totalUrbanWorldNbrLayout = await totalUrbanWorldNbrModel.getLayout();
+      const worldUrbanization =
+        totalUrbanWorldNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
       const avgLifeExpFemaleLayout = await avgLifeExpFemaleModel.getLayout();
       const avgLifeExpMaleLayout = await avgLifeExpMaleModel.getLayout();
       const lifeExpRateLayout = await lifeExpRateModel.getLayout();
@@ -75,12 +97,14 @@ class SecondSection extends React.Component {
         ];
 
       this.setState({
-        africanCountriesModel,
+        africanUrbanization,
+        worldUrbanization,
+        totalUrbanAfricaNbrModel,
+        totalUrbanWorldNbrModel,
         avgLifeExpFemaleModel,
         avgLifeExpMaleModel,
         lifeExpRateModel,
         urbRateModel,
-        africanCountriesLayout,
         avgLifeExpFemaleNbr,
         avgLifeExpMaleNbr,
         lifeExpRateNbr,
@@ -96,18 +120,18 @@ class SecondSection extends React.Component {
         loaded: true
       });
 
+      totalUrbanAfricaNbrModel.on("changed", () =>
+        this.updateTotalUrbanAfrica()
+      );
+      totalUrbanWorldNbrModel.on("changed", () => this.updateTotalUrbanWorld());
       avgLifeExpFemaleModel.on("changed", () => this.updateAvgLifeExpFemale());
       avgLifeExpMaleModel.on("changed", () => this.updateAvgLifeExpMale());
       lifeExpRateModel.on("changed", () => this.updateLifeExpRate());
       urbRateModel.on("changed", () => this.updateUrbRate());
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   }
-
-  selectedCountry = country => {
-    this.setState({ selectedCountry: country });
-  };
 
   async updateAvgLifeExpFemale() {
     const avgLifeExpFemaleLayout = await this.state.avgLifeExpFemaleModel.getLayout();
@@ -165,43 +189,54 @@ class SecondSection extends React.Component {
     ];
 
     return (
-      <div className="innerContainer sectionTwo">
-        <div className="textContainer">
-          <Filterbox
-            layout={this.state.africanCountriesLayout}
-            model={this.state.africanCountriesModel}
-            selectedValueCallback={country => this.selectedCountry(country)}
-          />
-          <Heart />
+      <div className="cloudAndKpiContainer sectionTwo">
+        <div className="cloudContainer">
+          <Banner text={bannerText} color="#FFA515" />
+          <Clouds />
         </div>
-        <div className="cloudAndKpiContainer">
-          <div className="cloudContainer">
-            <Banner text={bannerText} color="#FFA515" />
-            <Clouds />
-          </div>
-          <div className="contentWrapper">
-            <LifeExpectancyKpi
-              year={this.props.selectedYear}
-              femaleNbr={this.state.avgLifeExpFemaleNbr}
-              maleNbr={this.state.avgLifeExpMaleNbr}
-            />
-            <div className="infoWrapper">
-              <div className="didyouknow" />
-              <div className="infotext">
-                <div>
-                  <b>
-                    {this.state.selectedCountry
-                      ? this.state.selectedCountry
-                      : "African"}
-                  </b>{" "}
-                  life expectancy in <b>{this.props.selectedYear}</b> has risen
-                  with <b>{this.state.lifeExpRateNbr}</b> compared to{" "}
-                  <b>1960</b>.
-                  <br />
-                  <br />
-                  While urbanization compared to <b>1960</b> is up{" "}
-                  <b>{this.state.urbRateNbr}</b>.
-                </div>
+        <div className="contentWrapper">
+          <KPI
+            nbr={this.state.africanUrbanization}
+            text={`
+                Urban population in Africa ${this.props.selectedYear}`}
+            bgColor="#3E8DBA"
+            fillColor="#AEDBF4"
+            animate
+          />
+          <KPI
+            nbr={this.state.worldUrbanization}
+            text={`Urban population rest of the world ${
+              this.props.selectedYear
+            }`}
+            bgColor="#F68F00"
+            fillColor="#FFAF41"
+            animate
+          />
+          <KPI
+            nbr="2008"
+            text="When more than half of the world's population live in urban areas"
+            fillColor="#FE4C00"
+          />
+          <LifeExpectancyKpi
+            year={this.props.selectedYear}
+            femaleNbr={this.state.avgLifeExpFemaleNbr}
+            maleNbr={this.state.avgLifeExpMaleNbr}
+          />
+          <div className="infoWrapper">
+            <div className="didyouknow" />
+            <div className="infotext">
+              <div>
+                <b>
+                  {this.props.selectedCountry
+                    ? this.props.selectedCountry
+                    : "African"}
+                </b>{" "}
+                life expectancy in <b>{this.props.selectedYear}</b> has risen
+                with <b>{this.state.lifeExpRateNbr}</b> compared to <b>1960</b>.
+                <br />
+                <br />
+                While urbanization compared to <b>1960</b> is up{" "}
+                <b>{this.state.urbRateNbr}</b>.
               </div>
             </div>
           </div>
@@ -213,7 +248,8 @@ class SecondSection extends React.Component {
 
 SecondSection.propTypes = {
   app: PropTypes.object.isRequired,
-  selectedYear: PropTypes.string.isRequired
+  selectedYear: PropTypes.string.isRequired,
+  selectedCountry: PropTypes.string.isRequired
 };
 
 export default SecondSection;

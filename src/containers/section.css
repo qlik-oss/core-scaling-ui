@@ -1,6 +1,6 @@
 .innerContainer {
   display: flex;
-  height: 100%;
+  height: calc(100% - 105px);
   width: 100vw;
 }
 
