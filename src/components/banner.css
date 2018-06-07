@@ -27,6 +27,9 @@
 .cloudText {
   font-family: Muli;
   font-weight: 600;
+  fill: #fff;
+  animation-name: fade-in;
+  animation-duration: 1s;
 }
 
 @media only screen and (max-width: 600px) {
@@ -37,12 +40,6 @@
 
 .dots {
   cursor: pointer;
-}
-
-Text {
-  fill: #fff;
-  animation-name: fade-in;
-  animation-duration: 1s;
 }
 
 @keyframes fade-in {

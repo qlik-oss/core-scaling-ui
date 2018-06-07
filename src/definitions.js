@@ -347,6 +347,63 @@ const urbanLandAreaAfrica = {
   }
 };
 
+const scatterplot = {
+  qInfo: {
+    qType: "scatterplot",
+    qId: ""
+  },
+  type: "scatterplot",
+  labels: true,
+  qHyperCubeDef: {
+    qDimensions: [
+      {
+        qDef: {
+          qFieldDefs: ["Country Name"],
+          qSortCriterias: [
+            {
+              qSortByAscii: 1
+            }
+          ]
+        }
+      }
+    ],
+    qMeasures: [
+      {
+        qDef: {
+          qDef: "Avg({<Africa={1}>}GDP)",
+          qLabel: "Income (GDP per capita)"
+        },
+        qSortBy: {
+          qSortByNumeric: -1
+        }
+      },
+      {
+        qDef: {
+          qDef: "Avg({<Africa={1}>}[Life expectancy at birth, total (years)])",
+          qLabel: "Health (life expectancy in years)"
+        }
+      },
+      {
+        qDef: {
+          qDef:
+            "Avg({<Africa={1}>}[Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]])",
+          qLabel: "Urban population"
+        }
+      }
+    ],
+    qInitialDataFetch: [
+      {
+        qTop: 0,
+        qHeight: 100,
+        qLeft: 0,
+        qWidth: 4
+      }
+    ],
+    qSuppressZero: false,
+    qSuppressMissing: true
+  }
+};
+
 export {
   years,
   africanCountries,
@@ -359,5 +416,6 @@ export {
   urbanizationRate,
   lifeExpCountries,
   urbanLandArea,
-  urbanLandAreaAfrica
+  urbanLandAreaAfrica,
+  scatterplot
 };

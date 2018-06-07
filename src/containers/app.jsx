@@ -11,12 +11,20 @@ import { years } from "../definitions";
 import "./app.css";
 
 const year = "2016";
+const startPlayYear = "1990";
+let startPlayItem = null;
+let lastItem = null;
 const subHeaders = ["Urbanization", "Life Expectancy"];
+let interval = 0;
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { subHeader: subHeaders[0], app: null, error: null };
+    this.state = {
+      subHeader: subHeaders[0],
+      app: null,
+      error: null
+    };
     this.getApp();
   }
 
@@ -41,6 +49,10 @@ class App extends Component {
       const yearItem = yearLayout.qListObject.qDataPages[0].qMatrix.find(
         item => item[0].qText === year
       )[0].qElemNumber;
+      startPlayItem = yearLayout.qListObject.qDataPages[0].qMatrix.find(
+        item => item[0].qText === startPlayYear
+      )[0].qElemNumber;
+      lastItem = yearItem;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
       app.addAlternateState("secondSectionState");
       this.setState({
@@ -62,13 +74,33 @@ class App extends Component {
     }
   };
 
-  handleClick = item => {
+  handleTimelineClick = item => {
     this.state.yearModel.selectListObjectValues(
       "/qListObjectDef",
       [item[0].qElemNumber],
       false
     );
     this.setState({ selectedIndex: item[0].qElemNumber });
+  };
+
+  playTimeline = play => {
+    let counter = this.state.selectedIndex;
+    if (play) {
+      interval = setInterval(() => {
+        if (counter > lastItem || counter < startPlayItem) {
+          counter = startPlayItem;
+        }
+        this.state.yearModel.selectListObjectValues(
+          "/qListObjectDef",
+          [counter],
+          false
+        );
+        this.setState({ selectedIndex: counter });
+        counter += 1;
+      }, 500);
+    } else {
+      clearInterval(interval);
+    }
   };
 
   render() {
@@ -108,7 +140,7 @@ class App extends Component {
         <li
           key={item[0].qElemNumber}
           style={{ left: `${item[0].qElemNumber * 60}px` }}
-          onClick={() => this.handleClick(item)}
+          onClick={() => this.handleTimelineClick(item)}
         >
           {item[0].qText}
           <span
@@ -159,6 +191,9 @@ class App extends Component {
                   <FirstSection
                     app={this.state.app}
                     selectedYear={selectedYear}
+                    playTimelineFunc={play => {
+                      this.playTimeline(play);
+                    }}
                   />
                 </View>
                 <View className="view">

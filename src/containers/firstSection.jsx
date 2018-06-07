@@ -6,18 +6,21 @@ import {
   totalUrbanAfricaNbr,
   totalUrbanWorldNbr,
   urbanLandArea,
-  urbanLandAreaAfrica
+  urbanLandAreaAfrica,
+  scatterplot
 } from "../definitions";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
 import House from "../components/house";
+import PlayPause from "../components/playPause";
 import "./firstSection.css";
 import "./section.css";
+import Scatterplot from "../components/scatterplot";
 
 class FirstSection extends React.Component {
   constructor(...args) {
     super(...args);
-    this.state = { loaded: false };
+    this.state = { loaded: false, isPlaying: false };
   }
 
   componentDidMount() {
@@ -54,6 +57,11 @@ class FirstSection extends React.Component {
     });
   }
 
+  async updateScatterplot() {
+    const scatterplotLayout = await this.state.scatterplotModel.getLayout();
+    this.setState({ scatterplotLayout });
+  }
+
   async createModel() {
     try {
       // create the models
@@ -71,6 +79,9 @@ class FirstSection extends React.Component {
       );
       const urbanLandAreaAfricaModel = await this.props.app.createSessionObject(
         urbanLandAreaAfrica
+      );
+      const scatterplotModel = await this.props.app.createSessionObject(
+        scatterplot
       );
 
       const urbanizedCountriesLayout = await urbanizedCountriesModel.getLayout();
@@ -97,10 +108,13 @@ class FirstSection extends React.Component {
       const urbanLandAreaAfricaNbr =
         urbanLandAreaAfricaLayout.qHyperCube.qGrandTotalRow[0].qText;
 
+      const scatterplotLayout = await scatterplotModel.getLayout();
+
       this.setState({
         totalUrbanAfricaNbrModel,
         totalUrbanWorldNbrModel,
         urbanizedCountriesModel,
+        scatterplotModel,
         mostUrbanized: {
           country: mostUrbItem[0].qText,
           nbr: mostUrbItem[1].qText
@@ -113,6 +127,7 @@ class FirstSection extends React.Component {
         worldUrbanization,
         urbanLandAreaNbr,
         urbanLandAreaAfricaNbr,
+        scatterplotLayout,
         loaded: true
       });
 
@@ -123,10 +138,16 @@ class FirstSection extends React.Component {
       urbanizedCountriesModel.on("changed", () =>
         this.updateUrbanizedCountries()
       );
+      scatterplotModel.on("changed", () => this.updateScatterplot());
     } catch (error) {
       // console.log(error);
     }
   }
+
+  togglePlay = () => {
+    this.props.playTimelineFunc(!this.state.isPlaying);
+    this.setState({ isPlaying: !this.state.isPlaying });
+  };
 
   render() {
     if (!this.state.loaded) {
@@ -180,7 +201,14 @@ class FirstSection extends React.Component {
             <Clouds />
           </div>
           <div className="kpiContainer">
-            <KPI
+            <PlayPause
+              toggle={this.state.isPlaying}
+              onClick={() => {
+                this.togglePlay();
+              }}
+            />
+            <Scatterplot layout={this.state.scatterplotLayout} />
+            {/* <KPI
               nbr={this.state.africanUrbanization}
               text={`
                 Urban population in Africa ${this.props.selectedYear}`}
@@ -201,7 +229,7 @@ class FirstSection extends React.Component {
               nbr="2008"
               text="When more than half of the world's population live in urban areas"
               fillColor="#FE4C00"
-            />
+            /> */}
           </div>
         </div>
       </div>
@@ -211,7 +239,8 @@ class FirstSection extends React.Component {
 
 FirstSection.propTypes = {
   app: PropTypes.object.isRequired,
-  selectedYear: PropTypes.string.isRequired
+  selectedYear: PropTypes.string.isRequired,
+  playTimelineFunc: PropTypes.func.isRequired
 };
 
 export default FirstSection;
