@@ -129,7 +129,7 @@ class SecondSection extends React.Component {
       lifeExpRateModel.on("changed", () => this.updateLifeExpRate());
       urbRateModel.on("changed", () => this.updateUrbRate());
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 
@@ -249,7 +249,11 @@ class SecondSection extends React.Component {
 SecondSection.propTypes = {
   app: PropTypes.object.isRequired,
   selectedYear: PropTypes.string.isRequired,
-  selectedCountry: PropTypes.string.isRequired
+  selectedCountry: PropTypes.string
+};
+
+SecondSection.defaultProps = {
+  selectedCountry: null
 };
 
 export default SecondSection;
