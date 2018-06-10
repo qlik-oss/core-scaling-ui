@@ -5,8 +5,6 @@ import Banner from "../components/banner";
 import KPI from "../components/kpi";
 import LifeExpectancyKpi from "../components/lifeExpectancyKpi";
 import {
-  totalUrbanAfricaNbr,
-  totalUrbanWorldNbr,
   avgLifeExpFemale,
   avgLifeExpMale,
   lifeExpRate,
@@ -36,28 +34,8 @@ class SecondSection extends React.Component {
 
   getText = layout => layout.qHyperCube.qGrandTotalRow[0].qText;
 
-  async updateTotalUrbanAfrica() {
-    const kpiHyperCubeLayout = await this.state.totalUrbanAfricaNbrModel.getLayout();
-    const africanUrbanization =
-      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ africanUrbanization });
-  }
-
-  async updateTotalUrbanWorld() {
-    const kpiHyperCubeLayout = await this.state.totalUrbanWorldNbrModel.getLayout();
-    const worldUrbanization =
-      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ worldUrbanization });
-  }
-
   async createModel() {
     try {
-      const totalUrbanAfricaNbrModel = await this.props.app.createSessionObject(
-        totalUrbanAfricaNbr
-      );
-      const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(
-        totalUrbanWorldNbr
-      );
       const avgLifeExpFemaleModel = await this.props.app.createSessionObject(
         avgLifeExpFemale
       );
@@ -74,12 +52,6 @@ class SecondSection extends React.Component {
         lifeExpCountries
       );
 
-      const totalUrbanAfricaNbrLayout = await totalUrbanAfricaNbrModel.getLayout();
-      const africanUrbanization =
-        totalUrbanAfricaNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
-      const totalUrbanWorldNbrLayout = await totalUrbanWorldNbrModel.getLayout();
-      const worldUrbanization =
-        totalUrbanWorldNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
       const avgLifeExpFemaleLayout = await avgLifeExpFemaleModel.getLayout();
       const avgLifeExpMaleLayout = await avgLifeExpMaleModel.getLayout();
       const lifeExpRateLayout = await lifeExpRateModel.getLayout();
@@ -97,10 +69,6 @@ class SecondSection extends React.Component {
         ];
 
       this.setState({
-        africanUrbanization,
-        worldUrbanization,
-        totalUrbanAfricaNbrModel,
-        totalUrbanWorldNbrModel,
         avgLifeExpFemaleModel,
         avgLifeExpMaleModel,
         lifeExpRateModel,
@@ -120,10 +88,6 @@ class SecondSection extends React.Component {
         loaded: true
       });
 
-      totalUrbanAfricaNbrModel.on("changed", () =>
-        this.updateTotalUrbanAfrica()
-      );
-      totalUrbanWorldNbrModel.on("changed", () => this.updateTotalUrbanWorld());
       avgLifeExpFemaleModel.on("changed", () => this.updateAvgLifeExpFemale());
       avgLifeExpMaleModel.on("changed", () => this.updateAvgLifeExpMale());
       lifeExpRateModel.on("changed", () => this.updateLifeExpRate());
@@ -195,7 +159,7 @@ class SecondSection extends React.Component {
           <Clouds />
         </div>
         <div className="contentWrapper">
-          <KPI
+          {/* <KPI
             nbr={this.state.africanUrbanization}
             text={`
                 Urban population in Africa ${this.props.selectedYear}`}
@@ -211,7 +175,7 @@ class SecondSection extends React.Component {
             bgColor="#F68F00"
             fillColor="#FFAF41"
             animate
-          />
+          /> */}
           <KPI
             nbr="2008"
             text="When more than half of the world's population live in urban areas"

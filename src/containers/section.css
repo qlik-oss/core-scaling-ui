@@ -69,8 +69,8 @@
   background: linear-gradient(rgba(2, 138, 225, 0.4), rgba(221, 174, 32, 0.4));
 }
 
-@media only screen and (max-width: 1200px) {
+/* @media only screen and (max-width: 1200px) {
   .cloudAndKpiContainer {
     max-width: 71%;
   }
-}
+} */

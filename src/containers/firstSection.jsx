@@ -4,6 +4,8 @@ import {
   urbanizedCountries,
   urbanLandArea,
   urbanLandAreaAfrica,
+  totalUrbanAfricaNbr,
+  totalUrbanWorldNbr,
   scatterplot
 } from "../definitions";
 import Clouds from "../components/clouds";
@@ -12,6 +14,7 @@ import PlayPause from "../components/playPause";
 import "./firstSection.css";
 import "./section.css";
 import Scatterplot from "../components/scatterplot";
+import KPI from "../components/kpi";
 
 class FirstSection extends React.Component {
   constructor(...args) {
@@ -44,6 +47,20 @@ class FirstSection extends React.Component {
     this.setState({ scatterplotLayout });
   }
 
+  async updateTotalUrbanAfrica() {
+    const kpiHyperCubeLayout = await this.state.totalUrbanAfricaNbrModel.getLayout();
+    const africanUrbanization =
+      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
+    this.setState({ africanUrbanization });
+  }
+
+  async updateTotalUrbanWorld() {
+    const kpiHyperCubeLayout = await this.state.totalUrbanWorldNbrModel.getLayout();
+    const worldUrbanization =
+      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
+    this.setState({ worldUrbanization });
+  }
+
   async createModel() {
     try {
       // create the models
@@ -58,6 +75,12 @@ class FirstSection extends React.Component {
       );
       const scatterplotModel = await this.props.app.createSessionObject(
         scatterplot
+      );
+      const totalUrbanAfricaNbrModel = await this.props.app.createSessionObject(
+        totalUrbanAfricaNbr
+      );
+      const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(
+        totalUrbanWorldNbr
       );
 
       const urbanizedCountriesLayout = await urbanizedCountriesModel.getLayout();
@@ -76,6 +99,13 @@ class FirstSection extends React.Component {
       const urbanLandAreaAfricaNbr =
         urbanLandAreaAfricaLayout.qHyperCube.qGrandTotalRow[0].qText;
 
+      const totalUrbanAfricaNbrLayout = await totalUrbanAfricaNbrModel.getLayout();
+      const africanUrbanization =
+        totalUrbanAfricaNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
+      const totalUrbanWorldNbrLayout = await totalUrbanWorldNbrModel.getLayout();
+      const worldUrbanization =
+        totalUrbanWorldNbrLayout.qHyperCube.qGrandTotalRow[0].qText;
+
       const scatterplotLayout = await scatterplotModel.getLayout();
 
       this.setState({
@@ -92,6 +122,10 @@ class FirstSection extends React.Component {
         urbanLandAreaNbr,
         urbanLandAreaAfricaNbr,
         scatterplotLayout,
+        africanUrbanization,
+        worldUrbanization,
+        totalUrbanAfricaNbrModel,
+        totalUrbanWorldNbrModel,
         loaded: true
       });
 
@@ -99,6 +133,10 @@ class FirstSection extends React.Component {
         this.updateUrbanizedCountries()
       );
       scatterplotModel.on("changed", () => this.updateScatterplot());
+      totalUrbanAfricaNbrModel.on("changed", () =>
+        this.updateTotalUrbanAfrica()
+      );
+      totalUrbanWorldNbrModel.on("changed", () => this.updateTotalUrbanWorld());
     } catch (error) {
       // console.log(error);
     }
@@ -141,14 +179,7 @@ class FirstSection extends React.Component {
           <Banner text={bannerText} color="#75ADC8" />
           <Clouds />
         </div>
-        <div className="kpiContainer">
-          <PlayPause
-            toggle={this.state.isPlaying}
-            onClick={() => {
-              this.togglePlay();
-            }}
-          />
-          <Scatterplot layout={this.state.scatterplotLayout} />
+        <div className="section1Container">
           <div className="infoContainer">
             <div className="didyouknow" />
             <div className="infotext">
@@ -156,15 +187,60 @@ class FirstSection extends React.Component {
                 <b>{this.state.mostUrbanized.country}</b> was the most urbanized
                 African country {this.props.selectedYear} with{" "}
                 <b>{this.state.mostUrbanized.nbr}</b> urbanization.
-              </div>
-            </div>
-            <div className="infotext">
-              <div>
+                <br />
+                <br />
                 <b>{this.state.leastUrbanized.country}</b> was the least
                 urbanized African country {this.props.selectedYear} with only{" "}
                 <b>{this.state.leastUrbanized.nbr}</b>{" "}
               </div>
             </div>
+            <PlayPause
+              toggle={this.state.isPlaying}
+              onClick={() => {
+                this.togglePlay();
+              }}
+            />
+          </div>
+          <div className="scatterplotOuter">
+            <div className="yLabel">
+              <b>Health</b>
+            </div>
+            <div className="scatterplotInner">
+              <Scatterplot layout={this.state.scatterplotLayout} />
+              <div className="xLabel">
+                <b>Income</b>
+              </div>
+            </div>
+          </div>
+          <div className="kpiAndButtonContainer">
+            <div className="kpiContainer">
+              <KPI
+                nbr={this.state.africanUrbanization}
+                text={`
+                Urban population in Africa ${this.props.selectedYear}`}
+                bgColor="#3E8DBA"
+                fillColor="#AEDBF4"
+                animate
+              />
+              <KPI
+                nbr={this.state.worldUrbanization}
+                text={`Urban population rest of the world ${
+                  this.props.selectedYear
+                }`}
+                bgColor="#F68F00"
+                fillColor="#FFAF41"
+                animate
+              />
+            </div>
+            <button
+              className="nextSectionButton"
+              onClick={() => {
+                this.props.nextSectionFunc();
+              }}
+            >
+              Interesting data! But how does urbanization affect life quality?
+              Click here to see more details!
+            </button>
           </div>
         </div>
       </div>
@@ -175,7 +251,8 @@ class FirstSection extends React.Component {
 FirstSection.propTypes = {
   app: PropTypes.object.isRequired,
   selectedYear: PropTypes.string.isRequired,
-  playTimelineFunc: PropTypes.func.isRequired
+  playTimelineFunc: PropTypes.func.isRequired,
+  nextSectionFunc: PropTypes.func.isRequired
 };
 
 export default FirstSection;

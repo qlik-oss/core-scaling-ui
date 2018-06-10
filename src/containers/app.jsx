@@ -221,6 +221,9 @@ class App extends Component {
                       playTimelineFunc={play => {
                         this.playTimeline(play);
                       }}
+                      nextSectionFunc={() => {
+                        this.scrollTo("lifeexpectancy");
+                      }}
                     />
                   </View>
                   <View className="view">

@@ -9,9 +9,18 @@ body {
 
 .picasso-chart {
   position: relative;
-  width: 50%;
-  height: 60%;
+  width: 500px;
+  height: 100%;
 }
+@media only screen and (max-width: 1100px) {
+  .picasso-chart {
+  }
+}
+@media only screen and (max-width: 600px) {
+  .picasso-chart {
+  }
+}
+
 #index {
   height: 100%;
 }
@@ -123,14 +132,14 @@ body {
 /* Style the scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
-  border-radius: 3px;
+  border-radius: 8px;
 }
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.2);
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.4);
-  border-radius: 3px;
+  border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.6);

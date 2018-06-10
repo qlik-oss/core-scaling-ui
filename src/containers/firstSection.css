@@ -8,18 +8,18 @@
   overflow: hidden;
 }
 
-.kpiContainer {
+.section1Container {
   width: 100%;
   height: 60%;
   margin-bottom: 15px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
 }
 
 @media only screen and (max-width: 600px) {
-  .kpiContainer {
+  .section1Container {
     justify-content: space-evenly;
   }
 }
@@ -27,8 +27,9 @@
 .infoContainer {
   display: flex;
   flex-direction: column;
-  align-self: center;
   width: 20%;
+  margin-left: 110px;
+  margin-bottom: 50px;
 }
 
 .didyouknow {
@@ -57,4 +58,67 @@
   text-align: left;
   color: #656565;
   overflow: hidden;
+}
+
+.scatterplotOuter {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  height: 54%;
+  margin-bottom: 50px;
+}
+
+.scatterplotInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.xLabel,
+.yLabel {
+  color: white;
+  font-size: 18px;
+}
+
+.yLabel {
+  transform: rotate(-90deg);
+  align-self: center;
+  float: left;
+}
+
+.xLabel {
+  height: 5%;
+  width: 50%;
+  text-align: center;
+}
+
+.kpiAndButtonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-bottom: 50px;
+  margin-right: 110px;
+}
+
+.nextSectionButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  border: none;
+  font-size: 16px;
+  background: #75adc8;
+  box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  margin-right: 60px;
+  margin-left: 60px;
+  padding: 15px;
+}
+
+.kpiContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }

@@ -60,7 +60,7 @@ export default class Scatterplot extends React.Component {
         scales: {
           income: {
             data: { field: "qMeasureInfo/0" },
-            min: 0,
+            min: -400,
             max: 41000,
             ticks: {
               values: [0, 40100]
@@ -78,38 +78,39 @@ export default class Scatterplot extends React.Component {
           urban: { data: { field: "qMeasureInfo/2" } }
         },
         components: [
-          {
-            type: "axis",
-            scale: "income",
-            dock: "bottom",
-            settings: { labels: { fill: "#f2f2f2" } }
-          },
-          {
-            type: "axis",
-            scale: "health",
-            dock: "left",
-            settings: { labels: { fill: "#f2f2f2" } }
-          },
-          {
-            key: "xtitle",
-            type: "text",
-            text: "INCOME (GDP)",
-            scale: "x",
-            dock: "bottom",
-            style: {
-              text: { fill: "#f2f2f2" }
-            }
-          },
-          {
-            key: "ytitle",
-            type: "text",
-            text: "HEALTH (Life Expectancy)",
-            scale: "y",
-            dock: "left",
-            style: {
-              text: { fill: "#f2f2f2" }
-            }
-          },
+          // {
+          //   type: "axis",
+          //   scale: "income",
+          //   dock: "bottom",
+          //   settings: { labels: { fill: "#f2f2f2" } }
+          // },
+          // {
+          //   type: "axis",
+          //   scale: "health",
+          //   dock: "left",
+          //   settings: { labels: { fill: "#f2f2f2" } }
+          // },
+          // {
+          //   key: "xtitle",
+          //   type: "text",
+          //   text: "INCOME (GDP)",
+          //   scale: "x",
+          //   dock: "bottom",
+          //   fontFamily: "Muli",
+          //   style: {
+          //     text: { fontFamily: "Muli", fill: "#f2f2f2" }
+          //   }
+          // },
+          // {
+          //   key: "ytitle",
+          //   type: "text",
+          //   text: "HEALTH (Life Expectancy)",
+          //   scale: "y",
+          //   dock: "left",
+          //   style: {
+          //     text: { fill: "#f2f2f2" }
+          //   }
+          // },
           {
             key: "points",
             type: "point",
@@ -140,6 +141,7 @@ export default class Scatterplot extends React.Component {
           }
         ]
       };
+
       const pic = picasso.chart({
         element,
         data,

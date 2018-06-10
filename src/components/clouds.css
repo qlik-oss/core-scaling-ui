@@ -24,13 +24,6 @@
   animation: move 10s linear infinite;
 }
 
-@media only screen and (max-width: 600px) {
-  .movingCloud {
-    top: 45%;
-    animation: move 15s linear infinite;
-  }
-}
-
 .staticCloud {
   width: 10%;
   height: 77%;
@@ -39,6 +32,16 @@
   z-index: 200;
   right: 0;
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+@media only screen and (max-width: 1800px) {
+  .movingCloud {
+    top: 45%;
+    animation: move 15s linear infinite;
+  }
+  .staticCloud {
+    top: 35%;
+  }
 }
 
 @keyframes move {
