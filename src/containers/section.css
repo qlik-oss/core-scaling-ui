@@ -19,8 +19,8 @@
 
 @media only screen and (max-width: 600px) {
   .headerContainer {
-    top: 11%;
-    left: 27%;
+    top: 13%;
+    left: 22%;
   }
 }
 
@@ -50,10 +50,12 @@
   position: relative;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .textContainer {
-    width: 31%;
+    /* width: 31%; */
     font-size: small;
+    justify-content: center;
+    padding-top: 10%;
   }
 }
 
@@ -68,9 +70,3 @@
   height: 100%;
   background: linear-gradient(rgba(2, 138, 225, 0.4), rgba(221, 174, 32, 0.4));
 }
-
-/* @media only screen and (max-width: 1200px) {
-  .cloudAndKpiContainer {
-    max-width: 71%;
-  }
-} */

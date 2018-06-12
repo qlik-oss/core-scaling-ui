@@ -82,13 +82,13 @@ export default function LifeExpectancyKpi(props) {
 
 LifeExpectancyKpi.propTypes = {
   year: PropTypes.string.isRequired,
-  male: PropTypes.bool,
-  nbr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  // male: PropTypes.bool,
+  // nbr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   femaleNbr: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   maleNbr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
 };
 
-LifeExpectancyKpi.defaultProps = {
-  male: false
-};
+// LifeExpectancyKpi.defaultProps = {
+//   male: false
+// };

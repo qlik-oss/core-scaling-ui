@@ -22,7 +22,9 @@ export default function PlayPause(props) {
               style={{ transform: `scaleX(${scale})` }}
             />
           </div>
-          Play the urbanization story
+          {props.text !== "" && (
+            <div className="playpauseButtonText">{props.text}</div>
+          )}
         </button>
       )}
     </Motion>
@@ -31,5 +33,9 @@ export default function PlayPause(props) {
 
 PlayPause.propTypes = {
   toggle: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string
+};
+PlayPause.defaultProps = {
+  text: ""
 };

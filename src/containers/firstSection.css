@@ -9,18 +9,31 @@
 }
 
 .section1Container {
-  width: 100%;
-  height: 60%;
-  margin-bottom: 15px;
+  height: 55%;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  overflow: hidden;
+  margin-left: 110px;
+  margin-right: 110px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1100px) {
+  .cloudContainer {
+    height: 20%;
+  }
   .section1Container {
-    justify-content: space-evenly;
+    height: 77%;
+    margin-left: 75px;
+    margin-right: 10px;
+    /* align-items: flex-end; */
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .section1Container {
+    margin-left: 10px;
+    flex-wrap: wrap-reverse;
+    align-items: flex-start;
   }
 }
 
@@ -28,8 +41,6 @@
   display: flex;
   flex-direction: column;
   width: 20%;
-  margin-left: 110px;
-  margin-bottom: 50px;
 }
 
 .didyouknow {
@@ -41,10 +52,11 @@
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .didyouknow {
     width: 80%;
     background-size: contain;
+    margin-bottom: 0;
   }
 }
 
@@ -65,7 +77,6 @@
   justify-content: flex-end;
   width: 50%;
   height: 54%;
-  margin-bottom: 50px;
 }
 
 .scatterplotInner {
@@ -98,8 +109,6 @@
   display: flex;
   flex-direction: column;
   width: 30%;
-  margin-bottom: 50px;
-  margin-right: 110px;
 }
 
 .nextSectionButton {
@@ -121,4 +130,67 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .nextSectionButton {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .scatterplotOuter {
+    width: 70%;
+  }
+  .kpiContainer {
+    flex-direction: column;
+  }
+  .kpiAndButtonContainer {
+    flex-direction: row;
+    width: 30%;
+    height: 100%;
+  }
+  .nextSectionButton {
+    margin-left: 3%;
+  }
+  .infoContainer {
+    width: 27%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .scatterplotOuter {
+    position: relative;
+    left: -49px;
+    width: 79%;
+  }
+  .infoContainer {
+    width: 21%;
+    height: 51%;
+  }
+  .infotext,
+  .playpauseContainer {
+    font-size: small;
+  }
+  .playpauseContainer {
+    padding: 0;
+  }
+  .didyouknow,
+  .infotext {
+    display: none;
+  }
+  .kpiAndButtonContainer {
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+  }
+  .nextSectionButton {
+    margin-left: 20px;
+  }
+  .xLabel {
+    margin-bottom: 10px;
+  }
+  .kpiContainer {
+    flex-direction: row;
+  }
 }

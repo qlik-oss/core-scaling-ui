@@ -17,7 +17,7 @@
 
 .playpause {
   display: block;
-  width: 25px;
+  width: 25%;
   height: 30px;
   padding: 0;
   margin: 0;
@@ -28,6 +28,11 @@
   align-self: center;
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.playpauseButtonText {
+  width: 100%;
+  text-align: center;
 }
 
 .playpause-play {
@@ -68,12 +73,8 @@
   margin-left: 4px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1100px) {
   .playpause {
-    width: 14px;
-    height: 20px;
+    margin-left: 38%;
   }
-  /* .playpause-play {
-    border-width: 10px 0 10px 14px;
-  } */
 }

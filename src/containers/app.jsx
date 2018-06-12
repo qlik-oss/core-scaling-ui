@@ -215,16 +215,18 @@ class App extends Component {
                   }}
                 >
                   <View className="view">
-                    <FirstSection
-                      app={this.state.app}
-                      selectedYear={selectedYear}
-                      playTimelineFunc={play => {
-                        this.playTimeline(play);
-                      }}
-                      nextSectionFunc={() => {
-                        this.scrollTo("lifeexpectancy");
-                      }}
-                    />
+                    <ContainerDimensions>
+                      <FirstSection
+                        app={this.state.app}
+                        selectedYear={selectedYear}
+                        playTimelineFunc={play => {
+                          this.playTimeline(play);
+                        }}
+                        nextSectionFunc={() => {
+                          this.scrollTo("lifeexpectancy");
+                        }}
+                      />
+                    </ContainerDimensions>
                   </View>
                   <View className="view">
                     <SecondSection

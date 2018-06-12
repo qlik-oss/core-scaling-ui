@@ -173,6 +173,10 @@ class FirstSection extends React.Component {
       }
     ];
 
+    const nextButtonText =
+      this.props.width > 816
+        ? "Interesting data! But how does urbanization affect life quality? Click here to see more details!"
+        : "More details";
     return (
       <div className="cloudAndKpiContainer">
         <div className="cloudContainer">
@@ -199,6 +203,7 @@ class FirstSection extends React.Component {
               onClick={() => {
                 this.togglePlay();
               }}
+              text={this.props.width > 800 ? "Play the urbanization story" : ""}
             />
           </div>
           <div className="scatterplotOuter">
@@ -217,16 +222,14 @@ class FirstSection extends React.Component {
               <KPI
                 nbr={this.state.africanUrbanization}
                 text={`
-                Urban population in Africa ${this.props.selectedYear}`}
+                Urban population, Africa ${this.props.selectedYear}`}
                 bgColor="#3E8DBA"
                 fillColor="#AEDBF4"
                 animate
               />
               <KPI
                 nbr={this.state.worldUrbanization}
-                text={`Urban population rest of the world ${
-                  this.props.selectedYear
-                }`}
+                text={`Urban population, world ${this.props.selectedYear}`}
                 bgColor="#F68F00"
                 fillColor="#FFAF41"
                 animate
@@ -238,8 +241,7 @@ class FirstSection extends React.Component {
                 this.props.nextSectionFunc();
               }}
             >
-              Interesting data! But how does urbanization affect life quality?
-              Click here to see more details!
+              {nextButtonText}
             </button>
           </div>
         </div>
@@ -252,7 +254,12 @@ FirstSection.propTypes = {
   app: PropTypes.object.isRequired,
   selectedYear: PropTypes.string.isRequired,
   playTimelineFunc: PropTypes.func.isRequired,
-  nextSectionFunc: PropTypes.func.isRequired
+  nextSectionFunc: PropTypes.func.isRequired,
+  width: PropTypes.number
+};
+
+FirstSection.defaultProps = {
+  width: 0
 };
 
 export default FirstSection;
