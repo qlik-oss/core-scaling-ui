@@ -175,9 +175,9 @@ class App extends Component {
 
     return (
       <div className="page">
-        <div className="underConstructionBanner">
+        {/* <div className="underConstructionBanner">
           <div className="underConstructionInner">UNDER CONSTRUCTION</div>
-        </div>
+        </div> */}
         <Header
           onClick={e => {
             this.scrollTo(e);
