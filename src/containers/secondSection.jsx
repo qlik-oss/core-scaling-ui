@@ -15,6 +15,7 @@ import "./section.css";
 import "./secondSection.css";
 import dropIcon from "../resources/drop_icon_80px.svg";
 import billIcon from "../resources/bill_icon_n.svg";
+import heartIcon from "../resources/heart_icon.svg";
 
 class SecondSection extends React.Component {
   constructor(...args) {
@@ -194,14 +195,14 @@ class SecondSection extends React.Component {
                     {this.state.avgLifeExpTotalNbr} yr
                   </div>
                   <div className="itemText">life expectancy</div>
-                  <img className="itemIcon" src={dropIcon} alt="drop icon" />
+                  <img className="itemIcon" src={heartIcon} alt="heart icon" />
                 </div>
               </div>
               <div className="iconItem">
                 <div className="iconItemContent">
                   <div className="itemHeader">{this.state.avgGDPNbr}$</div>
                   <div className="itemText">average income</div>
-                  <img className="itemIcon" src={billIcon} alt="drop icon" />
+                  <img className="itemIcon" src={billIcon} alt="bill icon" />
                 </div>
               </div>
               <div className="iconItem">
