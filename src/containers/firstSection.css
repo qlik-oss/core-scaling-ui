@@ -25,13 +25,12 @@
     height: 77%;
     margin-left: 75px;
     margin-right: 10px;
-    /* align-items: flex-end; */
   }
 }
 
 @media only screen and (max-width: 800px) {
   .section1Container {
-    margin-left: 10px;
+    margin-left: 2%;
     flex-wrap: wrap-reverse;
     align-items: flex-start;
   }
@@ -160,6 +159,12 @@
   }
 }
 
+@media only screen and (max-width: 1100px) and (max-height: 1400px) and (min-height: 1000px) {
+  .kpiAndButtonContainer {
+    height: 50%;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .scatterplotOuter {
     position: relative;
@@ -167,7 +172,8 @@
     width: 79%;
   }
   .infoContainer {
-    width: 21%;
+    width: 14%;
+    justify-content: flex-end;
     height: 51%;
   }
   .infotext,
@@ -183,8 +189,7 @@
   }
   .kpiAndButtonContainer {
     flex-direction: row;
-    width: 100%;
-    height: 50%;
+    height: 26%;
     border: unset;
     padding: unset;
   }
@@ -196,5 +201,11 @@
   }
   .kpiContainer {
     flex-direction: row;
+  }
+}
+
+@media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 800px) {
+  .kpiAndButtonContainer {
+    width: 80%;
   }
 }

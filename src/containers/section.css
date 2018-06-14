@@ -46,16 +46,15 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 2% 10% 2%;
+  padding: 0 2% 2% 2%;
   position: relative;
 }
 
 @media only screen and (max-width: 800px) {
   .textContainer {
-    /* width: 31%; */
     font-size: small;
-    justify-content: center;
     padding-top: 10%;
+    padding-bottom: 5%;
   }
 }
 

@@ -1,10 +1,11 @@
 .contentWrapper {
   width: 100%;
+  height: 55%;
   display: flex;
-  flex: 1 1 auto;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  justify-content: flex-start;
 }
 
 .infoWrapper {
@@ -16,9 +17,109 @@
   max-width: 350px;
 }
 
+.kpiAndSliderContainer {
+  display: flex;
+  width: 25%;
+  justify-content: center;
+}
+
+.lifeExpectancyContainer {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  height: 100%;
+  border-left: 4px solid rgba(255, 255, 255, 0.5);
+  padding-left: 5%;
+  padding-right: 5%;
+  border-right: 4px solid rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.iconContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  height: 85%;
+  margin-top: 5%;
+}
+
+.iconItem {
+  display: flex;
+  width: 50%;
+  height: 50%;
+  justify-content: center;
+}
+
+.itemHeader {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.itemText {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.itemIcon {
+  height: 30%;
+  margin-top: 3%;
+}
+
+.lifeComparisonContainer {
+  display: flex;
+  width: 33%;
+}
+
+.comparisonContainer {
+  height: 100%;
+  width: 33%;
+  color: white;
+  padding-left: 5%;
+}
+
+.itemCompContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 60%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.itemComp {
+  display: flex;
+  text-align: left;
+}
+
 @media only screen and (max-width: 1100px) {
   .contentWrapper {
-    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .kpiAndSliderContainer {
+    width: 100%;
+  }
+
+  .lifeExpectancyContainer {
+    padding-left: unset;
+    border-left: unset;
+    padding-right: 1%;
+    width: 60%;
+  }
+  .comparisonContainer,
+  .lifeExpectancyContainer {
+    height: 50%;
+  }
+
+  .comparisonContainer {
+    padding-left: 1%;
+  }
+
+  .itemHeader {
+    font-size: 2em;
   }
 
   .infoWrapper {
@@ -33,8 +134,41 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .itemHeader {
+    font-size: small;
+  }
+  .itemText {
+    font-size: x-small;
+  }
+  .itemIcon {
+    display: none;
+  }
+
+  .lifeExpectancyContainer,
+  .comparisonContainer {
+    height: 55%;
+  }
+
+  .itemCompContainer {
+    font-size: x-small;
+    height: 90%;
+    justify-content: unset;
+  }
+  .kpiAndSliderContainer {
+    width: 33%;
+    margin-right: 33px;
+    margin-left: 33px;
+  }
+}
+
+/* @media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 800px) {
+   {
+    width: 80%;
+  }
+} */
+
+@media only screen and (max-width: 600px) {
   .infotext {
     font-size: 10px;
   }
 }
-

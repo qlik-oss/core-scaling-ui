@@ -23,7 +23,7 @@ class Filterbox extends React.Component {
     if (this.props.selectedValueCallback) {
       const value =
         this.state.selected.length > 1
-          ? "Selected countries"
+          ? "selected countries"
           : this.props.layout.qHyperCube.qDataPages[0].qMatrix[index][0].qText;
       this.props.selectedValueCallback(value);
     }

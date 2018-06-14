@@ -165,51 +165,7 @@ const totalUrbanWorldNbr = {
   }
 };
 
-const avgLifeExpFemale = {
-  qInfo: {
-    qType: "kpiHyperCube"
-  },
-  qHyperCubeDef: {
-    qMeasures: [
-      {
-        qDef: {
-          qDef: "Avg([Life expectancy at birth, female (years)])",
-          qLabel: "Life expectancy at birth, female"
-        },
-        qSortBy: {
-          SortByLoadOrder: 1,
-          qSortByNumeric: -1
-        }
-      }
-    ],
-    qSuppressMissing: true,
-    qSuppressZero: false
-  }
-};
-
-const avgLifeExpMale = {
-  qInfo: {
-    qType: "kpiHyperCube"
-  },
-  qHyperCubeDef: {
-    qMeasures: [
-      {
-        qDef: {
-          qDef: "Avg([Life expectancy at birth, male (years)])",
-          qLabel: "Life expectancy at birth, female"
-        },
-        qSortBy: {
-          SortByLoadOrder: 1,
-          qSortByNumeric: -1
-        }
-      }
-    ],
-    qSuppressMissing: true,
-    qSuppressZero: false
-  }
-};
-
-const lifeExpRate = {
+const urbanAfricanCountriesNbr = {
   qInfo: {
     qType: "kpiHyperCube"
   },
@@ -218,8 +174,8 @@ const lifeExpRate = {
       {
         qDef: {
           qDef:
-            "num((sum([Life expectancy at birth, total (years)])-sum({<Year = {'1960'}>}[Life expectancy at birth, total (years)]))/sum({<Year = {'1960'}>}[Life expectancy at birth, total (years)]), '####0%')",
-          qLabel: "Life expectancy rate"
+            "num(sum({$<Africa = {1}>}[Urban population [SP.URB.TOTL]]])/sum({<Africa = {1}>}[Population, total [SP.POP.TOTL]]]), '####0%')",
+          qLabel: "Total Urban Population"
         },
         qSortBy: {
           SortByLoadOrder: 1,
@@ -232,7 +188,7 @@ const lifeExpRate = {
   }
 };
 
-const urbanizationRate = {
+const avgLifeExpTotal = {
   qInfo: {
     qType: "kpiHyperCube"
   },
@@ -240,9 +196,8 @@ const urbanizationRate = {
     qMeasures: [
       {
         qDef: {
-          qDef:
-            "num((sum([Urban population [SP.URB.TOTL]]])-sum({<Year = {'1960'}>}[Urban population [SP.URB.TOTL]]]))/sum({<Year = {'1960'}>}[Urban population [SP.URB.TOTL]]]), '####0%')",
-          qLabel: "Life expectancy rate"
+          qDef: "Avg({<Africa={1}>}[Life expectancy at birth, total (years)])",
+          qLabel: "Life expectancy at birth, total"
         },
         qSortBy: {
           SortByLoadOrder: 1,
@@ -404,18 +359,86 @@ const scatterplot = {
   }
 };
 
+const avgGDP = {
+  qInfo: {
+    qType: "kpiHyperCube"
+  },
+  qHyperCubeDef: {
+    qMeasures: [
+      {
+        qDef: {
+          qDef: "Avg({<Africa={1}>}GDP)",
+          qLabel: "Average GDP"
+        },
+        qSortBy: {
+          SortByLoadOrder: 1,
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: false
+  }
+};
+
+const avgBirths = {
+  qInfo: {
+    qType: "kpiHyperCube"
+  },
+  qHyperCubeDef: {
+    qMeasures: [
+      {
+        qDef: {
+          qDef: "Avg({<Africa={1}>}[Births By Staff %])",
+          qLabel: "Average Births attended by skilled health staff, %"
+        },
+        qSortBy: {
+          SortByLoadOrder: 1,
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: false
+  }
+};
+
+const avgWater = {
+  qInfo: {
+    qType: "kpiHyperCube"
+  },
+  qHyperCubeDef: {
+    qMeasures: [
+      {
+        qDef: {
+          qDef: "Avg({<Africa={1}>}[Drinking Water %])",
+          qLabel:
+            "Propotion of population using improved drinking water sources, %"
+        },
+        qSortBy: {
+          SortByLoadOrder: 1,
+          qSortByNumeric: -1
+        }
+      }
+    ],
+    qSuppressMissing: true,
+    qSuppressZero: false
+  }
+};
+
 export {
   years,
   africanCountries,
   urbanizedCountries,
   totalUrbanAfricaNbr,
   totalUrbanWorldNbr,
-  avgLifeExpFemale,
-  avgLifeExpMale,
-  lifeExpRate,
-  urbanizationRate,
+  urbanAfricanCountriesNbr,
+  avgLifeExpTotal,
   lifeExpCountries,
   urbanLandArea,
   urbanLandAreaAfrica,
-  scatterplot
+  scatterplot,
+  avgGDP,
+  avgBirths,
+  avgWater
 };

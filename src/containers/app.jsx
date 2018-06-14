@@ -8,8 +8,6 @@ import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
 import Timeline from "../components/timeline";
 import Filterbox from "../components/filterbox";
-import House from "../components/house";
-import Heart from "../components/heart";
 import { africanCountries, years } from "../definitions";
 import "./app.css";
 
@@ -25,7 +23,6 @@ class App extends Component {
     super(props);
     this.state = {
       subHeader: subHeaders[0],
-      firstView: true,
       app: null,
       error: null
     };
@@ -33,10 +30,8 @@ class App extends Component {
   }
 
   onViewChange = view => {
-    if (view[0] === 0)
-      this.setState({ subHeader: subHeaders[0], firstView: true });
-    else if (view[0] === 1)
-      this.setState({ subHeader: subHeaders[1], firstView: false });
+    if (view[0] === 0) this.setState({ subHeader: subHeaders[0] });
+    else if (view[0] === 1) this.setState({ subHeader: subHeaders[1] });
   };
 
   async getApp() {
@@ -60,7 +55,6 @@ class App extends Component {
       )[0].qElemNumber;
       lastItem = yearItem;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
-      // app.addAlternateState("secondSectionState");
       const africanCountriesModel = await app.createSessionObject(
         africanCountries
       );
@@ -196,8 +190,6 @@ class App extends Component {
                 model={this.state.africanCountriesModel}
                 selectedValueCallback={country => this.selectedCountry(country)}
               />
-              <House show={this.state.firstView} />
-              <Heart show={!this.state.firstView} />
             </div>
             <ViewPager tag="main">
               <Frame className="frame">
