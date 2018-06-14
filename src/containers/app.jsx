@@ -27,6 +27,7 @@ class App extends Component {
       error: null
     };
     this.getApp();
+    this.firstSection = React.createRef();
   }
 
   onViewChange = view => {
@@ -81,6 +82,10 @@ class App extends Component {
       this.track.scrollTo(0);
     } else if (item === "lifeexpectancy") {
       this.track.scrollTo(1);
+      // if the timeline is playing when switching view - pause.
+      if (interval !== 0) {
+        this.firstSection.current.togglePlay();
+      }
     }
   };
 
@@ -110,6 +115,7 @@ class App extends Component {
       }, 500);
     } else {
       clearInterval(interval);
+      interval = 0;
     }
   };
 
@@ -199,6 +205,7 @@ class App extends Component {
                   }}
                   viewsToShow={1}
                   infinite
+                  swipe={false}
                   swipeThreshold={1}
                   contain
                   className="track"
@@ -209,8 +216,10 @@ class App extends Component {
                   <View className="view">
                     <ContainerDimensions>
                       <FirstSection
+                        ref={this.firstSection}
                         app={this.state.app}
                         selectedYear={selectedYear}
+                        playing={this.state.isPlaying}
                         playTimelineFunc={play => {
                           this.playTimeline(play);
                         }}

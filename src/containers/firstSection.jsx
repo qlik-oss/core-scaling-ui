@@ -216,6 +216,9 @@ class FirstSection extends React.Component {
                 <b>Income</b>
               </div>
             </div>
+            <div className="legendText">
+              Bubble size indicates urban population %
+            </div>
           </div>
           <div className="kpiAndButtonContainer">
             <div className="kpiContainer">
