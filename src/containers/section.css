@@ -69,3 +69,12 @@
   height: 100%;
   background: linear-gradient(rgba(2, 138, 225, 0.4), rgba(221, 174, 32, 0.4));
 }
+
+@media only screen and (max-height: 650px) {
+  .mainHeader {
+    font-size: 5vw;
+  }
+  .subHeader {
+    font-size: 2vw;
+  }
+}

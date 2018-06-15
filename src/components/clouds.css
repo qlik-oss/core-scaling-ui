@@ -3,12 +3,6 @@
   width: 170%;
 }
 
-@media only screen and (max-width: 600px) {
-  .bigCloud {
-    width: 50%;
-  }
-}
-
 .movingCloud {
   width: 30%;
   top: 59%;
@@ -72,5 +66,17 @@
   }
   .movingCloud {
     top: 7%;
+  }
+}
+
+@media only screen and (max-height: 900px) and (min-width: 700px) {
+  .bigCloud {
+    width: 50%;
+  }
+  .movingCloud {
+    width: 20%;
+  }
+  .staticCloud {
+    width: 8%;
   }
 }

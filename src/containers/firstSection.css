@@ -30,7 +30,7 @@
 
 @media only screen and (max-width: 800px) {
   .section1Container {
-    margin-left: 2%;
+    margin-left: 10px;
     flex-wrap: wrap-reverse;
     align-items: flex-start;
   }
@@ -188,7 +188,8 @@
   .scatterplotOuter {
     position: relative;
     left: -49px;
-    width: 79%;
+    /* width: 79%; */
+    width: 85%;
   }
   .infoContainer {
     width: 14%;
@@ -208,9 +209,10 @@
   }
   .kpiAndButtonContainer {
     flex-direction: row;
-    height: 26%;
+    height: 34%;
     border: unset;
     padding: unset;
+    /* align-self: center; */
   }
   .nextSectionButton {
     margin-left: 20px;
@@ -235,5 +237,33 @@
 @media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 800px) {
   .kpiAndButtonContainer {
     width: 80%;
+  }
+}
+
+@media only screen and (max-height: 900px) and (min-width: 700px) {
+  .cloudContainer {
+    height: 25%;
+  }
+  .section1Container {
+    height: 70%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .legendText {
+    bottom: -28px;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .cloudContainer {
+    display: none;
+  }
+
+  .section1Container {
+    height: 95%;
+  }
+
+  .legendText {
+    bottom: 0;
   }
 }

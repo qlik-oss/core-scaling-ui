@@ -161,14 +161,27 @@
   }
 }
 
-/* @media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 800px) {
-   {
-    width: 80%;
-  }
-} */
-
 @media only screen and (max-width: 600px) {
   .infotext {
     font-size: 10px;
+  }
+}
+
+@media only screen and (max-height: 900px) and (min-width: 700px) {
+  .contentWrapper {
+    height: 65%;
+  }
+  .itemHeader {
+    font-size: 2em;
+  }
+  .lifeExpectancyContainer {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .sectionTwo {
+    justify-content: center;
   }
 }
