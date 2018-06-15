@@ -16,7 +16,7 @@ import "./secondSection.css";
 import dropIcon from "../resources/drop_icon_80px.svg";
 import billIcon from "../resources/bill_icon_n.svg";
 import heartIcon from "../resources/heart_icon.svg";
-import babyIcon from "../resources/baby_icon_1.svg";
+import babyIcon from "../resources/baby_cross.svg";
 
 class SecondSection extends React.Component {
   constructor(...args) {
