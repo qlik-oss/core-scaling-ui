@@ -1,6 +1,6 @@
 .innerContainer {
   display: flex;
-  height: 100%;
+  height: calc(100% - 105px);
   width: 100vw;
 }
 
@@ -19,20 +19,20 @@
 
 @media only screen and (max-width: 600px) {
   .headerContainer {
-    top: 11%;
-    left: 27%;
+    top: 13%;
+    left: 22%;
   }
 }
 
 .mainHeader {
-  font-size: 8vw;
-  margin-left: 10%;
+  font-size: 7vw;
+  margin-left: 2vw;
   font-weight: 900;
 }
 
 .subHeader {
-  font-size: 5vw;
-  margin-left: 17%;
+  font-size: 4vw;
+  margin-left: 3vw;
   font-weight: 700;
 }
 
@@ -46,14 +46,15 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 2% 10% 2%;
+  padding: 0 2% 2% 2%;
   position: relative;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .textContainer {
-    width: 31%;
     font-size: small;
+    padding-top: 10%;
+    padding-bottom: 5%;
   }
 }
 
@@ -69,8 +70,11 @@
   background: linear-gradient(rgba(2, 138, 225, 0.4), rgba(221, 174, 32, 0.4));
 }
 
-@media only screen and (max-width: 1200px) {
-  .cloudAndKpiContainer {
-    max-width: 71%;
+@media only screen and (max-height: 650px) {
+  .mainHeader {
+    font-size: 5vw;
+  }
+  .subHeader {
+    font-size: 2vw;
   }
 }

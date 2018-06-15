@@ -7,29 +7,31 @@ class Filterbox extends React.Component {
     super(props);
 
     this.state = {
-      selected: null
+      selected: []
     };
   }
 
   selectCountry = index => {
     this.props.model.clearSelections("/qHyperCubeDef");
+    this.state.selected.push(index);
     this.props.model.selectHyperCubeCells(
       "/qHyperCubeDef",
-      [index],
+      this.state.selected,
       [0],
-      false
+      true
     );
-    this.setState({ selected: index });
     if (this.props.selectedValueCallback) {
-      this.props.selectedValueCallback(
-        this.props.layout.qHyperCube.qDataPages[0].qMatrix[index][0].qText
-      );
+      const value =
+        this.state.selected.length > 1
+          ? "selected countries"
+          : this.props.layout.qHyperCube.qDataPages[0].qMatrix[index][0].qText;
+      this.props.selectedValueCallback(value);
     }
   };
 
-  clearSelection = () => {
+  clearSelections = () => {
     this.props.model.clearSelections("/qHyperCubeDef");
-    this.setState({ selected: null });
+    this.setState({ selected: [] });
     if (this.props.selectedValueCallback) {
       this.props.selectedValueCallback("");
     }
@@ -46,7 +48,7 @@ class Filterbox extends React.Component {
         >
           <span className="listText">{country[0].qText}</span>
           <span className="listIcon">
-            {i === this.state.selected ? "✔" : null}
+            {this.state.selected.includes(i) ? "✔" : null}
           </span>
         </div>
       )
@@ -59,9 +61,9 @@ class Filterbox extends React.Component {
         <div
           className="clearSelection"
           role="presentation"
-          onClick={() => this.clearSelection()}
+          onClick={() => this.clearSelections()}
         >
-          <span>Clear selection</span>
+          <span>Clear selections</span>
           <span>✖</span>
         </div>
       </div>

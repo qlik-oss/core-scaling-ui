@@ -1,25 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Filterbox from "../components/filterbox";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
-import LifeExpectancyKpi from "../components/lifeExpectancyKpi";
-import Heart from "../components/heart";
+import KPI from "../components/kpi";
 import {
-  africanCountries,
-  avgLifeExpFemale,
-  avgLifeExpMale,
-  lifeExpRate,
-  urbanizationRate,
-  lifeExpCountries
+  avgLifeExpTotal,
+  lifeExpCountries,
+  urbanAfricanCountriesNbr,
+  avgGDP,
+  avgBirths,
+  avgWater
 } from "../definitions";
 import "./section.css";
 import "./secondSection.css";
+import dropIcon from "../resources/drop_icon_80px.svg";
+import billIcon from "../resources/bill_icon_n.svg";
+import heartIcon from "../resources/heart_icon.svg";
+import babyIcon from "../resources/baby_icon_1.svg";
 
 class SecondSection extends React.Component {
   constructor(...args) {
     super(...args);
-    this.state = { loaded: false, selectedCountry: "" };
+    this.state = { loaded: false };
   }
 
   componentDidMount() {
@@ -38,53 +40,50 @@ class SecondSection extends React.Component {
 
   async createModel() {
     try {
-      const africanCountriesModel = await this.props.app.createSessionObject(
-        africanCountries
+      const urbanKpiModel = await this.props.app.createSessionObject(
+        urbanAfricanCountriesNbr
       );
-      const avgLifeExpFemaleModel = await this.props.app.createSessionObject(
-        avgLifeExpFemale
+      const avgLifeExpTotalModel = await this.props.app.createSessionObject(
+        avgLifeExpTotal
       );
-      const avgLifeExpMaleModel = await this.props.app.createSessionObject(
-        avgLifeExpMale
-      );
-      const lifeExpRateModel = await this.props.app.createSessionObject(
-        lifeExpRate
-      );
-      const urbRateModel = await this.props.app.createSessionObject(
-        urbanizationRate
-      );
+      const avgGDPModel = await this.props.app.createSessionObject(avgGDP);
       const lifeExpCountriesModel = await this.props.app.createSessionObject(
         lifeExpCountries
       );
+      const avgBirthsModel = await this.props.app.createSessionObject(
+        avgBirths
+      );
+      const avgWaterModel = await this.props.app.createSessionObject(avgWater);
 
-      const africanCountriesLayout = await africanCountriesModel.getLayout();
-      const avgLifeExpFemaleLayout = await avgLifeExpFemaleModel.getLayout();
-      const avgLifeExpMaleLayout = await avgLifeExpMaleModel.getLayout();
-      const lifeExpRateLayout = await lifeExpRateModel.getLayout();
-      const urbRateLayout = await urbRateModel.getLayout();
+      const urbanKpiLayout = await urbanKpiModel.getLayout();
+      const avgLifeExpTotalLayout = await avgLifeExpTotalModel.getLayout();
+      const avgGDPLayout = await avgGDPModel.getLayout();
       const lifeExpLayout = await lifeExpCountriesModel.getLayout();
+      const avgBirthsLayout = await avgBirthsModel.getLayout();
+      const avgWaterLayout = await avgWaterModel.getLayout();
 
-      const avgLifeExpFemaleNbr = this.getNbr(avgLifeExpFemaleLayout);
-      const avgLifeExpMaleNbr = this.getNbr(avgLifeExpMaleLayout);
-      const lifeExpRateNbr = this.getText(lifeExpRateLayout);
-      const urbRateNbr = this.getText(urbRateLayout);
+      const urbanKpiNbr = this.getText(urbanKpiLayout);
+      const avgGDPNbr = this.getNbr(avgGDPLayout);
+      const avgLifeExpTotalNbr = this.getNbr(avgLifeExpTotalLayout);
       const longestLifeExp = lifeExpLayout.qHyperCube.qDataPages[0].qMatrix[0];
       const shortestLifeExp =
         lifeExpLayout.qHyperCube.qDataPages[0].qMatrix[
           lifeExpLayout.qHyperCube.qDataPages[0].qMatrix.length - 1
         ];
+      const avgBirthsNbr = this.getNbr(avgBirthsLayout);
+      const avgWaterNbr = this.getText(avgWaterLayout);
 
       this.setState({
-        africanCountriesModel,
-        avgLifeExpFemaleModel,
-        avgLifeExpMaleModel,
-        lifeExpRateModel,
-        urbRateModel,
-        africanCountriesLayout,
-        avgLifeExpFemaleNbr,
-        avgLifeExpMaleNbr,
-        lifeExpRateNbr,
-        urbRateNbr,
+        urbanKpiModel,
+        avgLifeExpTotalModel,
+        avgGDPModel,
+        avgBirthsModel,
+        avgWaterModel,
+        urbanKpiNbr,
+        avgLifeExpTotalNbr,
+        avgGDPNbr,
+        avgBirthsNbr,
+        avgWaterNbr,
         longestLifeExp: {
           country: longestLifeExp[0].qText,
           nbr: longestLifeExp[1].qText
@@ -96,45 +95,48 @@ class SecondSection extends React.Component {
         loaded: true
       });
 
-      avgLifeExpFemaleModel.on("changed", () => this.updateAvgLifeExpFemale());
-      avgLifeExpMaleModel.on("changed", () => this.updateAvgLifeExpMale());
-      lifeExpRateModel.on("changed", () => this.updateLifeExpRate());
-      urbRateModel.on("changed", () => this.updateUrbRate());
+      urbanKpiModel.on("changed", () => this.updateUrbanKpi());
+      avgLifeExpTotalModel.on("changed", () => this.updateAvgLifeExpTotal());
+      avgGDPModel.on("changed", () => this.updateAvgGDP());
+      avgBirthsModel.on("changed", () => this.updateAvgBirths());
+      avgWaterModel.on("changed", () => this.updateAvgWater());
     } catch (error) {
       // console.log(error);
     }
   }
 
-  selectedCountry = country => {
-    this.setState({ selectedCountry: country });
-  };
-
-  async updateAvgLifeExpFemale() {
-    const avgLifeExpFemaleLayout = await this.state.avgLifeExpFemaleModel.getLayout();
-    const avgLifeExpFemaleNbr = this.getNbr(avgLifeExpFemaleLayout);
-
-    this.setState({ avgLifeExpFemaleNbr });
+  async updateUrbanKpi() {
+    const urbanKpiLayout = await this.state.urbanKpiModel.getLayout();
+    const urbanKpiNbr = this.getText(urbanKpiLayout);
+    this.setState({ urbanKpiNbr });
   }
 
-  async updateAvgLifeExpMale() {
-    const avgLifeExpMaleLayout = await this.state.avgLifeExpMaleModel.getLayout();
-    const avgLifeExpMaleNbr = this.getNbr(avgLifeExpMaleLayout);
+  async updateAvgLifeExpTotal() {
+    const avgLifeExpTotalLayout = await this.state.avgLifeExpTotalModel.getLayout();
+    const avgLifeExpTotalNbr = this.getNbr(avgLifeExpTotalLayout);
 
-    this.setState({ avgLifeExpMaleNbr });
+    this.setState({ avgLifeExpTotalNbr });
   }
 
-  async updateLifeExpRate() {
-    const lifeExpRateLayout = await this.state.lifeExpRateModel.getLayout();
-    const lifeExpRateNbr = this.getText(lifeExpRateLayout);
+  async updateAvgGDP() {
+    const avgGDPLayout = await this.state.avgGDPModel.getLayout();
+    const avgGDPNbr = this.getNbr(avgGDPLayout);
 
-    this.setState({ lifeExpRateNbr });
+    this.setState({ avgGDPNbr });
   }
 
-  async updateUrbRate() {
-    const urbRateLayout = await this.state.urbRateModel.getLayout();
-    const urbRateNbr = this.getText(urbRateLayout);
+  async updateAvgBirths() {
+    const avgBirthsLayout = await this.state.avgBirthsModel.getLayout();
+    const avgBirthsNbr = this.getNbr(avgBirthsLayout);
 
-    this.setState({ urbRateNbr });
+    this.setState({ avgBirthsNbr });
+  }
+
+  async updateAvgWater() {
+    const avgWaterLayout = await this.state.avgWaterModel.getLayout();
+    const avgWaterNbr = this.getNbr(avgWaterLayout);
+
+    this.setState({ avgWaterNbr });
   }
 
   render() {
@@ -165,44 +167,73 @@ class SecondSection extends React.Component {
     ];
 
     return (
-      <div className="innerContainer sectionTwo">
-        <div className="textContainer">
-          <Filterbox
-            layout={this.state.africanCountriesLayout}
-            model={this.state.africanCountriesModel}
-            selectedValueCallback={country => this.selectedCountry(country)}
-          />
-          <Heart />
+      <div className="cloudAndKpiContainer sectionTwo">
+        <div className="cloudContainer">
+          <Banner text={bannerText} color="#FFA515" />
+          <Clouds />
         </div>
-        <div className="cloudAndKpiContainer">
-          <div className="cloudContainer">
-            <Banner text={bannerText} color="#FFA515" />
-            <Clouds />
-          </div>
-          <div className="contentWrapper">
-            <LifeExpectancyKpi
-              year={this.props.selectedYear}
-              femaleNbr={this.state.avgLifeExpFemaleNbr}
-              maleNbr={this.state.avgLifeExpMaleNbr}
+        <div className="contentWrapper">
+          <div className="kpiAndSliderContainer">
+            <KPI
+              nbr={this.state.urbanKpiNbr}
+              text={`
+                Urbanization in ${
+                  this.props.selectedCountry
+                    ? this.props.selectedCountry
+                    : "Africa"
+                } ${this.props.selectedYear}`}
+              bgColor="#3E8DBA"
+              fillColor="#AEDBF4"
+              animate
             />
-            <div className="infoWrapper">
-              <div className="didyouknow" />
-              <div className="infotext">
-                <div>
-                  <b>
-                    {this.state.selectedCountry
-                      ? this.state.selectedCountry
-                      : "African"}
-                  </b>{" "}
-                  life expectancy in <b>{this.props.selectedYear}</b> has risen
-                  with <b>{this.state.lifeExpRateNbr}</b> compared to{" "}
-                  <b>1960</b>.
-                  <br />
-                  <br />
-                  While urbanization compared to <b>1960</b> is up{" "}
-                  <b>{this.state.urbRateNbr}</b>.
+          </div>
+          <div className="lifeExpectancyContainer">
+            <div className="itemHeader">Life Quality Indicators</div>
+            <div className="iconContainer">
+              <div className="iconItem">
+                <div className="iconItemContent">
+                  <div className="itemHeader">
+                    {this.state.avgLifeExpTotalNbr} yr
+                  </div>
+                  <div className="itemText">life expectancy</div>
+                  <img className="itemIcon" src={heartIcon} alt="heart icon" />
                 </div>
               </div>
+              <div className="iconItem">
+                <div className="iconItemContent">
+                  <div className="itemHeader">{this.state.avgGDPNbr}$</div>
+                  <div className="itemText">average income</div>
+                  <img className="itemIcon" src={billIcon} alt="bill icon" />
+                </div>
+              </div>
+              <div className="iconItem">
+                <div className="iconItemContent">
+                  <div className="itemHeader">{this.state.avgWaterNbr}%</div>
+                  <div className="itemText">clean drinking water access</div>
+                  <img className="itemIcon" src={dropIcon} alt="drop icon" />
+                </div>
+              </div>
+              <div className="iconItem">
+                <div className="iconItemContent">
+                  <div className="itemHeader">{this.state.avgBirthsNbr}%</div>
+                  <div className="itemText">Births by health staff</div>
+                  <img className="itemIcon" src={babyIcon} alt="baby icon" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="comparisonContainer">
+            <div className="itemHeader">
+              Comparison
+              <br />
+              USA 2015
+            </div>
+            <div className="itemCompContainer">
+              <div className="itemComp">URBANIZATION: 85%</div>
+              <div className="itemComp">LIFE EXPECTANCY: 78.69 yr</div>
+              <div className="itemComp">INCOME: 53029$</div>
+              <div className="itemComp">CLEAN DRINKING WATER ACCESS: 99.2%</div>
+              <div className="itemComp">BIRTHS BY SKILLED STAFF: 98.5%</div>
             </div>
           </div>
         </div>
@@ -213,7 +244,12 @@ class SecondSection extends React.Component {
 
 SecondSection.propTypes = {
   app: PropTypes.object.isRequired,
-  selectedYear: PropTypes.string.isRequired
+  selectedYear: PropTypes.string.isRequired,
+  selectedCountry: PropTypes.string
+};
+
+SecondSection.defaultProps = {
+  selectedCountry: null
 };
 
 export default SecondSection;

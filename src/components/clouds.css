@@ -1,24 +1,11 @@
 .bigCloud {
-  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
   width: 170%;
 }
 
-@media only screen and (max-width: 1000px) {
-  .bigCloud {
-    width: 110%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .bigCloud {
-    width: 50%;
-  }
-}
-
-
 .movingCloud {
   width: 30%;
-  top: 59%;
+  top: 50%;
   left: 6%;
   position: absolute;
   z-index: 100;
@@ -29,23 +16,68 @@
   width: 10%;
   height: 77%;
   position: absolute;
-  top: 43%;
+  top: 35%;
   z-index: 200;
   right: 0;
-  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
 }
 
 @keyframes move {
   0% {
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.6));
     transform: translateX(0px);
   }
   50% {
-    filter: drop-shadow(0 25px 15px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 15px 5px rgba(0, 0, 0, 0.2));
     transform: translateX(-20px);
   }
   100% {
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.6));
     transform: translateX(0px);
+  }
+}
+
+@media only screen and (max-width: 1800px) {
+  .movingCloud {
+    top: 30%;
+    animation: move 15s linear infinite;
+  }
+  .staticCloud {
+    top: 35%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .bigCloud {
+    width: 50%;
+  }
+  .movingCloud {
+    width: 20%;
+    top: 13%;
+  }
+  .staticCloud {
+    top: 29%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .bigCloud {
+    width: 50%;
+  }
+  .movingCloud {
+    height: 85%;
+    top: 7%;
+  }
+}
+
+@media only screen and (max-height: 900px) and (min-width: 700px) {
+  .bigCloud {
+    width: 50%;
+  }
+  .movingCloud {
+    display: none;
+  }
+  .staticCloud {
+    width: 6%;
   }
 }

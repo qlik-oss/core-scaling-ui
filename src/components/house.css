@@ -1,7 +1,8 @@
 .house {
   position: absolute;
+  z-index: 1;
   bottom: -29px;
-  right: -135px;
+  right: -132px;
   height: 198px;
 }
 

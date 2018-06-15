@@ -7,17 +7,27 @@ import Header from "./header";
 import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
 import Timeline from "../components/timeline";
-import { years } from "../definitions";
+import Filterbox from "../components/filterbox";
+import { africanCountries, years } from "../definitions";
 import "./app.css";
 
 const year = "2016";
-const subHeaders = ["Urbanization", "Life Expectancy"];
+const startPlayYear = "1990";
+let startPlayItem = null;
+let lastItem = null;
+const subHeaders = ["Urbanization", "Life Quality"];
+let interval = 0;
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { subHeader: subHeaders[0], app: null, error: null };
+    this.state = {
+      subHeader: subHeaders[0],
+      app: null,
+      error: null
+    };
     this.getApp();
+    this.firstSection = React.createRef();
   }
 
   onViewChange = view => {
@@ -41,12 +51,21 @@ class App extends Component {
       const yearItem = yearLayout.qListObject.qDataPages[0].qMatrix.find(
         item => item[0].qText === year
       )[0].qElemNumber;
+      startPlayItem = yearLayout.qListObject.qDataPages[0].qMatrix.find(
+        item => item[0].qText === startPlayYear
+      )[0].qElemNumber;
+      lastItem = yearItem;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
-      app.addAlternateState("secondSectionState");
+      const africanCountriesModel = await app.createSessionObject(
+        africanCountries
+      );
+      const africanCountriesLayout = await africanCountriesModel.getLayout();
       this.setState({
         app,
         yearModel,
         yearLayout,
+        africanCountriesModel,
+        africanCountriesLayout,
         selectedIndex: yearItem
       });
     } catch (error) {
@@ -54,21 +73,50 @@ class App extends Component {
     }
   }
 
+  selectedCountry = country => {
+    this.setState({ selectedCountry: country });
+  };
+
   scrollTo = item => {
     if (item === "urbanization") {
       this.track.scrollTo(0);
     } else if (item === "lifeexpectancy") {
       this.track.scrollTo(1);
+      // if the timeline is playing when switching view - pause.
+      if (interval !== 0) {
+        this.firstSection.current.togglePlay();
+      }
     }
   };
 
-  handleClick = item => {
+  handleTimelineClick = item => {
     this.state.yearModel.selectListObjectValues(
       "/qListObjectDef",
       [item[0].qElemNumber],
       false
     );
     this.setState({ selectedIndex: item[0].qElemNumber });
+  };
+
+  playTimeline = play => {
+    let counter = this.state.selectedIndex;
+    if (play) {
+      interval = setInterval(() => {
+        if (counter > lastItem || counter < startPlayItem) {
+          counter = startPlayItem;
+        }
+        this.state.yearModel.selectListObjectValues(
+          "/qListObjectDef",
+          [counter],
+          false
+        );
+        this.setState({ selectedIndex: counter });
+        counter += 1;
+      }, 500);
+    } else {
+      clearInterval(interval);
+      interval = 0;
+    }
   };
 
   render() {
@@ -108,7 +156,7 @@ class App extends Component {
         <li
           key={item[0].qElemNumber}
           style={{ left: `${item[0].qElemNumber * 60}px` }}
-          onClick={() => this.handleClick(item)}
+          onClick={() => this.handleTimelineClick(item)}
         >
           {item[0].qText}
           <span
@@ -127,9 +175,9 @@ class App extends Component {
 
     return (
       <div className="page">
-        <div className="underConstructionBanner">
+        {/* <div className="underConstructionBanner">
           <div className="underConstructionInner">UNDER CONSTRUCTION</div>
-        </div>
+        </div> */}
         <Header
           onClick={e => {
             this.scrollTo(e);
@@ -141,35 +189,57 @@ class App extends Component {
             <div className="mainHeader">AFRICAN</div>
             <div className="subHeader">{this.state.subHeader}</div>
           </div>
-          <ViewPager tag="main">
-            <Frame className="frame">
-              <Track
-                ref={c => {
-                  this.track = c;
-                }}
-                viewsToShow={1}
-                infinite
-                contain
-                className="track"
-                onViewChange={view => {
-                  this.onViewChange(view);
-                }}
-              >
-                <View className="view">
-                  <FirstSection
-                    app={this.state.app}
-                    selectedYear={selectedYear}
-                  />
-                </View>
-                <View className="view">
-                  <SecondSection
-                    app={this.state.app}
-                    selectedYear={selectedYear}
-                  />
-                </View>
-              </Track>
-            </Frame>
-          </ViewPager>
+          <div className="innerContainer">
+            <div className="textContainer">
+              <Filterbox
+                layout={this.state.africanCountriesLayout}
+                model={this.state.africanCountriesModel}
+                selectedValueCallback={country => this.selectedCountry(country)}
+              />
+            </div>
+            <ViewPager tag="main">
+              <Frame className="frame">
+                <Track
+                  ref={c => {
+                    this.track = c;
+                  }}
+                  viewsToShow={1}
+                  infinite
+                  swipe={false}
+                  swipeThreshold={1}
+                  contain
+                  className="track"
+                  onViewChange={view => {
+                    this.onViewChange(view);
+                  }}
+                >
+                  <View className="view">
+                    <ContainerDimensions>
+                      <FirstSection
+                        ref={this.firstSection}
+                        app={this.state.app}
+                        selectedYear={selectedYear}
+                        playing={this.state.isPlaying}
+                        playTimelineFunc={play => {
+                          this.playTimeline(play);
+                        }}
+                        nextSectionFunc={() => {
+                          this.scrollTo("lifeexpectancy");
+                        }}
+                      />
+                    </ContainerDimensions>
+                  </View>
+                  <View className="view">
+                    <SecondSection
+                      app={this.state.app}
+                      selectedYear={selectedYear}
+                      selectedCountry={this.state.selectedCountry}
+                    />
+                  </View>
+                </Track>
+              </Frame>
+            </ViewPager>
+          </div>
           <div className="timelineContainer">
             <ContainerDimensions>
               <Timeline

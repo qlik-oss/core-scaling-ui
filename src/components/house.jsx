@@ -1,7 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./house.css";
 
-export default function House() {
+export default function House(props) {
+  if (!props.show) {
+    return null;
+  }
   return (
     <svg
       className="house"
@@ -262,3 +266,7 @@ export default function House() {
     </svg>
   );
 }
+
+House.propTypes = {
+  show: PropTypes.bool.isRequired
+};

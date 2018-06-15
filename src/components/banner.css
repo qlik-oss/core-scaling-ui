@@ -1,6 +1,6 @@
 .banner {
   position: absolute;
-  width: 40%;
+  width: 35%;
   max-width: 520px;
   min-width: 270px;
   height: auto;
@@ -27,6 +27,9 @@
 .cloudText {
   font-family: Muli;
   font-weight: 600;
+  fill: #fff;
+  animation-name: fade-in;
+  animation-duration: 1s;
 }
 
 @media only screen and (max-width: 600px) {
@@ -39,17 +42,17 @@
   cursor: pointer;
 }
 
-Text {
-  fill: #fff;
-  animation-name: fade-in;
-  animation-duration: 1s;
-}
-
 @keyframes fade-in {
   from {
     fill: transparent;
   }
   to {
     fill: #fff;
+  }
+}
+
+@media only screen and (max-height: 900px) and (min-width: 700px) {
+  .banner {
+    width: 30%;
   }
 }
