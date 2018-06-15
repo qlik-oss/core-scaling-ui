@@ -1,6 +1,6 @@
 .banner {
   position: absolute;
-  width: 40%;
+  width: 35%;
   max-width: 520px;
   min-width: 270px;
   height: auto;
@@ -48,5 +48,11 @@
   }
   to {
     fill: #fff;
+  }
+}
+
+@media only screen and (max-height: 900px) and (min-width: 700px) {
+  .banner {
+    width: 30%;
   }
 }

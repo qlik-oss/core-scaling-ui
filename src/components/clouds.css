@@ -5,7 +5,7 @@
 
 .movingCloud {
   width: 30%;
-  top: 59%;
+  top: 50%;
   left: 6%;
   position: absolute;
   z-index: 100;
@@ -65,6 +65,7 @@
     width: 50%;
   }
   .movingCloud {
+    height: 85%;
     top: 7%;
   }
 }
@@ -74,9 +75,9 @@
     width: 50%;
   }
   .movingCloud {
-    width: 20%;
+    display: none;
   }
   .staticCloud {
-    width: 8%;
+    width: 6%;
   }
 }

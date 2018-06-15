@@ -92,6 +92,15 @@
   text-align: left;
 }
 
+@media only screen and (max-width: 1350px) and (max-height: 950px) {
+  .cloudContainer {
+    height: 30%;
+  }
+  .contentWrapper {
+    height: 65%;
+  }
+}
+
 @media only screen and (max-width: 1100px) {
   .contentWrapper {
     flex-wrap: wrap;
@@ -171,6 +180,7 @@
   .contentWrapper {
     height: 65%;
   }
+
   .itemHeader {
     font-size: 2em;
   }
