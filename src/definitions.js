@@ -28,48 +28,33 @@ const years = {
   }
 };
 
-const africanCountries = {
+const countries = {
   qInfo: {
-    qType: "table"
+    qType: "listbox"
   },
-  qHyperCubeDef: {
-    qDimensions: [
-      {
-        qDef: {
-          qFieldDefs: ["Country Name"],
-          qLabel: "Country Name",
-          qSortCriterias: [
-            {
-              qSortByNumeric: 1
-            }
-          ]
+  qListObjectDef: {
+    qDef: {
+      qFieldLabels: [],
+      qFieldDefs: ["=If(MixMatch(Africa, 1), [Country Name])"],
+      autoSort: true,
+      qSortCriterias: [
+        {
+          qExpression: {},
+          qSortByLoadOrder: 1,
+          qSortByNumeric: -1,
+          qSortByState: 1
         }
-      }
-    ],
-    qMeasures: [
-      {
-        qDef: {
-          qDef: "Avg({$<Africa={'1'}>}Africa)",
-          qLabel: "African Countries",
-          qReverseSort: false
-        },
-        autoSort: true,
-        qSortBy: {
-          qSortByNumeric: -1
-        }
-      }
-    ],
-    qInterColumnSortOrder: [1, 0],
+      ]
+    },
+    qShowAlternatives: true,
     qInitialDataFetch: [
       {
         qTop: 0,
-        qHeight: 500,
         qLeft: 0,
-        qWidth: 17
+        qWidth: 0,
+        qHeight: 10000
       }
-    ],
-    qSuppressMissing: true,
-    qSuppressZero: true
+    ]
   }
 };
 
@@ -425,10 +410,41 @@ const avgWater = {
     qSuppressZero: false
   }
 };
+const urbSlider = {
+  qInfo: {
+    qType: "slider"
+  },
+  qListObjectDef: {
+    qDef: {
+      qFieldLabels: [],
+      qFieldDefs: [
+        "=if( ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) >=0.01 and ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) <=0.2 , '1-20%',if( ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) >0.2 and ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) <=0.4, '21-40%',if( ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) >0.4 and ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) <=0.6, '41-60%',if( ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) >0.60 and ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) <=0.8, '61-80%',if( ([Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]]) >0.8, '81-100%',[Urban population [SP.URB.TOTL]]]/[Population, total [SP.POP.TOTL]]] )))))"
+      ],
+      autoSort: true,
+      qSortCriterias: [
+        {
+          qSortByState: 1,
+          qSortByAscii: 1,
+          qSortByNumeric: 1,
+          qSortByLoadOrder: 1
+        }
+      ]
+    },
+    qAutoSortByState: { qDisplayNumberOfRows: -1 },
+    qShowAlternatives: true,
+    qInitialDataFetch: [
+      {
+        qTop: 0,
+        qLeft: 0,
+        qWidth: 0,
+        qHeight: 10000
+      }
+    ]
+  }
+};
 
 export {
   years,
-  africanCountries,
   urbanizedCountries,
   totalUrbanAfricaNbr,
   totalUrbanWorldNbr,
@@ -440,5 +456,7 @@ export {
   scatterplot,
   avgGDP,
   avgBirths,
-  avgWater
+  avgWater,
+  urbSlider,
+  countries
 };

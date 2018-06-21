@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import Clouds from "../components/clouds";
 import Banner from "../components/banner";
 import KPI from "../components/kpi";
+import CustomSlider from "../components/custom-slider";
 import {
   avgLifeExpTotal,
   lifeExpCountries,
   urbanAfricanCountriesNbr,
   avgGDP,
   avgBirths,
-  avgWater
+  avgWater,
+  urbSlider
 } from "../definitions";
 import "./section.css";
 import "./secondSection.css";
@@ -54,6 +56,9 @@ class SecondSection extends React.Component {
         avgBirths
       );
       const avgWaterModel = await this.props.app.createSessionObject(avgWater);
+      const urbSliderModel = await this.props.app.createSessionObject(
+        urbSlider
+      );
 
       const urbanKpiLayout = await urbanKpiModel.getLayout();
       const avgLifeExpTotalLayout = await avgLifeExpTotalModel.getLayout();
@@ -61,6 +66,7 @@ class SecondSection extends React.Component {
       const lifeExpLayout = await lifeExpCountriesModel.getLayout();
       const avgBirthsLayout = await avgBirthsModel.getLayout();
       const avgWaterLayout = await avgWaterModel.getLayout();
+      const urbSliderLayout = await urbSliderModel.getLayout();
 
       const urbanKpiNbr = this.getText(urbanKpiLayout);
       const avgGDPNbr = this.getNbr(avgGDPLayout);
@@ -79,6 +85,8 @@ class SecondSection extends React.Component {
         avgGDPModel,
         avgBirthsModel,
         avgWaterModel,
+        urbSliderModel,
+        urbSliderLayout,
         urbanKpiNbr,
         avgLifeExpTotalNbr,
         avgGDPNbr,
@@ -101,7 +109,7 @@ class SecondSection extends React.Component {
       avgBirthsModel.on("changed", () => this.updateAvgBirths());
       avgWaterModel.on("changed", () => this.updateAvgWater());
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   }
 
@@ -139,6 +147,11 @@ class SecondSection extends React.Component {
     this.setState({ avgWaterNbr });
   }
 
+  async updateUrbSlider() {
+    const urbSliderLayout = await this.state.urbSliderModel.getLayout();
+    this.setState({ urbSliderLayout });
+  }
+
   render() {
     if (!this.state.loaded) {
       return null;
@@ -165,7 +178,6 @@ class SecondSection extends React.Component {
         id: 3
       }
     ];
-
     return (
       <div className="cloudAndKpiContainer sectionTwo">
         <div className="cloudContainer">
@@ -174,18 +186,33 @@ class SecondSection extends React.Component {
         </div>
         <div className="contentWrapper">
           <div className="kpiAndSliderContainer">
-            <KPI
-              nbr={this.state.urbanKpiNbr}
-              text={`
-                Urbanization in ${
+            <div className={this.props.selectedCountry ? "disabled" : ""}>
+              <div className="sliderHeader">
+                Countries with urbanization (%)
+              </div>
+              <CustomSlider
+                model={this.state.urbSliderModel}
+                layout={this.state.urbSliderLayout}
+              />
+            </div>
+            <div className="kpi2Container">
+              <KPI
+                className="kpi2"
+                nbr={this.state.urbanKpiNbr}
+                text={
                   this.props.selectedCountry
-                    ? this.props.selectedCountry
-                    : "Africa"
-                } ${this.props.selectedYear}`}
-              bgColor="#3E8DBA"
-              fillColor="#AEDBF4"
-              animate
-            />
+                    ? `Average urbanization in ${this.props.selectedCountry} ${
+                        this.props.selectedYear
+                      }`
+                    : `Average urbanization for countries in selected urbanization range ${
+                        this.props.selectedYear
+                      }`
+                }
+                bgColor="#3E8DBA"
+                fillColor="#AEDBF4"
+                animate
+              />
+            </div>
           </div>
           <div className="lifeExpectancyContainer">
             <div className="itemHeader">Life Quality Indicators</div>

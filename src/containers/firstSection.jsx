@@ -223,6 +223,7 @@ class FirstSection extends React.Component {
           <div className="kpiAndButtonContainer">
             <div className="kpiContainer">
               <KPI
+                className="kpi"
                 nbr={this.state.africanUrbanization}
                 text={`
                 Urban population, Africa ${this.props.selectedYear}`}
@@ -231,6 +232,7 @@ class FirstSection extends React.Component {
                 animate
               />
               <KPI
+                className="kpi"
                 nbr={this.state.worldUrbanization}
                 text={`Urban population, world ${this.props.selectedYear}`}
                 bgColor="#F68F00"

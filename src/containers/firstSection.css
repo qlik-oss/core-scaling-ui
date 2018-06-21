@@ -142,6 +142,24 @@
   margin-bottom: 20px;
 }
 
+.kpi {
+  font-size: 2rem;
+  text-align: left;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 6%;
+  color: #656565;
+}
+
+.kpi svg {
+  max-height: 220px;
+  font-weight: 700;
+}
+
+.kpi text {
+  font-size: 3em;
+}
+
 @media only screen and (max-width: 1500px) {
   .nextSectionButton {
     margin: 0;

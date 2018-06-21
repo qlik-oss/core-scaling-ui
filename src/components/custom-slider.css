@@ -1,0 +1,27 @@
+.rangeslider {
+  background: white;
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: white;
+}
+
+.rangeslider-horizontal .rangeslider__handle {
+  width: 10px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.rangeslider-horizontal .rangeslider__handle:after {
+  content: unset;
+}
+.rangeslider__labels {
+  color: white;
+}
+.rangeslider__labels .rangeslider__label-item {
+  transform: translate3d(-50%, 0, 0) rotate(-70deg);
+}
+
+.rangeslider-horizontal .rangeslider__handle-tooltip {
+  display: none;
+}

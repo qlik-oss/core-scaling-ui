@@ -8,7 +8,7 @@ import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
 import Timeline from "../components/timeline";
 import Filterbox from "../components/filterbox";
-import { africanCountries, years } from "../definitions";
+import { years, countries } from "../definitions";
 import "./app.css";
 
 const year = "2016";
@@ -56,16 +56,16 @@ class App extends Component {
       )[0].qElemNumber;
       lastItem = yearItem;
       yearModel.selectListObjectValues("/qListObjectDef", [yearItem], false);
-      const africanCountriesModel = await app.createSessionObject(
-        africanCountries
-      );
-      const africanCountriesLayout = await africanCountriesModel.getLayout();
+
+      const countriesModel = await app.createSessionObject(countries);
+      const countriesLayout = await countriesModel.getLayout();
+
       this.setState({
         app,
         yearModel,
         yearLayout,
-        africanCountriesModel,
-        africanCountriesLayout,
+        countriesModel,
+        countriesLayout,
         selectedIndex: yearItem
       });
     } catch (error) {
@@ -172,7 +172,6 @@ class App extends Component {
     );
     const selectedYear = this.state.yearLayout.qListObject.qDataPages[0]
       .qMatrix[this.state.selectedIndex][0].qText;
-
     return (
       <div className="page">
         {/* <div className="underConstructionBanner">
@@ -192,8 +191,8 @@ class App extends Component {
           <div className="innerContainer">
             <div className="textContainer">
               <Filterbox
-                layout={this.state.africanCountriesLayout}
-                model={this.state.africanCountriesModel}
+                layout={this.state.countriesLayout}
+                model={this.state.countriesModel}
                 selectedValueCallback={country => this.selectedCountry(country)}
               />
             </div>
