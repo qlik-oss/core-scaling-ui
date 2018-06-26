@@ -25,3 +25,9 @@
 .rangeslider-horizontal .rangeslider__handle-tooltip {
   display: none;
 }
+
+@media only screen and (max-width: 600px) {
+  .rangeslider__labels .rangeslider__label-item {
+    font-size: x-small;
+  }
+}

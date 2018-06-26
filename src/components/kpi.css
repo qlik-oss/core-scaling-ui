@@ -1,7 +1,8 @@
 .kpiText {
   font-size: 50%;
   font-weight: 600;
-  margin-bottom: 10%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 @media only screen and (max-width: 600px) {

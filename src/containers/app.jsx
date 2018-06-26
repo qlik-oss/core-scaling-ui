@@ -8,8 +8,11 @@ import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
 import Timeline from "../components/timeline";
 import Filterbox from "../components/filterbox";
+import Banner from "../components/banner";
+import Clouds from "../components/clouds";
 import { years, countries } from "../definitions";
 import "./app.css";
+import "./section.css";
 
 const year = "2016";
 const startPlayYear = "1990";
@@ -22,7 +25,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subHeader: subHeaders[0],
+      currentView: 0,
+      bannerTextsView0: [],
+      bannerTextsView1: [],
       app: null,
       error: null
     };
@@ -31,8 +36,7 @@ class App extends Component {
   }
 
   onViewChange = view => {
-    if (view[0] === 0) this.setState({ subHeader: subHeaders[0] });
-    else if (view[0] === 1) this.setState({ subHeader: subHeaders[1] });
+    this.setState({ currentView: view[0] });
   };
 
   async getApp() {
@@ -73,8 +77,12 @@ class App extends Component {
     }
   }
 
-  selectedCountry = country => {
-    this.setState({ selectedCountry: country });
+  setBannerTexts = (view, texts) => {
+    if (view === 0) {
+      this.setState({ bannerTextsView0: texts });
+    } else {
+      this.setState({ bannerTextsView1: texts });
+    }
   };
 
   scrollTo = item => {
@@ -87,6 +95,10 @@ class App extends Component {
         this.firstSection.current.togglePlay();
       }
     }
+  };
+
+  selectedCountry = country => {
+    this.setState({ selectedCountry: country });
   };
 
   handleTimelineClick = item => {
@@ -172,6 +184,8 @@ class App extends Component {
     );
     const selectedYear = this.state.yearLayout.qListObject.qDataPages[0]
       .qMatrix[this.state.selectedIndex][0].qText;
+    const subHeader =
+      this.state.currentView === 0 ? subHeaders[0] : subHeaders[1];
     return (
       <div className="page">
         {/* <div className="underConstructionBanner">
@@ -181,12 +195,12 @@ class App extends Component {
           onClick={e => {
             this.scrollTo(e);
           }}
-          activePage={this.state.subHeader}
+          activePage={subHeader}
         />
         <div className="content">
           <div className="headerContainer">
             <div className="mainHeader">AFRICAN</div>
-            <div className="subHeader">{this.state.subHeader}</div>
+            <div className="subHeader">{subHeader}</div>
           </div>
           <div className="innerContainer">
             <div className="textContainer">
@@ -196,48 +210,65 @@ class App extends Component {
                 selectedValueCallback={country => this.selectedCountry(country)}
               />
             </div>
-            <ViewPager tag="main">
-              <Frame className="frame">
-                <Track
-                  ref={c => {
-                    this.track = c;
-                  }}
-                  viewsToShow={1}
-                  infinite
-                  swipe={false}
-                  swipeThreshold={1}
-                  contain
-                  className="track"
-                  onViewChange={view => {
-                    this.onViewChange(view);
-                  }}
-                >
-                  <View className="view">
-                    <ContainerDimensions>
-                      <FirstSection
-                        ref={this.firstSection}
+            <div className="contentContainer">
+              <Banner
+                text={
+                  this.state.currentView === 0
+                    ? this.state.bannerTextsView0
+                    : this.state.bannerTextsView1
+                }
+                color={this.state.currentView === 0 ? "#75ADC8" : "#FFA515"}
+              />
+              <Clouds />
+              <ViewPager tag="main">
+                <Frame className="frame">
+                  <Track
+                    ref={c => {
+                      this.track = c;
+                    }}
+                    viewsToShow={1}
+                    infinite
+                    swipe={false}
+                    swipeThreshold={1}
+                    contain
+                    className="track"
+                    onViewChange={view => {
+                      this.onViewChange(view);
+                    }}
+                  >
+                    <View className="view">
+                      <ContainerDimensions>
+                        <FirstSection
+                          ref={this.firstSection}
+                          app={this.state.app}
+                          selectedYear={selectedYear}
+                          playing={this.state.isPlaying}
+                          playTimelineFunc={play => {
+                            this.playTimeline(play);
+                          }}
+                          nextSectionFunc={() => {
+                            this.scrollTo("lifeexpectancy");
+                          }}
+                          setBannerTextsFunc={texts => {
+                            this.setBannerTexts(0, texts);
+                          }}
+                        />
+                      </ContainerDimensions>
+                    </View>
+                    <View className="view">
+                      <SecondSection
                         app={this.state.app}
                         selectedYear={selectedYear}
-                        playing={this.state.isPlaying}
-                        playTimelineFunc={play => {
-                          this.playTimeline(play);
-                        }}
-                        nextSectionFunc={() => {
-                          this.scrollTo("lifeexpectancy");
+                        selectedCountry={this.state.selectedCountry}
+                        setBannerTextsFunc={texts => {
+                          this.setBannerTexts(1, texts);
                         }}
                       />
-                    </ContainerDimensions>
-                  </View>
-                  <View className="view">
-                    <SecondSection
-                      app={this.state.app}
-                      selectedYear={selectedYear}
-                      selectedCountry={this.state.selectedCountry}
-                    />
-                  </View>
-                </Track>
-              </Frame>
-            </ViewPager>
+                    </View>
+                  </Track>
+                </Frame>
+              </ViewPager>
+            </div>
           </div>
           <div className="timelineContainer">
             <ContainerDimensions>

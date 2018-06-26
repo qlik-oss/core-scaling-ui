@@ -76,6 +76,9 @@
   .playpause {
     margin-left: 34%;
   }
+  .playpauseButtonText {
+    font-size: small;
+  }
 }
 
 @media only screen and (max-width: 800px) {

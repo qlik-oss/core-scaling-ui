@@ -1,45 +1,9 @@
-.cloudContainer {
-  display: flex;
-  width: 100%;
-  height: 40%;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.section1Container {
-  height: 55%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  margin-left: 110px;
-  margin-right: 110px;
-}
-
-@media only screen and (max-width: 1100px) {
-  .cloudContainer {
-    height: 20%;
-  }
-  .section1Container {
-    height: 77%;
-    margin-left: 75px;
-    margin-right: 10px;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .section1Container {
-    margin-left: 10px;
-    flex-wrap: wrap-reverse;
-    align-items: flex-start;
-  }
-}
-
 .infoContainer {
   display: flex;
   flex-direction: column;
   width: 20%;
+  align-self: flex-end;
+  margin-left: 5%;
 }
 
 .didyouknow {
@@ -75,7 +39,8 @@
   display: flex;
   justify-content: flex-end;
   width: 50%;
-  height: 54%;
+  height: 40%;
+  align-self: flex-end;
 }
 
 .scatterplotInner {
@@ -106,11 +71,10 @@
 
 .legendText {
   color: white;
-  font-size: small;
-  height: 10%;
+  height: 20px;
   align-self: flex-end;
   position: absolute;
-  bottom: -50px;
+  padding-right: 10px;
 }
 
 .kpiAndButtonContainer {
@@ -118,7 +82,9 @@
   flex-direction: column;
   width: 30%;
   border-left: 4px solid rgba(255, 255, 255, 0.5);
-  padding-left: 15px;
+  margin-right: 5%;
+  align-self: flex-end;
+  padding-left: 1vw;
 }
 
 .nextSectionButton {
@@ -160,9 +126,9 @@
   font-size: 3em;
 }
 
-@media only screen and (max-width: 1500px) {
-  .nextSectionButton {
-    margin: 0;
+@media only screen and (max-width: 1600px) {
+  .legendText {
+    font-size: small;
   }
 }
 
@@ -176,43 +142,39 @@
   .kpiAndButtonContainer {
     flex-direction: row;
     width: 30%;
-    height: 100%;
+    height: 55%;
   }
   .nextSectionButton {
-    margin-left: 3%;
+    font-size: small;
   }
+
   .infoContainer {
     width: 27%;
   }
 
   .legendText {
-    bottom: -30px;
+    font-size: x-small;
+    bottom: 19px;
   }
 }
 
-@media only screen and (max-width: 1100px) and (max-height: 1400px) and (min-height: 1000px) {
+@media only screen and (max-height: 800px) and (max-width: 1100px) and (min-width: 800px) {
   .kpiAndButtonContainer {
-    height: 50%;
-  }
-  .section1Container {
-    margin-left: 15px;
-  }
-  .legendText {
-    bottom: -80px;
+    height: unset;
   }
 }
 
 @media only screen and (max-width: 800px) {
   .scatterplotOuter {
     position: relative;
-    left: -49px;
-    /* width: 79%; */
-    width: 85%;
+    height: 51%;
+    left: -55px;
   }
   .infoContainer {
     width: 14%;
     justify-content: flex-end;
     height: 51%;
+    margin-left: unset;
   }
   .infotext,
   .playpauseContainer {
@@ -228,9 +190,9 @@
   .kpiAndButtonContainer {
     flex-direction: row;
     height: 34%;
+    width: 100%;
     border: unset;
     padding: unset;
-    /* align-self: center; */
   }
   .nextSectionButton {
     margin-left: 20px;
@@ -242,7 +204,7 @@
     flex-direction: row;
   }
   .legendText {
-    bottom: -30px;
+    bottom: -15px;
   }
 }
 
@@ -252,36 +214,8 @@
   }
 }
 
-@media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 800px) {
+@media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 900px) {
   .kpiAndButtonContainer {
     width: 80%;
-  }
-}
-
-@media only screen and (max-height: 900px) and (min-width: 700px) {
-  .cloudContainer {
-    height: 25%;
-  }
-  .section1Container {
-    height: 65%;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .legendText {
-    bottom: -28px;
-  }
-}
-
-@media only screen and (max-height: 650px) {
-  .cloudContainer {
-    display: none;
-  }
-
-  .section1Container {
-    height: 95%;
-  }
-
-  .legendText {
-    bottom: 0;
   }
 }
