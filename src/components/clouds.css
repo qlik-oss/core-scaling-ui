@@ -51,7 +51,7 @@
   }
 }
 
-@media only screen and (max-height: 700px) {
+@media only screen and (max-height: 900px) {
   .cloudsContainer {
     opacity: 0.3;
   }

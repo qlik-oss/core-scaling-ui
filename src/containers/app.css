@@ -91,7 +91,7 @@ body {
   padding-bottom: 20px;
 }
 
-.underConstructionBanner {
+/* .underConstructionBanner {
   position: absolute;
   right: -61px;
   top: 64px;
@@ -103,7 +103,7 @@ body {
   transform: rotate(41deg);
   text-align: center;
   font-size: 17px;
-}
+} */
 
 .tooltip {
   position: absolute;
@@ -114,12 +114,12 @@ body {
   color: white;
 }
 
-.underConstructionInner {
+/* .underConstructionInner {
   border: 1px dashed #fff;
   margin: 2px;
   height: 38px;
   line-height: 38px;
-}
+} */
 
 /* Style the scrollbar */
 ::-webkit-scrollbar {
