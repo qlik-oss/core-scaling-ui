@@ -30,7 +30,7 @@ export default function Header(props) {
       <button
         title="Life Expectancy"
         className={`headerButton ${
-          props.activePage === "Life Expectancy" ? "active" : ""
+          props.activePage === "Life Quality" ? "active" : ""
         }`}
         onClick={() => {
           props.onClick("lifeexpectancy");

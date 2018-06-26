@@ -97,8 +97,6 @@
   background: #75adc8;
   box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-  margin-right: 60px;
-  margin-left: 60px;
   padding: 15px;
 }
 
@@ -146,6 +144,7 @@
   }
   .nextSectionButton {
     font-size: small;
+    margin-left: 20px;
   }
 
   .infoContainer {
@@ -193,9 +192,6 @@
     width: 100%;
     border: unset;
     padding: unset;
-  }
-  .nextSectionButton {
-    margin-left: 20px;
   }
   .xLabel {
     margin-bottom: 10px;
