@@ -18,8 +18,8 @@
   align-self: flex-end;
   width: 33%;
   border-left: 4px solid rgba(255, 255, 255, 0.5);
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 2vw;
+  padding-right: 2vw;
   border-right: 4px solid rgba(255, 255, 255, 0.5);
   color: white;
 }
@@ -60,7 +60,7 @@
 .comparisonContainer {
   width: 33%;
   color: white;
-  padding-left: 5%;
+  padding-left: 2vw;
   align-self: flex-end;
   flex-direction: column;
 }
