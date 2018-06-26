@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 20%;
   align-self: flex-end;
-  margin-left: 5%;
+  margin-left: 1vw;
 }
 
 .didyouknow {
@@ -82,7 +82,7 @@
   flex-direction: column;
   width: 30%;
   border-left: 4px solid rgba(255, 255, 255, 0.5);
-  margin-right: 5%;
+  margin-right: 1vw;
   align-self: flex-end;
   padding-left: 1vw;
 }
