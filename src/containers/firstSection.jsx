@@ -8,8 +8,6 @@ import {
   totalUrbanWorldNbr,
   scatterplot
 } from "../definitions";
-import Clouds from "../components/clouds";
-import Banner from "../components/banner";
 import PlayPause from "../components/playPause";
 import "./firstSection.css";
 import "./section.css";
@@ -119,8 +117,6 @@ class FirstSection extends React.Component {
           country: minUrbItem[0].qText,
           nbr: minUrbItem[1].qText
         },
-        urbanLandAreaNbr,
-        urbanLandAreaAfricaNbr,
         scatterplotLayout,
         africanUrbanization,
         worldUrbanization,
@@ -137,6 +133,24 @@ class FirstSection extends React.Component {
         this.updateTotalUrbanAfrica()
       );
       totalUrbanWorldNbrModel.on("changed", () => this.updateTotalUrbanWorld());
+
+      const bannerTexts = [
+        {
+          text:
+            "In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.",
+          id: 1
+        },
+        {
+          text: `${urbanLandAreaNbr} of the world's land surface is covered with urban areas. The same number for Africa is ${urbanLandAreaAfricaNbr}.`,
+          id: 2
+        },
+        {
+          text:
+            "Nigeria has the 9th largest urban population in the world, passing 90 million in 2016",
+          id: 3
+        }
+      ];
+      this.props.setBannerTextsFunc(bannerTexts);
     } catch (error) {
       // console.log(error);
     }
@@ -152,101 +166,76 @@ class FirstSection extends React.Component {
       return null;
     }
 
-    const bannerText = [
-      {
-        text:
-          "In Sub-Saharan Africa 72% of urban dwellers live in slums, the highest proportion in the world.",
-        id: 1
-      },
-      {
-        text: `${
-          this.state.urbanLandAreaNbr
-        } of the world's land surface is covered with urban areas. The same number for Africa is ${
-          this.state.urbanLandAreaAfricaNbr
-        }.`,
-        id: 2
-      },
-      {
-        text:
-          "Nigeria has the 9th largest urban population in the world, passing 90 million in 2016",
-        id: 3
-      }
-    ];
-
     const nextButtonText =
       this.props.width > 816
         ? "Interesting data! But how does urbanization affect life quality? Click here to see more details!"
         : "More details";
     return (
-      <div className="cloudAndKpiContainer">
-        <div className="cloudContainer">
-          <Banner text={bannerText} color="#75ADC8" />
-          <Clouds />
-        </div>
-        <div className="section1Container">
-          <div className="infoContainer">
-            <div className="didyouknow" />
-            <div className="infotext">
-              <div>
-                <b>{this.state.mostUrbanized.country}</b> was the most urbanized
-                African country {this.props.selectedYear} with{" "}
-                <b>{this.state.mostUrbanized.nbr}</b> urbanization.
-                <br />
-                <br />
-                <b>{this.state.leastUrbanized.country}</b> was the least
-                urbanized African country {this.props.selectedYear} with only{" "}
-                <b>{this.state.leastUrbanized.nbr}</b>{" "}
-              </div>
+      <div className="viewContainer first">
+        <div className="infoContainer">
+          <div className="didyouknow" />
+          <div className="infotext">
+            <div>
+              <b>{this.state.mostUrbanized.country}</b> was the most urbanized
+              African country {this.props.selectedYear} with{" "}
+              <b>{this.state.mostUrbanized.nbr}</b> urbanization.
+              <br />
+              <br />
+              <b>{this.state.leastUrbanized.country}</b> was the least urbanized
+              African country {this.props.selectedYear} with only{" "}
+              <b>{this.state.leastUrbanized.nbr}</b>{" "}
             </div>
-            <PlayPause
-              toggle={this.state.isPlaying}
-              onClick={() => {
-                this.togglePlay();
-              }}
-              text={this.props.width > 800 ? "Play the urbanization story" : ""}
+          </div>
+          <PlayPause
+            toggle={this.state.isPlaying}
+            onClick={() => {
+              this.togglePlay();
+            }}
+            text={this.props.width > 800 ? "Play the urbanization story" : ""}
+          />
+        </div>
+        <div className="scatterplotOuter">
+          <div className="yLabel">
+            <b>Health</b>
+          </div>
+          <div className="scatterplotInner">
+            <Scatterplot layout={this.state.scatterplotLayout} />
+            <div className="xLabel">
+              <b>Income</b>
+            </div>
+          </div>
+          <div className="legendText">
+            Bubble size indicates urban population %
+          </div>
+        </div>
+        <div className="kpiAndButtonContainer">
+          <div className="kpiContainer">
+            <KPI
+              className="kpi"
+              nbr={this.state.africanUrbanization}
+              text={`
+                Urban population, Africa ${this.props.selectedYear}`}
+              bgColor="#3E8DBA"
+              fillColor="#AEDBF4"
+              animate
+            />
+            <KPI
+              className="kpi"
+              nbr={this.state.worldUrbanization}
+              text={`Urban population, world ${this.props.selectedYear}`}
+              bgColor="#F68F00"
+              fillColor="#FFAF41"
+              animate
             />
           </div>
-          <div className="scatterplotOuter">
-            <div className="yLabel">
-              <b>Health</b>
-            </div>
-            <div className="scatterplotInner">
-              <Scatterplot layout={this.state.scatterplotLayout} />
-              <div className="xLabel">
-                <b>Income</b>
-              </div>
-            </div>
-            <div className="legendText">
-              Bubble size indicates urban population %
-            </div>
-          </div>
-          <div className="kpiAndButtonContainer">
-            <div className="kpiContainer">
-              <KPI
-                nbr={this.state.africanUrbanization}
-                text={`
-                Urban population, Africa ${this.props.selectedYear}`}
-                bgColor="#3E8DBA"
-                fillColor="#AEDBF4"
-                animate
-              />
-              <KPI
-                nbr={this.state.worldUrbanization}
-                text={`Urban population, world ${this.props.selectedYear}`}
-                bgColor="#F68F00"
-                fillColor="#FFAF41"
-                animate
-              />
-            </div>
-            <button
-              className="nextSectionButton"
-              onClick={() => {
-                this.props.nextSectionFunc();
-              }}
-            >
-              {nextButtonText}
-            </button>
-          </div>
+          <button
+            className="nextSectionButton"
+            onClick={() => {
+              this.props.nextSectionFunc();
+            }}
+          >
+            {nextButtonText}
+          </button>
         </div>
       </div>
     );
@@ -258,7 +247,8 @@ FirstSection.propTypes = {
   selectedYear: PropTypes.string.isRequired,
   playTimelineFunc: PropTypes.func.isRequired,
   nextSectionFunc: PropTypes.func.isRequired,
-  width: PropTypes.number
+  width: PropTypes.number,
+  setBannerTextsFunc: PropTypes.func.isRequired
 };
 
 FirstSection.defaultProps = {

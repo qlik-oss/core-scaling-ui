@@ -7,67 +7,67 @@
                 <rect id="Main-building" fill="#6F6F6F" x="0" y="51" width="82" height="147"></rect>
                 <rect id="Penthouse-floor" fill="#6F6F6F" x="9" y="28" width="63" height="25"></rect>
                 <rect id="Top-level" fill="#6F6F6F" x="20" y="24" width="42" height="4"></rect>
-                <g id="Group-3" transform="translate(33.000000, 64.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(33.000000, 64.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(57.000000, 64.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(57.000000, 64.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(8.000000, 64.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(8.000000, 64.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(33.000000, 84.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(33.000000, 84.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(57.000000, 84.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(57.000000, 84.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(8.000000, 84.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(8.000000, 84.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(33.000000, 103.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(33.000000, 103.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(57.000000, 103.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(57.000000, 103.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(8.000000, 103.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(8.000000, 103.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(33.000000, 123.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(33.000000, 123.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(57.000000, 123.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(57.000000, 123.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(8.000000, 123.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(8.000000, 123.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(33.000000, 143.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(33.000000, 143.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(57.000000, 143.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(57.000000, 143.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Group-3" transform="translate(8.000000, 143.000000)" fill="#D8D8D8">
+                <g id="Group-3" transform="translate(8.000000, 143.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="first-floor-windows" transform="translate(8.000000, 163.000000)" fill="#D8D8D8">
+                <g id="first-floor-windows" transform="translate(8.000000, 163.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="25" y="0" width="18" height="13"></rect>
                     <rect id="Rectangle-11" x="49" y="0" width="18" height="13"></rect>
                     <rect id="Rectangle-11" x="0" y="0" width="18" height="13"></rect>
                 </g>
-                <g id="Floor-lvl-window" transform="translate(8.000000, 183.000000)" fill="#D8D8D8">
+                <g id="Floor-lvl-window" transform="translate(8.000000, 183.000000)" fill="#FFFFFF">
                     <rect id="Rectangle-11" x="0" y="0" width="42" height="13"></rect>
                 </g>
                 <g id="Penthouse-windows" transform="translate(13.000000, 34.000000)">
-                    <rect id="Rectangle-12" fill="#D8D8D8" x="0" y="0" width="10.8035714" height="11"></rect>
-                    <rect id="Rectangle-12" fill="#D8D8D8" x="14.7321429" y="0" width="10.8035714" height="11"></rect>
-                    <rect id="Rectangle-12" fill="#D8D8D8" x="29.4642857" y="0" width="10.8035714" height="11"></rect>
-                    <rect id="Rectangle-12" fill="#D8D8D8" x="44.1964286" y="0" width="10.8035714" height="11"></rect>
+                    <rect id="Rectangle-12" fill="#FFFFFF" x="0" y="0" width="10.8035714" height="11"></rect>
+                    <rect id="Rectangle-12" fill="#FFFFFF" x="14.7321429" y="0" width="10.8035714" height="11"></rect>
+                    <rect id="Rectangle-12" fill="#FFFFFF" x="29.4642857" y="0" width="10.8035714" height="11"></rect>
+                    <rect id="Rectangle-12" fill="#FFFFFF" x="44.1964286" y="0" width="10.8035714" height="11"></rect>
                 </g>
                 <polygon id="Antenna" fill="#6F6F6F" points="40.7972656 0 41.2982422 0 42 25 40 25"></polygon>
-                <rect id="Rectangle-14" fill="#D8D8D8" x="58" y="183" width="9" height="15"></rect>
+                <rect id="Rectangle-14" fill="#FFFFFF" x="58" y="183" width="9" height="15"></rect>
             </g>
         </g>
     </g>

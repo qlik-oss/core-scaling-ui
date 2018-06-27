@@ -3,7 +3,7 @@ import "./clouds.css";
 
 export default function Clouds() {
   return (
-    <div>
+    <div className="cloudsContainer">
       <svg
         className="bigCloud"
         width="639px"

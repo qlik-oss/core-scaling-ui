@@ -7,30 +7,36 @@ class Filterbox extends React.Component {
     super(props);
 
     this.state = {
+      layout: props.layout,
       selected: []
     };
+
+    props.model.on("changed", () => this.updateLayout());
   }
 
-  selectCountry = index => {
-    this.props.model.clearSelections("/qHyperCubeDef");
-    this.state.selected.push(index);
-    this.props.model.selectHyperCubeCells(
-      "/qHyperCubeDef",
-      this.state.selected,
-      [0],
+  async updateLayout() {
+    const layout = await this.props.model.getLayout();
+    this.setState({ layout });
+  }
+
+  selectCountry = (country, i) => {
+    this.state.selected.push(i);
+    this.props.model.selectListObjectValues(
+      "/qListObjectDef",
+      [country.qElemNumber],
       true
     );
     if (this.props.selectedValueCallback) {
       const value =
         this.state.selected.length > 1
           ? "selected countries"
-          : this.props.layout.qHyperCube.qDataPages[0].qMatrix[index][0].qText;
+          : this.state.layout.qListObject.qDataPages[0].qMatrix[i][0].qText;
       this.props.selectedValueCallback(value);
     }
   };
 
   clearSelections = () => {
-    this.props.model.clearSelections("/qHyperCubeDef");
+    this.props.model.clearSelections("/qListObjectDef");
     this.setState({ selected: [] });
     if (this.props.selectedValueCallback) {
       this.props.selectedValueCallback("");
@@ -38,20 +44,47 @@ class Filterbox extends React.Component {
   };
 
   render() {
-    const countries = this.props.layout.qHyperCube.qDataPages[0].qMatrix.map(
-      (country, i) => (
-        <div
-          onClick={() => this.selectCountry(i)}
-          key={country[0].qElemNumber}
-          title={country[0].qText}
-          role="presentation"
-        >
-          <span className="listText">{country[0].qText}</span>
-          <span className="listIcon">
-            {this.state.selected.includes(i) ? "✔" : null}
-          </span>
-        </div>
-      )
+    const sStyle = {
+      color: "#ffffff"
+    };
+
+    const xStyle = {
+      color: "#C8C8C8"
+    };
+
+    function getStyle(item) {
+      let style = {};
+      let selected = false;
+      if (item.qState === "S") {
+        style = sStyle;
+        selected = true;
+      } else if (item.qState === "X") {
+        style = xStyle;
+      }
+
+      return { style, selected };
+    }
+
+    const countries = this.state.layout.qListObject.qDataPages[0].qMatrix.map(
+      (country, i) => {
+        const listItemStyles = getStyle(country[0]);
+        return (
+          <div
+            onClick={() => {
+              this.selectCountry(country[0], i);
+            }}
+            key={country[0].qElemNumber}
+            title={country[0].qText}
+            style={listItemStyles.style}
+            role="presentation"
+          >
+            <span className="listText">{country[0].qText}</span>
+            <span className="listIcon">
+              {listItemStyles.selected ? "✔" : null}
+            </span>
+          </div>
+        );
+      }
     );
 
     return (

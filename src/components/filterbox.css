@@ -7,7 +7,7 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: large;
   padding-bottom: 5px;
 }
 
@@ -17,7 +17,6 @@
   flex: 1 1 auto;
   margin-bottom: 8px;
   padding: 5px 0;
-  font-size: 17px;
   overflow-y: auto;
 }
 
@@ -60,8 +59,14 @@
   background: rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   padding: 8px 10px;
-  font-size: 18px;
+  font-size: large;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1300px) {
+  .list div {
+    padding: 1px 5px;
+  }
 }
 
 @media only screen and (max-width: 600px) {

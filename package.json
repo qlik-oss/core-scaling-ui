@@ -31,7 +31,8 @@
     "react-view-pager": "0.6.0",
     "react-tap-event-plugin": "3.0.2",
     "picasso.js": "0.8.0",
-    "picasso-plugin-q": "0.7.0"
+    "picasso-plugin-q": "0.7.0",
+    "react-rangeslider": "2.2.0"
   },
   "devDependencies": {
     "html-webpack-plugin": "3.0.7",
