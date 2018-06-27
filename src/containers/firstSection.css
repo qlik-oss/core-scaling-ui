@@ -15,14 +15,6 @@
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 800px) {
-  .didyouknow {
-    width: 80%;
-    background-size: contain;
-    margin-bottom: 0;
-  }
-}
-
 .infotext {
   display: flex;
   flex-direction: column;
@@ -213,5 +205,16 @@
 @media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 900px) {
   .kpiAndButtonContainer {
     width: 80%;
+  }
+}
+
+@media only screen and (max-height: 800px) {
+  .xLabel {
+    height: 10%;
+  }
+}
+@media only screen and (max-height: 550px) {
+  .didyouknow {
+    display: none;
   }
 }

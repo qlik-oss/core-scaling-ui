@@ -8,7 +8,7 @@
 }
 
 .sliderContainer {
-  height: 10vh;
+  height: 11vh;
   width: 85%;
 }
 
@@ -137,12 +137,6 @@
   }
 }
 
-@media only screen and (max-height: 900px) {
-  .sliderContainer {
-    height: 20vh;
-  }
-}
-
 @media only screen and (max-width: 900px) {
   .itemHeader {
     font-size: larger;
@@ -183,19 +177,21 @@
   }
 }
 
-@media only screen and (max-height: 600px) {
-  .kpiAndSliderContainer {
-    height: 40%;
+@media only screen and (max-height: 900px) {
+  .sliderContainer {
+    height: 20vh;
   }
+}
+
+@media only screen and (max-height: 600px) {
   .kpi2Container {
     height: unset;
   }
   .kpi2 {
-    width: 43%;
-    font-size: 1.7em;
+    width: 53%;
   }
   .lifeExpectancyContainer,
   .comparisonContainer {
-    font-size: x-small;
+    font-size: small;
   }
 }

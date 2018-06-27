@@ -20,12 +20,6 @@
   overflow-y: auto;
 }
 
-@media only screen and (max-width: 600px) {
-  .list {
-    font-size: small;
-  }
-}
-
 .list div {
   display: flex;
   justify-content: space-between;
@@ -63,6 +57,14 @@
   cursor: pointer;
 }
 
+.clearSelection:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.clearSelection:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 @media only screen and (max-width: 1300px) {
   .list div {
     padding: 1px 5px;
@@ -70,15 +72,11 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .list {
+    font-size: small;
+  }
+
   .clearSelection {
     font-size: small;
   }
-}
-
-.clearSelection:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.clearSelection:active {
-  background: rgba(255, 255, 255, 0.2);
 }
