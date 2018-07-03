@@ -30,7 +30,7 @@
     "react-svg-text": "0.1.2",
     "react-view-pager": "0.6.0",
     "react-tap-event-plugin": "3.0.3",
-    "picasso.js": "0.8.0",
+    "picasso.js": "0.10.3",
     "picasso-plugin-q": "0.10.3",
     "react-rangeslider": "2.2.0"
   },
