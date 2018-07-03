@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-self: flex-end;
-  width: 33%;
+  /* width: 33%; */
   border-left: 4px solid rgba(255, 255, 255, 0.5);
   padding-left: 2vw;
   padding-right: 2vw;
@@ -48,7 +48,7 @@
 }
 
 .itemIcon {
-  height: 30%;
+  height: 50%;
   margin-top: 3%;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .comparisonContainer {
-  width: 33%;
+  width: 20%;
   color: white;
   padding-left: 2vw;
   align-self: flex-end;

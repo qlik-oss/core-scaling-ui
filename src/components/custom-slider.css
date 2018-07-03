@@ -9,7 +9,7 @@
 .rangeslider-horizontal .rangeslider__handle {
   width: 10px;
   height: 30px;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .rangeslider-horizontal .rangeslider__handle:after {
@@ -24,6 +24,11 @@
 
 .rangeslider-horizontal .rangeslider__handle-tooltip {
   display: none;
+}
+
+.rangeslider .rangeslider__fill,
+.rangeslider .rangeslider__handle {
+  box-shadow: unset;
 }
 
 @media only screen and (max-width: 600px) {
