@@ -17,4 +17,4 @@ jobs:
             - ./node_modules
       - run:
           name: lint
-          command: npm run eslint
+          command: npm run lint

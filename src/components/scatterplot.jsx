@@ -31,15 +31,17 @@ export default class Scatterplot extends React.Component {
   }
 
   renderPicasso() {
+    const { layout } = this.props;
+    const { pic } = this.state;
     const element = this.container;
     const data = [
       {
         type: "q",
         key: "qHyperCube",
-        data: this.props.layout.qHyperCube
+        data: layout.qHyperCube
       }
     ];
-    if (!this.state.pic) {
+    if (!pic) {
       const settings = {
         collections: [
           {
@@ -142,14 +144,14 @@ export default class Scatterplot extends React.Component {
         ]
       };
 
-      const pic = picasso.chart({
+      const picassoPic = picasso.chart({
         element,
         data,
         settings
       });
-      pic.brush("tooltip").on("update", added => {
+      picassoPic.brush("tooltip").on("update", added => {
         if (added.length) {
-          const s = pic.getAffectedShapes("tooltip")[0];
+          const s = picassoPic.getAffectedShapes("tooltip")[0];
           const rect = s.element.getBoundingClientRect();
           const p = {
             x: s.bounds.x + s.bounds.width + rect.x + 5,
@@ -160,11 +162,12 @@ export default class Scatterplot extends React.Component {
           Scatterplot.hideTooltip();
         }
       });
-      this.setState({ pic });
+      this.setState({ pic: picassoPic });
     } else {
-      this.state.pic.update({ data });
+      pic.update({ data });
     }
   }
+
   render() {
     // we need to have the `this.container` reference available when rendering:
     setTimeout(() => this.renderPicasso());

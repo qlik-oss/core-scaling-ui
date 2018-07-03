@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import "./heart.css";
 
 export default function Heart(props) {
-  if (!props.show) {
+  const { show } = props;
+  if (!show) {
     return null;
   }
   return (
@@ -17,8 +18,12 @@ export default function Heart(props) {
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
-        <title>Heart-union Copy</title>
-        <desc>Created with Sketch.</desc>
+        <title>
+Heart-union Copy
+        </title>
+        <desc>
+Created with Sketch.
+        </desc>
         <defs>
           <path
             d="M131.500326,90.4961255 C151.198187,69.7728048 168.977476,61.682715 184.838191,66.2258562 C198.541446,70.1510145 208.163236,79.8520595 213.481758,90.4961255 C229.673473,122.90093 202.346329,159.402221 131.500326,200 C60.653789,159.402424 33.3264389,122.900858 49.5182757,90.495809 C54.8368383,79.8516628 64.458701,70.1505447 78.1620588,66.2253568 C94.0228937,61.6821814 111.802316,69.7723322 131.500326,90.495809 Z"
