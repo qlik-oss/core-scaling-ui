@@ -1,18 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TimelineBar from './timelineBar';
-import '../containers/firstSection.css';
+import React from "react";
+import PropTypes from "prop-types";
+import TimelineBar from "./timelineBar";
+import "../containers/firstSection.css";
 
 export default function Timeline(props) {
-  const visibleWidth = props.width;
-  const totalWidth = Math.max(props.items[props.items.length - 1].key * 60 + 100, visibleWidth);
+  const { width, items, startIndex } = props;
+  const visibleWidth = width;
+  const totalWidth = Math.max(
+    items[items.length - 1].key * 60 + 100,
+    visibleWidth
+  );
   return (
     <TimelineBar
-      items={props.items}
-      width={props.width}
+      items={items}
+      width={width}
       totalWidth={totalWidth}
       visibleWidth={visibleWidth}
-      startIndex={props.startIndex}
+      startIndex={startIndex}
     />
   );
 }
@@ -20,9 +24,9 @@ export default function Timeline(props) {
 Timeline.propTypes = {
   width: PropTypes.number,
   items: PropTypes.array.isRequired,
-  startIndex: PropTypes.number.isRequired,
+  startIndex: PropTypes.number.isRequired
 };
 
 Timeline.defaultProps = {
-  width: 0,
+  width: 0
 };

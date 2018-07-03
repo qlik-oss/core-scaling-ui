@@ -14,36 +14,41 @@ class Filterbox extends React.Component {
     props.model.on("changed", () => this.updateLayout());
   }
 
-  async updateLayout() {
-    const layout = await this.props.model.getLayout();
-    this.setState({ layout });
-  }
-
   selectCountry = (country, i) => {
-    this.state.selected.push(i);
-    this.props.model.selectListObjectValues(
+    const { selected, layout } = this.state;
+    const { model, selectedValueCallback } = this.props;
+    selected.push(i);
+    model.selectListObjectValues(
       "/qListObjectDef",
       [country.qElemNumber],
       true
     );
-    if (this.props.selectedValueCallback) {
+    if (selectedValueCallback) {
       const value =
-        this.state.selected.length > 1
+        selected.length > 1
           ? "selected countries"
-          : this.state.layout.qListObject.qDataPages[0].qMatrix[i][0].qText;
-      this.props.selectedValueCallback(value);
+          : layout.qListObject.qDataPages[0].qMatrix[i][0].qText;
+      selectedValueCallback(value);
     }
   };
 
   clearSelections = () => {
-    this.props.model.clearSelections("/qListObjectDef");
+    const { model, selectedValueCallback } = this.props;
+    model.clearSelections("/qListObjectDef");
     this.setState({ selected: [] });
-    if (this.props.selectedValueCallback) {
-      this.props.selectedValueCallback("");
+    if (selectedValueCallback) {
+      selectedValueCallback("");
     }
   };
 
+  async updateLayout() {
+    const { model } = this.props;
+    const layout = await model.getLayout();
+    this.setState({ layout });
+  }
+
   render() {
+    const { layout } = this.state;
     const sStyle = {
       color: "#ffffff"
     };
@@ -65,7 +70,7 @@ class Filterbox extends React.Component {
       return { style, selected };
     }
 
-    const countries = this.state.layout.qListObject.qDataPages[0].qMatrix.map(
+    const countries = layout.qListObject.qDataPages[0].qMatrix.map(
       (country, i) => {
         const listItemStyles = getStyle(country[0]);
         return (
@@ -78,7 +83,9 @@ class Filterbox extends React.Component {
             style={listItemStyles.style}
             role="presentation"
           >
-            <span className="listText">{country[0].qText}</span>
+            <span className="listText">
+              {country[0].qText}
+            </span>
             <span className="listIcon">
               {listItemStyles.selected ? "✔" : null}
             </span>
@@ -89,15 +96,23 @@ class Filterbox extends React.Component {
 
     return (
       <div className="filterbox">
-        <div className="title">Country</div>
-        <div className="list">{countries}</div>
+        <div className="title">
+Country
+        </div>
+        <div className="list">
+          {countries}
+        </div>
         <div
           className="clearSelection"
           role="presentation"
           onClick={() => this.clearSelections()}
         >
-          <span>Clear selections</span>
-          <span>✖</span>
+          <span>
+Clear selections
+          </span>
+          <span>
+✖
+          </span>
         </div>
       </div>
     );

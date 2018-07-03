@@ -5,20 +5,23 @@ import "./kpi.css";
 class KPI extends React.Component {
   constructor(...args) {
     super(...args);
-    this.state = { animatePath: this.getAnimatePath(0, this.props.nbr) };
+    const { nbr } = this.props;
+    this.state = { animatePath: this.getAnimatePath(0, nbr) };
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.nbr !== this.props.nbr) {
+    const { nbr } = this.props;
+    if (newProps.nbr !== nbr) {
       this.setState(
-        { animatePath: this.getAnimatePath(this.props.nbr, newProps.nbr) },
+        { animatePath: this.getAnimatePath(nbr, newProps.nbr) },
         () => this.startAnimation()
       );
     }
   }
 
   getAnimatePath(from, to) {
-    if (this.props.animate) {
+    const { animate } = this.props;
+    if (animate) {
       return `${parseFloat(from) / 100.0};${parseFloat(to) / 100.0}`;
     }
     return "1";
@@ -30,66 +33,54 @@ class KPI extends React.Component {
   }
 
   render() {
+    const { className, nbr, fillColor, bgColor, text } = this.props;
+    const { animatePath } = this.state;
     return (
-      <div className={this.props.className}>
+      <div className={className}>
         <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
           <g>
-            <linearGradient id={this.props.nbr} x1="0.5" y1="1" x2="0.5" y2="0">
-              <stop
-                offset="0%"
-                stopOpacity="1"
-                stopColor={this.props.fillColor}
-              />
-              <stop
-                offset={this.props.nbr}
-                stopOpacity="1"
-                stopColor={this.props.fillColor}
-              >
+            <linearGradient id={nbr} x1="0.5" y1="1" x2="0.5" y2="0">
+              <stop offset="0%" stopOpacity="1" stopColor={fillColor} />
+              <stop offset={nbr} stopOpacity="1" stopColor={fillColor}>
                 <animate
                   ref={svg1 => {
                     this.svg1 = svg1;
                   }}
                   attributeName="offset"
-                  values={this.state.animatePath}
+                  values={animatePath}
                   dur="0.5s"
                   begin="0s"
                 />
               </stop>
-              <stop
-                offset={this.props.nbr}
-                stopOpacity="1"
-                stopColor={this.props.bgColor}
-              >
+              <stop offset={nbr} stopOpacity="1" stopColor={bgColor}>
                 <animate
                   ref={svg2 => {
                     this.svg2 = svg2;
                   }}
                   attributeName="offset"
-                  values={this.state.animatePath}
+                  values={animatePath}
                   dur="0.5s"
                   begin="0s"
                 />
               </stop>
-              <stop
-                offset="100%"
-                stopOpacity="1"
-                stopColor={this.props.bgColor}
-              />
+              <stop offset="100%" stopOpacity="1" stopColor={bgColor} />
             </linearGradient>
             <circle
               cx="250"
               cy="250"
               r="245"
-              fill={`url(#${this.props.nbr})`}
+              fill={`url(#${nbr})`}
               stroke="white"
               strokeWidth="10"
             />
             <text x="50%" y="50%" textAnchor="middle" dy="0.3em" fill="white">
-              {this.props.nbr}
+              {nbr}
             </text>
           </g>
         </svg>
-        <div className="kpiText">{this.props.text}</div>
+        <div className="kpiText">
+          {text}
+        </div>
       </div>
     );
   }

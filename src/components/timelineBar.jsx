@@ -7,9 +7,10 @@ const labelWidth = 32;
 class TimelineBar extends React.Component {
   constructor(props) {
     super(props);
+    const { visibleWidth, totalWidth } = this.props;
     this.state = {
       position: 0,
-      maxPosition: Math.min(this.props.visibleWidth - this.props.totalWidth, 0)
+      maxPosition: Math.min(visibleWidth - totalWidth, 0)
     };
   }
 
@@ -18,19 +19,19 @@ class TimelineBar extends React.Component {
   }
 
   componentDidMount() {
-    const position = this.props.items[this.props.startIndex].key * 60;
-    this.scrollTo(-position + this.props.visibleWidth / 2);
+    const { items, visibleWidth, startIndex } = this.props;
+    const position = items[startIndex].key * 60;
+    this.scrollTo(-position + visibleWidth / 2);
   }
 
   componentWillReceiveProps(newProps) {
-    const selectedItemPosition = this.props.items[newProps.startIndex].key * 60;
-    if (selectedItemPosition < -this.state.position) {
-      this.scrollTo(-selectedItemPosition + this.props.visibleWidth / 2);
-    } else if (
-      selectedItemPosition >
-      -this.state.position + this.props.visibleWidth
-    ) {
-      this.scrollTo(this.state.position - this.props.visibleWidth + labelWidth);
+    const { items, visibleWidth } = this.props;
+    const { position } = this.state;
+    const selectedItemPosition = items[newProps.startIndex].key * 60;
+    if (selectedItemPosition < -position) {
+      this.scrollTo(-selectedItemPosition + visibleWidth / 2);
+    } else if (selectedItemPosition > -position + visibleWidth) {
+      this.scrollTo(position - visibleWidth + labelWidth);
     }
   }
 
@@ -39,18 +40,18 @@ class TimelineBar extends React.Component {
   }
 
   handleClick = direction => {
+    const { visibleWidth } = this.props;
+    const { position } = this.state;
     if (direction === "next") {
-      this.scrollTo(this.state.position - this.props.visibleWidth + labelWidth);
+      this.scrollTo(position - visibleWidth + labelWidth);
     } else {
-      this.scrollTo(this.state.position + this.props.visibleWidth - labelWidth);
+      this.scrollTo(position + visibleWidth - labelWidth);
     }
   };
 
   scrollTo = position => {
-    const maxPosition = Math.min(
-      this.props.visibleWidth - this.props.totalWidth,
-      0
-    );
+    const { visibleWidth, totalWidth } = this.props;
+    const maxPosition = Math.min(visibleWidth - totalWidth, 0);
     this.setState({
       position: Math.max(Math.min(0, position), maxPosition),
       maxPosition
@@ -58,15 +59,16 @@ class TimelineBar extends React.Component {
   };
 
   render() {
-    const prevButtonEnabled = this.state.position < 0 ? "enabled" : "disabled";
-    const nextButtonEnabled =
-      this.state.position > this.state.maxPosition ? "enabled" : "disabled";
+    const { items, width } = this.props;
+    const { position, maxPosition } = this.state;
+    const prevButtonEnabled = position < 0 ? "enabled" : "disabled";
+    const nextButtonEnabled = position > maxPosition ? "enabled" : "disabled";
     return (
-      <div className="outer" style={{ width: `${this.props.width}px` }}>
+      <div className="outer" style={{ width: `${width}px` }}>
         <div className="wrapper">
           <Motion
             style={{
-              X: spring(this.state.position, {
+              X: spring(position, {
                 stiffness: 150,
                 damping: 25
               })
@@ -80,7 +82,9 @@ class TimelineBar extends React.Component {
                   transform: `translate3d(${X}px, 0, 0)`
                 }}
               >
-                <ol>{this.props.items}</ol>
+                <ol>
+                  {items}
+                </ol>
               </div>
             )}
           </Motion>

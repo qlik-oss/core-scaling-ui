@@ -102,7 +102,8 @@ class App extends Component {
   };
 
   handleTimelineClick = item => {
-    this.state.yearModel.selectListObjectValues(
+    const { yearModel } = this.state;
+    yearModel.selectListObjectValues(
       "/qListObjectDef",
       [item[0].qElemNumber],
       false
@@ -111,17 +112,14 @@ class App extends Component {
   };
 
   playTimeline = play => {
-    let counter = this.state.selectedIndex;
+    const { selectedIndex, yearModel } = this.state;
+    let counter = selectedIndex;
     if (play) {
       interval = setInterval(() => {
         if (counter > lastItem || counter < startPlayItem) {
           counter = startPlayItem;
         }
-        this.state.yearModel.selectListObjectValues(
-          "/qListObjectDef",
-          [counter],
-          false
-        );
+        yearModel.selectListObjectValues("/qListObjectDef", [counter], false);
         this.setState({ selectedIndex: counter });
         counter += 1;
       }, 500);
@@ -132,19 +130,36 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.error) {
+    const {
+      error,
+      app,
+      yearLayout,
+      selectedIndex,
+      currentView,
+      countriesLayout,
+      countriesModel,
+      isPlaying,
+      selectedCountry,
+      bannerTextsView0,
+      bannerTextsView1
+    } = this.state;
+    if (error) {
       const msg =
-        this.state.error instanceof Event
+        error instanceof Event
           ? "Failed to establish a connection to an Engine"
-          : this.state.error.message;
+          : error.message;
       return (
         <div className="errorWrapper">
-          <span className="errorText">Oops, something went wrong.</span>
-          <span>{msg}</span>
+          <span className="errorText">
+Oops, something went wrong.
+          </span>
+          <span>
+            {msg}
+          </span>
         </div>
       );
     }
-    if (!this.state.app) {
+    if (!app) {
       return null;
     }
 
@@ -163,29 +178,26 @@ class App extends Component {
       bottom: "-10px"
     };
 
-    const yearItems = this.state.yearLayout.qListObject.qDataPages[0].qMatrix.map(
-      item => (
-        <li
-          key={item[0].qElemNumber}
-          style={{ left: `${item[0].qElemNumber * 60}px` }}
-          onClick={() => this.handleTimelineClick(item)}
-        >
-          {item[0].qText}
-          <span
-            className="bullet"
-            style={
-              this.state.selectedIndex === item[0].qElemNumber
-                ? selectedItemStyle
-                : normalItemStyle
-            }
-          />
-        </li>
-      )
-    );
-    const selectedYear = this.state.yearLayout.qListObject.qDataPages[0]
-      .qMatrix[this.state.selectedIndex][0].qText;
-    const subHeader =
-      this.state.currentView === 0 ? subHeaders[0] : subHeaders[1];
+    const yearItems = yearLayout.qListObject.qDataPages[0].qMatrix.map(item => (
+      <li
+        key={item[0].qElemNumber}
+        style={{ left: `${item[0].qElemNumber * 60}px` }}
+        onClick={() => this.handleTimelineClick(item)}
+      >
+        {item[0].qText}
+        <span
+          className="bullet"
+          style={
+            selectedIndex === item[0].qElemNumber
+              ? selectedItemStyle
+              : normalItemStyle
+          }
+        />
+      </li>
+    ));
+    const selectedYear =
+      yearLayout.qListObject.qDataPages[0].qMatrix[selectedIndex][0].qText;
+    const subHeader = currentView === 0 ? subHeaders[0] : subHeaders[1];
     return (
       <div className="page">
         {/* <div className="underConstructionBanner">
@@ -199,25 +211,25 @@ class App extends Component {
         />
         <div className="content">
           <div className="headerContainer">
-            <div className="mainHeader">AFRICAN</div>
-            <div className="subHeader">{subHeader}</div>
+            <div className="mainHeader">
+AFRICAN
+            </div>
+            <div className="subHeader">
+              {subHeader}
+            </div>
           </div>
           <div className="innerContainer">
             <div className="textContainer">
               <Filterbox
-                layout={this.state.countriesLayout}
-                model={this.state.countriesModel}
+                layout={countriesLayout}
+                model={countriesModel}
                 selectedValueCallback={country => this.selectedCountry(country)}
               />
             </div>
             <div className="contentContainer">
               <Banner
-                text={
-                  this.state.currentView === 0
-                    ? this.state.bannerTextsView0
-                    : this.state.bannerTextsView1
-                }
-                color={this.state.currentView === 0 ? "#75ADC8" : "#FFA515"}
+                text={currentView === 0 ? bannerTextsView0 : bannerTextsView1}
+                color={currentView === 0 ? "#75ADC8" : "#FFA515"}
               />
               <Clouds />
               <ViewPager tag="main">
@@ -240,9 +252,9 @@ class App extends Component {
                       <ContainerDimensions>
                         <FirstSection
                           ref={this.firstSection}
-                          app={this.state.app}
+                          app={app}
                           selectedYear={selectedYear}
-                          playing={this.state.isPlaying}
+                          playing={isPlaying}
                           playTimelineFunc={play => {
                             this.playTimeline(play);
                           }}
@@ -257,9 +269,9 @@ class App extends Component {
                     </View>
                     <View className="view">
                       <SecondSection
-                        app={this.state.app}
+                        app={app}
                         selectedYear={selectedYear}
-                        selectedCountry={this.state.selectedCountry}
+                        selectedCountry={selectedCountry}
                         setBannerTextsFunc={texts => {
                           this.setBannerTexts(1, texts);
                         }}
@@ -272,10 +284,7 @@ class App extends Component {
           </div>
           <div className="timelineContainer">
             <ContainerDimensions>
-              <Timeline
-                items={yearItems}
-                startIndex={this.state.selectedIndex}
-              />
+              <Timeline items={yearItems} startIndex={selectedIndex} />
             </ContainerDimensions>
           </div>
         </div>

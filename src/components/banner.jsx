@@ -4,6 +4,14 @@ import Text from "react-svg-text";
 import "./banner.css";
 
 class Banner extends React.Component {
+  interval = setInterval(() => {
+    const { slideCount } = this.state;
+    const nbrOfSlides = slideCount < 2 ? slideCount + 1 : 0;
+    this.setState({
+      slideCount: nbrOfSlides
+    });
+  }, 15000);
+
   constructor(props) {
     super(props);
 
@@ -25,20 +33,16 @@ class Banner extends React.Component {
     this.setState({ slideCount: index });
   };
 
-  interval = setInterval(() => {
-    this.setState({
-      slideCount: this.state.slideCount < 2 ? this.state.slideCount + 1 : 0
-    });
-  }, 15000);
-
   render() {
-    const dotsGroup = this.props.text.map((text, i) => {
+    const { text, color } = this.props;
+    const { slideCount } = this.state;
+    const dotsGroup = text.map((item, i) => {
       const position = 6 + i * 18;
-      const color = this.state.slideCount === i ? "#FFFFFF" : "#D8D8D8";
+      const bgColor = slideCount === i ? "#FFFFFF" : "#D8D8D8";
       return (
         <circle
-          key={text.id}
-          fill={color}
+          key={item.id}
+          fill={bgColor}
           cx={position}
           cy="6"
           r="6"
@@ -47,11 +51,11 @@ class Banner extends React.Component {
       );
     });
 
-    const textGroup = this.props.text.map((text, i) => {
-      if (this.state.slideCount === i) {
+    const textGroup = text.map((item, i) => {
+      if (slideCount === i) {
         return (
           <Text
-            key={text.id}
+            key={item.id}
             x="24"
             y="100"
             dx="0"
@@ -62,7 +66,7 @@ class Banner extends React.Component {
             fill="#fff"
             className="cloudText"
           >
-            {text.text}
+            {item.text}
           </Text>
         );
       }
@@ -133,11 +137,7 @@ class Banner extends React.Component {
                   filter="url(#filter-2)"
                   xlinkHref="#path-1"
                 />
-                <use
-                  fill={this.props.color}
-                  fillRule="evenodd"
-                  xlinkHref="#path-1"
-                />
+                <use fill={color} fillRule="evenodd" xlinkHref="#path-1" />
               </g>
               <path
                 d="M242.854425,213.428613 L457.703328,191.731779 C461.278786,191.370706 464,188.360846 464,184.767202 L464,30 C464,26.1340068 460.865993,23 457,23 L24,23 C20.1340068,23 17,26.1340068 17,30 L17,184.752094 C17,188.351301 19.7293974,191.36392 23.3111345,191.718116 L242.854425,213.428613 Z"

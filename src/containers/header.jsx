@@ -6,6 +6,7 @@ import heartImg from "../resources/heart.svg";
 import qlikCoreImg from "../resources/QlikCoreLogo.svg";
 
 export default function Header(props) {
+  const { onClick, activePage } = props;
   return (
     <div className="header">
       <img
@@ -19,10 +20,11 @@ export default function Header(props) {
       <button
         title="Urbanization"
         className={`headerButton ${
-          props.activePage === "Urbanization" ? "active" : ""
+          activePage === "Urbanization" ? "active" : ""
         }`}
+        type="submit"
         onClick={() => {
-          props.onClick("urbanization");
+          onClick("urbanization");
         }}
       >
         <img className="buttonImage" src={houseImg} alt="Urbanization button" />
@@ -30,10 +32,11 @@ export default function Header(props) {
       <button
         title="Life Expectancy"
         className={`headerButton ${
-          props.activePage === "Life Quality" ? "active" : ""
+          activePage === "Life Quality" ? "active" : ""
         }`}
+        type="submit"
         onClick={() => {
-          props.onClick("lifeexpectancy");
+          onClick("lifeexpectancy");
         }}
       >
         <img

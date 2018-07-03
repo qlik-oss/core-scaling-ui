@@ -1,16 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from '../containers/app.css';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "../containers/app.css";
 
 export default function Drawer(props) {
+  const { linkTo, title } = props;
   return (
-    <a href={props.linkTo}>
-      <span className={styles.next}>{props.title}</span>
+    <a href={linkTo}>
+      <span className={styles.next}>
+        {title}
+      </span>
     </a>
   );
 }
 
 Drawer.propTypes = {
   title: PropTypes.string.isRequired,
-  linkTo: PropTypes.string.isRequired,
+  linkTo: PropTypes.string.isRequired
 };
