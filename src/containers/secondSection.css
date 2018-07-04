@@ -16,10 +16,8 @@
   display: flex;
   flex-direction: column;
   align-self: flex-end;
-  /* width: 33%; */
+  width: 33%;
   border-left: 4px solid rgba(255, 255, 255, 0.5);
-  padding-left: 2vw;
-  padding-right: 2vw;
   border-right: 4px solid rgba(255, 255, 255, 0.5);
   color: white;
 }
@@ -51,6 +49,11 @@
   height: 50%;
   margin-top: 3%;
 }
+.kpiAndSliderContainer,
+.lifeExpectancyContainer,
+.comparisonContainer {
+  height: 50vh;
+}
 
 .lifeComparisonContainer {
   display: flex;
@@ -58,7 +61,7 @@
 }
 
 .comparisonContainer {
-  width: 20%;
+  width: 33%;
   color: white;
   padding-left: 2vw;
   align-self: flex-end;
@@ -74,7 +77,13 @@
   display: flex;
   margin-bottom: 1em;
   width: 100%;
-  height: 5vh;
+  height: 2vh;
+  text-align: left;
+}
+
+.itemCompHeader {
+  font-weight: 600;
+  margin-right: 1vw;
 }
 
 .sliderHeader {
@@ -95,7 +104,7 @@
 }
 
 .kpi2 {
-  width: 85%;
+  width: 75%;
   font-size: 2rem;
   text-align: center;
   color: white;
@@ -117,6 +126,12 @@
 }
 
 @media only screen and (max-width: 1100px) {
+  .kpiAndSliderContainer,
+  .lifeExpectancyContainer,
+  .comparisonContainer {
+    height: 40vh;
+  }
+
   .kpiAndSliderContainer {
     width: 100%;
     flex-direction: row;
@@ -175,6 +190,10 @@
   .kpiAndSliderContainer {
     width: 90%;
   }
+
+  .itemIcon {
+    height: 30%;
+  }
 }
 
 @media only screen and (max-height: 900px) {
@@ -183,15 +202,53 @@
   }
 }
 
-@media only screen and (max-height: 600px) {
+@media only screen and (max-height: 900px) and (min-width: 700px) {
+  .kpiAndSliderContainer,
+  .lifeExpectancyContainer,
+  .comparisonContainer {
+    height: 58vh;
+  }
+
+  .itemComp {
+    margin-bottom: unset;
+    height: unset;
+  }
+}
+
+@media only screen and (max-width: 1100px) and (max-height: 900px) {
+  .lifeExpectancyContainer,
+  .comparisonContainer {
+    height: 40vh;
+  }
+
+  .kpiAndSliderContainer {
+    height: 30vh;
+  }
+
+  .itemComp {
+    margin-bottom: unset;
+    height: unset;
+  }
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 900px) and (max-height: 900px) {
+  /* .iconContainer {
+    flex-wrap: unset;
+  } */
+}
+
+@media only screen and (max-height: 850px) {
   .kpi2Container {
     height: unset;
   }
   .kpi2 {
     width: 53%;
   }
+}
+@media only screen and (max-height: 850px) and (max-width: 1100px) {
   .lifeExpectancyContainer,
   .comparisonContainer {
     font-size: small;
+    height: 35vh;
   }
 }

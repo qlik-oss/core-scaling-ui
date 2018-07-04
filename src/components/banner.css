@@ -59,6 +59,6 @@
 
 @media only screen and (max-height: 900px) and (min-width: 700px) {
   .banner {
-    width: 30%;
+    width: 25%;
   }
 }
