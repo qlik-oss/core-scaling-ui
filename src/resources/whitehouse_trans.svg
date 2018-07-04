@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="198px" viewBox="0 0 82 198" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>House 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="V2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="House-1">
+            <path d="M67,198 L67,183 L58,183 L58,198 L0,198 L0,51 L82,51 L82,198 L67,198 Z M8,64 L8,77 L26,77 L26,64 L8,64 Z M33,64 L33,77 L51,77 L51,64 L33,64 Z M57,64 L57,77 L75,77 L75,64 L57,64 Z M33,84 L33,97 L51,97 L51,84 L33,84 Z M57,84 L57,97 L75,97 L75,84 L57,84 Z M8,84 L8,97 L26,97 L26,84 L8,84 Z M33,103 L33,116 L51,116 L51,103 L33,103 Z M57,103 L57,116 L75,116 L75,103 L57,103 Z M8,103 L8,116 L26,116 L26,103 L8,103 Z M8,123 L8,136 L26,136 L26,123 L8,123 Z M33,123 L33,136 L51,136 L51,123 L33,123 Z M57,123 L57,136 L75,136 L75,123 L57,123 Z M33,163 L33,176 L51,176 L51,163 L33,163 Z M57,163 L57,176 L75,176 L75,163 L57,163 Z M8,163 L8,176 L26,176 L26,163 L8,163 Z M33,143 L33,156 L51,156 L51,143 L33,143 Z M57,143 L57,156 L75,156 L75,143 L57,143 Z M8,143 L8,156 L26,156 L26,143 L8,143 Z M8,183 L8,196 L50,196 L50,183 L8,183 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            <path d="M9,28 L72,28 L72,53 L9,53 L9,28 Z M13,34 L13,45 L23.8035714,45 L23.8035714,34 L13,34 Z M27.7321429,34 L27.7321429,45 L38.5357143,45 L38.5357143,34 L27.7321429,34 Z M42.4642857,34 L42.4642857,45 L53.2678571,45 L53.2678571,34 L42.4642857,34 Z M57.1964286,34 L57.1964286,45 L68,45 L68,34 L57.1964286,34 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            <rect id="Top-level" fill="#FFFFFF" x="20" y="24" width="42" height="4"></rect>
+            <g id="sixth-floor-windows" transform="translate(33.000000, 64.000000)"></g>
+            <g id="fifth-floor-windows" transform="translate(8.000000, 84.000000)"></g>
+            <g id="fourth-floor-windows" transform="translate(8.000000, 103.000000)"></g>
+            <g id="third-floor-windows-" transform="translate(8.000000, 123.000000)"></g>
+            <g id="second-floor-windows" transform="translate(8.000000, 143.000000)"></g>
+            <g id="first-floor-windows" transform="translate(8.000000, 163.000000)"></g>
+            <g id="Floor-lvl-window" transform="translate(8.000000, 183.000000)"></g>
+            <g id="Penthouse-windows" transform="translate(13.000000, 34.000000)"></g>
+            <polygon id="Antenna" fill="#FFFFFF" points="40.7972656 0 41.2982422 0 42 25 40 25"></polygon>
+        </g>
+    </g>
+</svg>

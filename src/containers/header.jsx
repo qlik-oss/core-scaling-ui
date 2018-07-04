@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./header.css";
-import houseImg from "../resources/house.svg";
+import houseImg from "../resources/whitehouse_trans.svg";
 import heartImg from "../resources/heart.svg";
 import qlikCoreImg from "../resources/QlikCoreLogo.svg";
 
