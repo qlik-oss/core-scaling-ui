@@ -13,7 +13,7 @@ import "./firstSection.css";
 import "./section.css";
 import Scatterplot from "../components/scatterplot";
 import KPI from "../components/kpi";
-import dot from "../resources/circle_filled.svg";
+import dot from "../resources/circle_outline.svg";
 
 class FirstSection extends React.Component {
   constructor(...args) {
@@ -190,16 +190,15 @@ class FirstSection extends React.Component {
           <div className="didyouknow" />
           <div className="infotext">
             <div>
-              <b>{mostUrbanized.country}</b> was the most urbanized African
-              country
-              {selectedYear} with
-              <b>{mostUrbanized.nbr}</b> urbanization.
+              <b>{mostUrbanized.country}</b>
+              &nbsp;was the most urbanized African country &nbsp;{selectedYear}
+              &nbsp;with <b>{mostUrbanized.nbr}</b>
+              &nbsp;urbanization.
               <br />
               <br />
-              <b>{leastUrbanized.country}</b> was the least urbanized African
-              country
-              {selectedYear} with only
-              <b>{leastUrbanized.nbr}</b>{" "}
+              <b>{leastUrbanized.country}</b>
+              &nbsp;was the least urbanized African country &nbsp;{selectedYear}
+              &nbsp;with only <b>{leastUrbanized.nbr}</b>
             </div>
           </div>
           <PlayPause
@@ -221,8 +220,8 @@ class FirstSection extends React.Component {
             </div>
           </div>
           <div className="legendText">
-            <img className="dotIcon" src={dot} alt="dot icon" />urban pop. size
-            %
+            <img className="dotIcon" src={dot} alt="dot icon" />
+            urban pop. size %
           </div>
         </div>
         <div className="kpiAndButtonContainer">

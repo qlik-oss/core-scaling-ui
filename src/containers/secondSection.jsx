@@ -201,7 +201,9 @@ class SecondSection extends React.Component {
               selectedCountry ? "sliderContainer disabled" : "sliderContainer"
             }
           >
-            <div className="sliderHeader">Countries with urbanization (%)</div>
+            <div className="sliderHeader">
+Countries with urbanization (%)
+            </div>
             <CustomSlider model={urbSliderModel} layout={urbSliderLayout} />
           </div>
           <div className="kpi2Container">
@@ -220,11 +222,19 @@ class SecondSection extends React.Component {
           </div>
         </div>
         <div className="lifeExpectancyContainer">
-          <div className="itemHeader">Life Quality Indicators</div>
+          <div className="itemHeader">
+Life Quality Indicators
+          </div>
           <div className="iconContainer">
             <div className="iconItem">
-              <div className="itemHeader">{avgLifeExpTotalNbr} yr</div>
-              <div className="itemText">life expectancy</div>
+              <div className="itemHeader">
+                {avgLifeExpTotalNbr}
+                {' '}
+yr
+              </div>
+              <div className="itemText">
+life expectancy
+              </div>
               <img className="itemIcon" src={heartIcon} alt="heart icon" />
             </div>
             <div className="iconItem">
@@ -232,7 +242,9 @@ class SecondSection extends React.Component {
                 {avgGDPNbr}
                 $
               </div>
-              <div className="itemText">average income</div>
+              <div className="itemText">
+average income
+              </div>
               <img className="itemIcon" src={billIcon} alt="bill icon" />
             </div>
             <div className="iconItem">
@@ -240,7 +252,9 @@ class SecondSection extends React.Component {
                 {avgWaterNbr}
                 %
               </div>
-              <div className="itemText">clean drinking water access</div>
+              <div className="itemText">
+clean drinking water access
+              </div>
               <img className="itemIcon" src={dropIcon} alt="drop icon" />
             </div>
             <div className="iconItem">
@@ -248,7 +262,9 @@ class SecondSection extends React.Component {
                 {avgBirthsNbr}
                 %
               </div>
-              <div className="itemText">Births by health staff</div>
+              <div className="itemText">
+Births by health staff
+              </div>
               <img className="itemIcon" src={babyIcon} alt="baby icon" />
             </div>
           </div>
@@ -261,24 +277,49 @@ class SecondSection extends React.Component {
           </div>
           <div className="itemCompContainer">
             <div className="itemComp">
-              <p className="itemCompHeader">URBANIZATION: </p>
-              <p>85%</p>
+              <p className="itemCompHeader">
+URBANIZATION:
+                {' '}
+              </p>
+              <p>
+85%
+              </p>
             </div>
             <div className="itemComp">
-              <p className="itemCompHeader">LIFE EXPECTANCY: </p>
-              <p>78.69 yr</p>
+              <p className="itemCompHeader">
+LIFE EXPECTANCY:
+                {' '}
+              </p>
+              <p>
+78.69 yr
+              </p>
             </div>
             <div className="itemComp">
-              <p className="itemCompHeader">INCOME: </p>
-              <p>53029$</p>
+              <p className="itemCompHeader">
+INCOME:
+                {' '}
+              </p>
+              <p>
+53029$
+              </p>
             </div>
             <div className="itemComp">
-              <p className="itemCompHeader">CLEAN DRINKING WATER ACCESS: </p>
-              <p>99.2%</p>
+              <p className="itemCompHeader">
+CLEAN DRINKING WATER ACCESS:
+                {' '}
+              </p>
+              <p>
+99.2%
+              </p>
             </div>
             <div className="itemComp">
-              <p className="itemCompHeader">BIRTHS BY SKILLED STAFF: </p>
-              <p>98.5%</p>
+              <p className="itemCompHeader">
+BIRTHS BY SKILLED STAFF:
+                {' '}
+              </p>
+              <p>
+98.5%
+              </p>
             </div>
           </div>
         </div>
