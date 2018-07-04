@@ -19,22 +19,26 @@ class CustomSlider extends React.Component {
   }
 
   handleChange(value) {
-    this.props.model.selectListObjectValues(
+    const { model } = this.props;
+    const { items } = this.state;
+    model.selectListObjectValues(
       "/qListObjectDef",
-      [this.state.items[values.indexOf(value)].elemNumber],
+      [items[values.indexOf(value)].elemNumber],
       false
     );
     this.setState({ value });
   }
 
   render() {
+    const { items, value } = this.state;
+
     const labels = {
-      0: this.state.items[0].text,
-      20: this.state.items[1].text,
-      40: this.state.items[2].text,
-      60: this.state.items[3].text,
-      80: this.state.items[4].text,
-      100: this.state.items[5].text
+      0: items[0].text,
+      20: items[1].text,
+      40: items[2].text,
+      60: items[3].text,
+      80: items[4].text,
+      100: items[5].text
     };
 
     return (
@@ -43,10 +47,10 @@ class CustomSlider extends React.Component {
           min={0}
           max={100}
           step={20}
-          value={this.state.value}
+          value={value}
           labels={labels}
-          onChange={value => {
-            this.handleChange(value);
+          onChange={newValue => {
+            this.handleChange(newValue);
           }}
         />
       </div>

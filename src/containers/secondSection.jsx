@@ -39,24 +39,21 @@ class SecondSection extends React.Component {
   getText = layout => layout.qHyperCube.qGrandTotalRow[0].qText;
 
   async createModel() {
+    const { app, setBannerTextsFunc } = this.props;
     try {
-      const urbanKpiModel = await this.props.app.createSessionObject(
+      const urbanKpiModel = await app.createSessionObject(
         urbanAfricanCountriesNbr
       );
-      const avgLifeExpTotalModel = await this.props.app.createSessionObject(
+      const avgLifeExpTotalModel = await app.createSessionObject(
         avgLifeExpTotal
       );
-      const avgGDPModel = await this.props.app.createSessionObject(avgGDP);
-      const lifeExpCountriesModel = await this.props.app.createSessionObject(
+      const avgGDPModel = await app.createSessionObject(avgGDP);
+      const lifeExpCountriesModel = await app.createSessionObject(
         lifeExpCountries
       );
-      const avgBirthsModel = await this.props.app.createSessionObject(
-        avgBirths
-      );
-      const avgWaterModel = await this.props.app.createSessionObject(avgWater);
-      const urbSliderModel = await this.props.app.createSessionObject(
-        urbSlider
-      );
+      const avgBirthsModel = await app.createSessionObject(avgBirths);
+      const avgWaterModel = await app.createSessionObject(avgWater);
+      const urbSliderModel = await app.createSessionObject(urbSlider);
 
       const urbanKpiLayout = await urbanKpiModel.getLayout();
       const avgLifeExpTotalLayout = await avgLifeExpTotalModel.getLayout();
@@ -129,53 +126,70 @@ class SecondSection extends React.Component {
           id: 3
         }
       ];
-      this.props.setBannerTextsFunc(bannerTexts);
+      setBannerTextsFunc(bannerTexts);
     } catch (error) {
       // console.log(error);
     }
   }
 
   async updateUrbanKpi() {
-    const urbanKpiLayout = await this.state.urbanKpiModel.getLayout();
+    const { urbanKpiModel } = this.state;
+    const urbanKpiLayout = await urbanKpiModel.getLayout();
     const urbanKpiNbr = this.getText(urbanKpiLayout);
     this.setState({ urbanKpiNbr });
   }
 
   async updateAvgLifeExpTotal() {
-    const avgLifeExpTotalLayout = await this.state.avgLifeExpTotalModel.getLayout();
+    const { avgLifeExpTotalModel } = this.state;
+    const avgLifeExpTotalLayout = await avgLifeExpTotalModel.getLayout();
     const avgLifeExpTotalNbr = this.getNbr(avgLifeExpTotalLayout);
 
     this.setState({ avgLifeExpTotalNbr });
   }
 
   async updateAvgGDP() {
-    const avgGDPLayout = await this.state.avgGDPModel.getLayout();
+    const { avgGDPModel } = this.state;
+    const avgGDPLayout = await avgGDPModel.getLayout();
     const avgGDPNbr = this.getNbr(avgGDPLayout);
 
     this.setState({ avgGDPNbr });
   }
 
   async updateAvgBirths() {
-    const avgBirthsLayout = await this.state.avgBirthsModel.getLayout();
+    const { avgBirthsModel } = this.state;
+    const avgBirthsLayout = await avgBirthsModel.getLayout();
     const avgBirthsNbr = this.getNbr(avgBirthsLayout);
 
     this.setState({ avgBirthsNbr });
   }
 
   async updateAvgWater() {
-    const avgWaterLayout = await this.state.avgWaterModel.getLayout();
+    const { avgWaterModel } = this.state;
+    const avgWaterLayout = await avgWaterModel.getLayout();
     const avgWaterNbr = this.getNbr(avgWaterLayout);
 
     this.setState({ avgWaterNbr });
   }
 
   async updateUrbSlider() {
-    const urbSliderLayout = await this.state.urbSliderModel.getLayout();
+    const { urbSliderModel } = this.state;
+    const urbSliderLayout = await urbSliderModel.getLayout();
     this.setState({ urbSliderLayout });
   }
 
   render() {
-    if (!this.state.loaded) {
+    const {
+      loaded,
+      urbSliderLayout,
+      urbSliderModel,
+      urbanKpiNbr,
+      avgLifeExpTotalNbr,
+      avgGDPNbr,
+      avgBirthsNbr,
+      avgWaterNbr
+    } = this.state;
+    const { selectedCountry, selectedYear } = this.props;
+    if (!loaded) {
       return null;
     }
 
@@ -184,29 +198,22 @@ class SecondSection extends React.Component {
         <div className="kpiAndSliderContainer">
           <div
             className={
-              this.props.selectedCountry
-                ? "sliderContainer disabled"
-                : "sliderContainer"
+              selectedCountry ? "sliderContainer disabled" : "sliderContainer"
             }
           >
-            <div className="sliderHeader">Countries with urbanization (%)</div>
-            <CustomSlider
-              model={this.state.urbSliderModel}
-              layout={this.state.urbSliderLayout}
-            />
+            <div className="sliderHeader">
+Countries with urbanization (%)
+            </div>
+            <CustomSlider model={urbSliderModel} layout={urbSliderLayout} />
           </div>
           <div className="kpi2Container">
             <KPI
               className="kpi2"
-              nbr={this.state.urbanKpiNbr}
+              nbr={urbanKpiNbr}
               text={
-                this.props.selectedCountry
-                  ? `Average urbanization in ${this.props.selectedCountry} ${
-                      this.props.selectedYear
-                    }`
-                  : `Average urbanization for countries in selected urbanization range ${
-                      this.props.selectedYear
-                    }`
+                selectedCountry
+                  ? `Average urbanization in ${selectedCountry} ${selectedYear}`
+                  : `Average urbanization for countries in selected urbanization range ${selectedYear}`
               }
               bgColor="#3E8DBA"
               fillColor="#AEDBF4"
@@ -215,28 +222,49 @@ class SecondSection extends React.Component {
           </div>
         </div>
         <div className="lifeExpectancyContainer">
-          <div className="itemHeader">Life Quality Indicators</div>
+          <div className="itemHeader">
+Life Quality Indicators
+          </div>
           <div className="iconContainer">
             <div className="iconItem">
               <div className="itemHeader">
-                {this.state.avgLifeExpTotalNbr} yr
+                {avgLifeExpTotalNbr}
+                {' '}
+yr
               </div>
-              <div className="itemText">life expectancy</div>
+              <div className="itemText">
+life expectancy
+              </div>
               <img className="itemIcon" src={heartIcon} alt="heart icon" />
             </div>
             <div className="iconItem">
-              <div className="itemHeader">{this.state.avgGDPNbr}$</div>
-              <div className="itemText">average income</div>
+              <div className="itemHeader">
+                {avgGDPNbr}
+                $
+              </div>
+              <div className="itemText">
+average income
+              </div>
               <img className="itemIcon" src={billIcon} alt="bill icon" />
             </div>
             <div className="iconItem">
-              <div className="itemHeader">{this.state.avgWaterNbr}%</div>
-              <div className="itemText">clean drinking water access</div>
+              <div className="itemHeader">
+                {avgWaterNbr}
+                %
+              </div>
+              <div className="itemText">
+clean drinking water access
+              </div>
               <img className="itemIcon" src={dropIcon} alt="drop icon" />
             </div>
             <div className="iconItem">
-              <div className="itemHeader">{this.state.avgBirthsNbr}%</div>
-              <div className="itemText">Births by health staff</div>
+              <div className="itemHeader">
+                {avgBirthsNbr}
+                %
+              </div>
+              <div className="itemText">
+Births by health staff
+              </div>
               <img className="itemIcon" src={babyIcon} alt="baby icon" />
             </div>
           </div>
@@ -248,11 +276,21 @@ class SecondSection extends React.Component {
             USA 2015
           </div>
           <div className="itemCompContainer">
-            <div className="itemComp">URBANIZATION: 85%</div>
-            <div className="itemComp">LIFE EXPECTANCY: 78.69 yr</div>
-            <div className="itemComp">INCOME: 53029$</div>
-            <div className="itemComp">CLEAN DRINKING WATER ACCESS: 99.2%</div>
-            <div className="itemComp">BIRTHS BY SKILLED STAFF: 98.5%</div>
+            <div className="itemComp">
+URBANIZATION: 85%
+            </div>
+            <div className="itemComp">
+LIFE EXPECTANCY: 78.69 yr
+            </div>
+            <div className="itemComp">
+INCOME: 53029$
+            </div>
+            <div className="itemComp">
+CLEAN DRINKING WATER ACCESS: 99.2%
+            </div>
+            <div className="itemComp">
+BIRTHS BY SKILLED STAFF: 98.5%
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import "./house.css";
 
 export default function House(props) {
-  if (!props.show) {
+  const { show } = props;
+  if (!show) {
     return null;
   }
   return (

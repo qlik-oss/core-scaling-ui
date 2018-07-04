@@ -4,14 +4,11 @@ import { Motion, spring } from "react-motion";
 import "./playPause.css";
 
 export default function PlayPause(props) {
+  const { toggle, onClick, text } = props;
   return (
-    <Motion style={{ scale: spring(props.toggle ? 1 : 0, [300, 30]) }}>
+    <Motion style={{ scale: spring(toggle ? 1 : 0, [300, 30]) }}>
       {({ scale }) => (
-        <button
-          type="button"
-          className="playpauseContainer"
-          onClick={props.onClick}
-        >
+        <button type="button" className="playpauseContainer" onClick={onClick}>
           <div className="playpause">
             <span
               className="playpause-play"
@@ -22,9 +19,11 @@ export default function PlayPause(props) {
               style={{ transform: `scaleX(${scale})` }}
             />
           </div>
-          {props.text !== "" && (
-            <div className="playpauseButtonText">{props.text}</div>
-          )}
+          {text !== "" && (
+          <div className="playpauseButtonText">
+            {text}
+          </div>
+)}
         </button>
       )}
     </Motion>

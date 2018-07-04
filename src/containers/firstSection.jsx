@@ -24,60 +24,29 @@ class FirstSection extends React.Component {
     this.createModel();
   }
 
-  async updateUrbanizedCountries() {
-    const layout = await this.state.urbanizedCountriesModel.getLayout();
-    const mostUrbItem = layout.qHyperCube.qDataPages[0].qMatrix[0];
-    const minUrbItem =
-      layout.qHyperCube.qDataPages[0].qMatrix[
-        layout.qHyperCube.qDataPages[0].qMatrix.length - 1
-      ];
-    this.setState({
-      mostUrbanized: {
-        country: mostUrbItem[0].qText,
-        nbr: mostUrbItem[1].qText
-      },
-      leastUrbanized: { country: minUrbItem[0].qText, nbr: minUrbItem[1].qText }
-    });
-  }
-
-  async updateScatterplot() {
-    const scatterplotLayout = await this.state.scatterplotModel.getLayout();
-    this.setState({ scatterplotLayout });
-  }
-
-  async updateTotalUrbanAfrica() {
-    const kpiHyperCubeLayout = await this.state.totalUrbanAfricaNbrModel.getLayout();
-    const africanUrbanization =
-      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ africanUrbanization });
-  }
-
-  async updateTotalUrbanWorld() {
-    const kpiHyperCubeLayout = await this.state.totalUrbanWorldNbrModel.getLayout();
-    const worldUrbanization =
-      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ worldUrbanization });
-  }
+  togglePlay = () => {
+    const { playTimelineFunc } = this.props;
+    const { isPlaying } = this.state;
+    playTimelineFunc(!isPlaying);
+    this.setState({ isPlaying: !isPlaying });
+  };
 
   async createModel() {
+    const { app, setBannerTextsFunc } = this.props;
     try {
       // create the models
-      const urbanizedCountriesModel = await this.props.app.createSessionObject(
+      const urbanizedCountriesModel = await app.createSessionObject(
         urbanizedCountries
       );
-      const urbanLandAreaModel = await this.props.app.createSessionObject(
-        urbanLandArea
-      );
-      const urbanLandAreaAfricaModel = await this.props.app.createSessionObject(
+      const urbanLandAreaModel = await app.createSessionObject(urbanLandArea);
+      const urbanLandAreaAfricaModel = await app.createSessionObject(
         urbanLandAreaAfrica
       );
-      const scatterplotModel = await this.props.app.createSessionObject(
-        scatterplot
-      );
-      const totalUrbanAfricaNbrModel = await this.props.app.createSessionObject(
+      const scatterplotModel = await app.createSessionObject(scatterplot);
+      const totalUrbanAfricaNbrModel = await app.createSessionObject(
         totalUrbanAfricaNbr
       );
-      const totalUrbanWorldNbrModel = await this.props.app.createSessionObject(
+      const totalUrbanWorldNbrModel = await app.createSessionObject(
         totalUrbanWorldNbr
       );
 
@@ -150,24 +119,68 @@ class FirstSection extends React.Component {
           id: 3
         }
       ];
-      this.props.setBannerTextsFunc(bannerTexts);
+      setBannerTextsFunc(bannerTexts);
     } catch (error) {
       // console.log(error);
     }
   }
 
-  togglePlay = () => {
-    this.props.playTimelineFunc(!this.state.isPlaying);
-    this.setState({ isPlaying: !this.state.isPlaying });
-  };
+  async updateUrbanizedCountries() {
+    const { urbanizedCountriesModel } = this.state;
+    const layout = await urbanizedCountriesModel.getLayout();
+    const mostUrbItem = layout.qHyperCube.qDataPages[0].qMatrix[0];
+    const minUrbItem =
+      layout.qHyperCube.qDataPages[0].qMatrix[
+        layout.qHyperCube.qDataPages[0].qMatrix.length - 1
+      ];
+    this.setState({
+      mostUrbanized: {
+        country: mostUrbItem[0].qText,
+        nbr: mostUrbItem[1].qText
+      },
+      leastUrbanized: { country: minUrbItem[0].qText, nbr: minUrbItem[1].qText }
+    });
+  }
+
+  async updateScatterplot() {
+    const { scatterplotModel } = this.state;
+    const scatterplotLayout = await scatterplotModel.getLayout();
+    this.setState({ scatterplotLayout });
+  }
+
+  async updateTotalUrbanAfrica() {
+    const { totalUrbanAfricaNbrModel } = this.state;
+    const kpiHyperCubeLayout = await totalUrbanAfricaNbrModel.getLayout();
+    const africanUrbanization =
+      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
+    this.setState({ africanUrbanization });
+  }
+
+  async updateTotalUrbanWorld() {
+    const { totalUrbanWorldNbrModel } = this.state;
+    const kpiHyperCubeLayout = await totalUrbanWorldNbrModel.getLayout();
+    const worldUrbanization =
+      kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
+    this.setState({ worldUrbanization });
+  }
 
   render() {
-    if (!this.state.loaded) {
+    const { width, selectedYear, nextSectionFunc } = this.props;
+    const {
+      loaded,
+      mostUrbanized,
+      leastUrbanized,
+      scatterplotLayout,
+      africanUrbanization,
+      worldUrbanization,
+      isPlaying
+    } = this.state;
+    if (!loaded) {
       return null;
     }
 
     const nextButtonText =
-      this.props.width > 816
+      width > 816
         ? "Interesting data! But how does urbanization affect life quality? Click here to see more details!"
         : "More details";
     return (
@@ -176,32 +189,57 @@ class FirstSection extends React.Component {
           <div className="didyouknow" />
           <div className="infotext">
             <div>
-              <b>{this.state.mostUrbanized.country}</b> was the most urbanized
-              African country {this.props.selectedYear} with{" "}
-              <b>{this.state.mostUrbanized.nbr}</b> urbanization.
+              <b>
+                {mostUrbanized.country}
+              </b>
+              {' '}
+was the most urbanized African
+              country
+              {selectedYear}
+              {' '}
+with
+              <b>
+                {mostUrbanized.nbr}
+              </b>
+              {' '}
+urbanization.
               <br />
               <br />
-              <b>{this.state.leastUrbanized.country}</b> was the least urbanized
-              African country {this.props.selectedYear} with only{" "}
-              <b>{this.state.leastUrbanized.nbr}</b>{" "}
+              <b>
+                {leastUrbanized.country}
+              </b>
+              {' '}
+was the least urbanized African
+              country
+              {selectedYear}
+              {' '}
+with only
+              <b>
+                {leastUrbanized.nbr}
+              </b>
+              {" "}
             </div>
           </div>
           <PlayPause
-            toggle={this.state.isPlaying}
+            toggle={isPlaying}
             onClick={() => {
               this.togglePlay();
             }}
-            text={this.props.width > 800 ? "Play the urbanization story" : ""}
+            text={width > 800 ? "Play the urbanization story" : ""}
           />
         </div>
         <div className="scatterplotOuter">
           <div className="yLabel">
-            <b>Health</b>
+            <b>
+Health
+            </b>
           </div>
           <div className="scatterplotInner">
-            <Scatterplot layout={this.state.scatterplotLayout} />
+            <Scatterplot layout={scatterplotLayout} />
             <div className="xLabel">
-              <b>Income</b>
+              <b>
+Income
+              </b>
             </div>
           </div>
           <div className="legendText">urban pop. size %</div>
@@ -210,17 +248,17 @@ class FirstSection extends React.Component {
           <div className="kpiContainer">
             <KPI
               className="kpi"
-              nbr={this.state.africanUrbanization}
+              nbr={africanUrbanization}
               text={`
-                Urban population, Africa ${this.props.selectedYear}`}
+                Urban population, Africa ${selectedYear}`}
               bgColor="#3E8DBA"
               fillColor="#AEDBF4"
               animate
             />
             <KPI
               className="kpi"
-              nbr={this.state.worldUrbanization}
-              text={`Urban population, world ${this.props.selectedYear}`}
+              nbr={worldUrbanization}
+              text={`Urban population, world ${selectedYear}`}
               bgColor="#F68F00"
               fillColor="#FFAF41"
               animate
@@ -228,8 +266,9 @@ class FirstSection extends React.Component {
           </div>
           <button
             className="nextSectionButton"
+            type="submit"
             onClick={() => {
-              this.props.nextSectionFunc();
+              nextSectionFunc();
             }}
           >
             {nextButtonText}
