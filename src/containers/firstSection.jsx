@@ -13,6 +13,7 @@ import "./firstSection.css";
 import "./section.css";
 import Scatterplot from "../components/scatterplot";
 import KPI from "../components/kpi";
+import dot from "../resources/circle_filled.svg";
 
 class FirstSection extends React.Component {
   constructor(...args) {
@@ -189,35 +190,16 @@ class FirstSection extends React.Component {
           <div className="didyouknow" />
           <div className="infotext">
             <div>
-              <b>
-                {mostUrbanized.country}
-              </b>
-              {' '}
-was the most urbanized African
+              <b>{mostUrbanized.country}</b> was the most urbanized African
               country
-              {selectedYear}
-              {' '}
-with
-              <b>
-                {mostUrbanized.nbr}
-              </b>
-              {' '}
-urbanization.
+              {selectedYear} with
+              <b>{mostUrbanized.nbr}</b> urbanization.
               <br />
               <br />
-              <b>
-                {leastUrbanized.country}
-              </b>
-              {' '}
-was the least urbanized African
+              <b>{leastUrbanized.country}</b> was the least urbanized African
               country
-              {selectedYear}
-              {' '}
-with only
-              <b>
-                {leastUrbanized.nbr}
-              </b>
-              {" "}
+              {selectedYear} with only
+              <b>{leastUrbanized.nbr}</b>{" "}
             </div>
           </div>
           <PlayPause
@@ -230,19 +212,18 @@ with only
         </div>
         <div className="scatterplotOuter">
           <div className="yLabel">
-            <b>
-Health
-            </b>
+            <b>Health</b>
           </div>
           <div className="scatterplotInner">
             <Scatterplot layout={scatterplotLayout} />
             <div className="xLabel">
-              <b>
-Income
-              </b>
+              <b>Income</b>
             </div>
           </div>
-          <div className="legendText">urban pop. size %</div>
+          <div className="legendText">
+            <img className="dotIcon" src={dot} alt="dot icon" />urban pop. size
+            %
+          </div>
         </div>
         <div className="kpiAndButtonContainer">
           <div className="kpiContainer">
