@@ -150,12 +150,8 @@ class App extends Component {
           : error.message;
       return (
         <div className="errorWrapper">
-          <span className="errorText">
-Oops, something went wrong.
-          </span>
-          <span>
-            {msg}
-          </span>
+          <span className="errorText">Oops, something went wrong.</span>
+          <span>{msg}</span>
         </div>
       );
     }
@@ -211,12 +207,8 @@ Oops, something went wrong.
         />
         <div className="content">
           <div className="headerContainer">
-            <div className="mainHeader">
-AFRICAN
-            </div>
-            <div className="subHeader">
-              {subHeader}
-            </div>
+            <div className="mainHeader">AFRICAN</div>
+            <div className="subHeader">{subHeader}</div>
           </div>
           <div className="innerContainer">
             <div className="textContainer">
@@ -249,23 +241,21 @@ AFRICAN
                     }}
                   >
                     <View className="view">
-                      <ContainerDimensions>
-                        <FirstSection
-                          ref={this.firstSection}
-                          app={app}
-                          selectedYear={selectedYear}
-                          playing={isPlaying}
-                          playTimelineFunc={play => {
-                            this.playTimeline(play);
-                          }}
-                          nextSectionFunc={() => {
-                            this.scrollTo("lifeexpectancy");
-                          }}
-                          setBannerTextsFunc={texts => {
-                            this.setBannerTexts(0, texts);
-                          }}
-                        />
-                      </ContainerDimensions>
+                      <FirstSection
+                        ref={this.firstSection}
+                        app={app}
+                        selectedYear={selectedYear}
+                        playing={isPlaying}
+                        playTimelineFunc={play => {
+                          this.playTimeline(play);
+                        }}
+                        nextSectionFunc={() => {
+                          this.scrollTo("lifeexpectancy");
+                        }}
+                        setBannerTextsFunc={texts => {
+                          this.setBannerTexts(0, texts);
+                        }}
+                      />
                     </View>
                     <View className="view">
                       <SecondSection

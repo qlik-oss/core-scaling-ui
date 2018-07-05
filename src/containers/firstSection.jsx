@@ -166,7 +166,7 @@ class FirstSection extends React.Component {
   }
 
   render() {
-    const { width, selectedYear, nextSectionFunc } = this.props;
+    const { selectedYear, nextSectionFunc } = this.props;
     const {
       loaded,
       mostUrbanized,
@@ -180,10 +180,6 @@ class FirstSection extends React.Component {
       return null;
     }
 
-    const nextButtonText =
-      width > 816
-        ? "Interesting data! But how does urbanization affect life quality? Click here to see more details!"
-        : "More details";
     return (
       <div className="viewContainer first">
         <div className="infoContainer">
@@ -206,7 +202,7 @@ class FirstSection extends React.Component {
             onClick={() => {
               this.togglePlay();
             }}
-            text={width > 800 ? "Play the urbanization story" : ""}
+            text="Play the urbanization story"
           />
         </div>
         <div className="scatterplotOuter">
@@ -251,7 +247,8 @@ class FirstSection extends React.Component {
               nextSectionFunc();
             }}
           >
-            {nextButtonText}
+            Interesting data! But how does urbanization affect life quality?
+            Click here to see more details!
           </button>
         </div>
       </div>
@@ -264,12 +261,7 @@ FirstSection.propTypes = {
   selectedYear: PropTypes.string.isRequired,
   playTimelineFunc: PropTypes.func.isRequired,
   nextSectionFunc: PropTypes.func.isRequired,
-  width: PropTypes.number,
   setBannerTextsFunc: PropTypes.func.isRequired
-};
-
-FirstSection.defaultProps = {
-  width: 0
 };
 
 export default FirstSection;
