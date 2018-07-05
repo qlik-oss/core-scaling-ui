@@ -22,6 +22,7 @@ class SecondSection extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = { loaded: false };
+    this.customSlider = React.createRef();
   }
 
   componentDidMount() {
@@ -37,6 +38,10 @@ class SecondSection extends React.Component {
   };
 
   getText = layout => layout.qHyperCube.qGrandTotalRow[0].qText;
+
+  resetSlider = () => {
+    this.customSlider.current.reset();
+  };
 
   async createModel() {
     const { app, setBannerTextsFunc } = this.props;
@@ -192,7 +197,6 @@ class SecondSection extends React.Component {
     if (!loaded) {
       return null;
     }
-
     return (
       <div className="viewContainer second">
         <div className="kpiAndSliderContainer">
@@ -202,7 +206,11 @@ class SecondSection extends React.Component {
             }
           >
             <div className="sliderHeader">Countries with urbanization (%)</div>
-            <CustomSlider model={urbSliderModel} layout={urbSliderLayout} />
+            <CustomSlider
+              ref={this.customSlider}
+              model={urbSliderModel}
+              layout={urbSliderLayout}
+            />
           </div>
           <div className="kpi2Container">
             <KPI

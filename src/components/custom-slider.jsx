@@ -32,6 +32,10 @@ class CustomSlider extends React.Component {
     );
   };
 
+  reset = () => {
+    this.handleChange(0);
+  };
+
   render() {
     const { items, value } = this.state;
 
