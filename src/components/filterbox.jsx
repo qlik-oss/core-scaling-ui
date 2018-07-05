@@ -17,17 +17,25 @@ class Filterbox extends React.Component {
   selectCountry = (country, i) => {
     const { selected, layout } = this.state;
     const { model, selectedValueCallback } = this.props;
-    selected.push(i);
+    if (selected.indexOf(country.qElemNumber) < 0) {
+      selected.push(country.qElemNumber);
+    } else {
+      selected.splice(selected.indexOf(country.qElemNumber), 1);
+    }
+
     model.selectListObjectValues(
       "/qListObjectDef",
       [country.qElemNumber],
       true
     );
     if (selectedValueCallback) {
-      const value =
-        selected.length > 1
-          ? "selected countries"
-          : layout.qListObject.qDataPages[0].qMatrix[i][0].qText;
+      let value = "";
+      if (selected.length > 1) {
+        value = "selected countries";
+      } else if (selected.length === 1) {
+        value = layout.qListObject.qDataPages[0].qMatrix[i][0].qText;
+      }
+
       selectedValueCallback(value);
     }
   };
@@ -83,9 +91,7 @@ class Filterbox extends React.Component {
             style={listItemStyles.style}
             role="presentation"
           >
-            <span className="listText">
-              {country[0].qText}
-            </span>
+            <span className="listText">{country[0].qText}</span>
             <span className="listIcon">
               {listItemStyles.selected ? "✔" : null}
             </span>
@@ -96,23 +102,15 @@ class Filterbox extends React.Component {
 
     return (
       <div className="filterbox">
-        <div className="title">
-Country
-        </div>
-        <div className="list">
-          {countries}
-        </div>
+        <div className="title">Country</div>
+        <div className="list">{countries}</div>
         <div
           className="clearSelection"
           role="presentation"
           onClick={() => this.clearSelections()}
         >
-          <span>
-Clear selections
-          </span>
-          <span>
-✖
-          </span>
+          <span>Clear selections</span>
+          <span>✖</span>
         </div>
       </div>
     );

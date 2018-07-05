@@ -18,6 +18,10 @@ class CustomSlider extends React.Component {
     this.state = { value: 0, items };
   }
 
+  reset = () => {
+    this.handleChange(0);
+  };
+
   handleChange(value) {
     const { model } = this.props;
     const { items } = this.state;
