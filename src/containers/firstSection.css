@@ -6,6 +6,13 @@
   margin-left: 1vw;
 }
 
+.infoContainer,
+.scatterplotOuter,
+.kpiAndButtonContainer {
+  height: 50vh;
+  justify-content: center;
+}
+
 .didyouknow {
   width: 142px;
   height: 67px;
@@ -143,7 +150,7 @@
   }
   .nextSectionButton {
     font-size: small;
-    margin-left: 20px;
+    margin-left: 5px;
   }
 
   .infoContainer {
@@ -160,6 +167,10 @@
   .kpiAndButtonContainer {
     height: unset;
   }
+
+  .infotext {
+    font-size: x-small;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -174,7 +185,7 @@
     height: 51%;
     margin-left: unset;
   }
-  .infotext,
+
   .playpauseContainer {
     font-size: small;
   }
@@ -187,7 +198,7 @@
   }
   .kpiAndButtonContainer {
     flex-direction: row;
-    height: 34%;
+    height: 50%;
     width: 100%;
     border: unset;
     padding: unset;
@@ -201,17 +212,40 @@
   .legendText {
     bottom: -15px;
   }
+  .nextSectionButton {
+    font-size: 0;
+  }
+
+  .nextSectionButton:before {
+    content: "More details";
+    font-size: small;
+  }
 }
 
 @media only screen and (max-width: 500px) {
   .legendText {
     display: none;
   }
+  .kpiAndButtonContainer {
+    height: 34%;
+  }
 }
 
-@media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 900px) {
+/* @media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 900px) {
   .kpiAndButtonContainer {
     width: 80%;
+  }
+} */
+
+@media only screen and (max-height: 1024px) and (max-width: 768px) {
+  .kpiAndButtonContainer {
+    height: 34%;
+  }
+}
+
+@media only screen and (max-height: 650px) and (max-width: 800px) {
+  .kpiAndButtonContainer {
+    height: 50%;
   }
 }
 
