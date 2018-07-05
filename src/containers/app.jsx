@@ -33,6 +33,7 @@ class App extends Component {
     };
     this.getApp();
     this.firstSection = React.createRef();
+    this.secondSection = React.createRef();
   }
 
   onViewChange = view => {
@@ -87,6 +88,8 @@ class App extends Component {
 
   scrollTo = item => {
     if (item === "urbanization") {
+      // reset the slider to "all" value
+      this.secondSection.current.resetSlider();
       this.track.scrollTo(0);
     } else if (item === "lifeexpectancy") {
       this.track.scrollTo(1);
@@ -259,6 +262,7 @@ class App extends Component {
                     </View>
                     <View className="view">
                       <SecondSection
+                        ref={this.secondSection}
                         app={app}
                         selectedYear={selectedYear}
                         selectedCountry={selectedCountry}
