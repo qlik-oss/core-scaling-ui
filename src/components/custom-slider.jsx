@@ -22,18 +22,19 @@ class CustomSlider extends React.Component {
     this.setState({ value });
   };
 
-  handleChangeComplete = () => {
+  handleChangeComplete = reset => {
     const { model } = this.props;
     const { items, value } = this.state;
-    model.selectListObjectValues(
-      "/qListObjectDef",
-      [items[values.indexOf(value)].elemNumber],
-      false
-    );
+    let newValue = items[values.indexOf(value)].elemNumber;
+    if (reset) {
+      newValue = items[values.indexOf(0)].elemNumber;
+    }
+    model.selectListObjectValues("/qListObjectDef", [newValue], false);
   };
 
   reset = () => {
     this.handleChange(0);
+    this.handleChangeComplete(true);
   };
 
   render() {
