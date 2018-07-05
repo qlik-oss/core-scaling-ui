@@ -277,19 +277,49 @@ Births by health staff
           </div>
           <div className="itemCompContainer">
             <div className="itemComp">
-URBANIZATION: 85%
+              <p className="itemCompHeader">
+URBANIZATION:
+                {' '}
+              </p>
+              <p>
+85%
+              </p>
             </div>
             <div className="itemComp">
-LIFE EXPECTANCY: 78.69 yr
+              <p className="itemCompHeader">
+LIFE EXPECTANCY:
+                {' '}
+              </p>
+              <p>
+78.69 yr
+              </p>
             </div>
             <div className="itemComp">
-INCOME: 53029$
+              <p className="itemCompHeader">
+INCOME:
+                {' '}
+              </p>
+              <p>
+53029$
+              </p>
             </div>
             <div className="itemComp">
-CLEAN DRINKING WATER ACCESS: 99.2%
+              <p className="itemCompHeader">
+CLEAN DRINKING WATER ACCESS:
+                {' '}
+              </p>
+              <p>
+99.2%
+              </p>
             </div>
             <div className="itemComp">
-BIRTHS BY SKILLED STAFF: 98.5%
+              <p className="itemCompHeader">
+BIRTHS BY SKILLED STAFF:
+                {' '}
+              </p>
+              <p>
+98.5%
+              </p>
             </div>
           </div>
         </div>

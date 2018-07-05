@@ -69,6 +69,13 @@
   padding-right: 10px;
 }
 
+.dotIcon {
+  width: 10%;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+
 .kpiAndButtonContainer {
   display: flex;
   flex-direction: column;
