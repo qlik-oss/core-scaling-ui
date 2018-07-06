@@ -4,28 +4,22 @@
   max-width: 520px;
   min-width: 270px;
   height: auto;
-  top: -70px;
+  top: 20px;
   right: 40px;
-  z-index: 10;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 1400px) {
   .banner {
-    top: -52px;
+    top: 30px;
     right: 30px;
-  }
-}
-
-@media only screen and (max-width: 1100px) {
-  .banner {
-    top: -44px;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .banner {
     min-width: 190px;
-    top: -20px;
+    top: 36px;
     right: 5px;
   }
 }
@@ -36,6 +30,7 @@
   fill: #fff;
   animation-name: fade-in;
   animation-duration: 1s;
+  font-size: small;
 }
 
 @media only screen and (max-width: 600px) {

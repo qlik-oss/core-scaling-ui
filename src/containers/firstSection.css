@@ -231,21 +231,9 @@
   }
 }
 
-/* @media only screen and (max-height: 1024px) and (min-height: 1000px) and (max-width: 900px) {
-  .kpiAndButtonContainer {
-    width: 80%;
-  }
-} */
-
 @media only screen and (max-height: 1024px) and (max-width: 768px) {
   .kpiAndButtonContainer {
     height: 34%;
-  }
-}
-
-@media only screen and (max-height: 650px) and (max-width: 800px) {
-  .kpiAndButtonContainer {
-    height: 50%;
   }
 }
 
