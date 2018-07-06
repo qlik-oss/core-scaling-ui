@@ -76,15 +76,15 @@ class Banner extends React.Component {
     return (
       <svg
         className="banner"
-        width="426px"
-        height="160px"
-        viewBox="0 0 426 160"
+        width="429px"
+        height="161px"
+        viewBox="0 0 429 161"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <defs>
-          <rect id="path-1" x="0" y="0" width="426" height="163" />
+          <rect id="path-1" x="0" y="0" width="430" height="162" />
           <path
             d="M8,0 L418,-1.77635684e-15 C422.418278,2.8805772e-14 426,3.581722 426,8 L426,178.205707 C426,182.292801 422.919269,185.722696 418.855618,186.15982 L216.010708,207.979688 L7.16797144,186.140864 C3.0940207,185.714848 -1.54855761e-14,182.280413 -1.59872116e-14,178.184248 L-2.84217094e-14,8 C-3.0924902e-14,3.581722 3.581722,-9.64732338e-16 8,-1.77635684e-15 Z"
             id="path-3"
