@@ -9,21 +9,6 @@
   z-index: 1;
 }
 
-@media only screen and (max-width: 1400px) {
-  .banner {
-    top: 30px;
-    right: 30px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .banner {
-    min-width: 190px;
-    top: 36px;
-    right: 5px;
-  }
-}
-
 .cloudText {
   font-family: Muli;
   font-weight: 600;
@@ -31,12 +16,6 @@
   animation-name: fade-in;
   animation-duration: 1s;
   font-size: small;
-}
-
-@media only screen and (max-width: 600px) {
-  .cloudText {
-    font-size: large;
-  }
 }
 
 .dots {
@@ -52,8 +31,26 @@
   }
 }
 
+@media only screen and (max-width: 1400px) {
+  .banner {
+    top: 30px;
+    right: 30px;
+  }
+}
+
 @media only screen and (max-height: 900px) and (min-width: 700px) {
   .banner {
     width: 25%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .banner {
+    min-width: 190px;
+    top: 36px;
+    right: 5px;
+  }
+  .cloudText {
+    font-size: large;
   }
 }

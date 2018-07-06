@@ -57,7 +57,7 @@ class Banner extends React.Component {
           <Text
             key={item.id}
             x="22"
-            y="55"
+            y="52"
             dx="0"
             dy="0"
             verticalAnchor="start"
