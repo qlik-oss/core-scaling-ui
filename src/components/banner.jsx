@@ -56,8 +56,8 @@ class Banner extends React.Component {
         return (
           <Text
             key={item.id}
-            x="24"
-            y="100"
+            x="22"
+            y="55"
             dx="0"
             dy="0"
             verticalAnchor="start"
@@ -76,25 +76,26 @@ class Banner extends React.Component {
     return (
       <svg
         className="banner"
-        width="485px"
-        height="235px"
-        viewBox="0 0 485 235"
+        width="426px"
+        height="160px"
+        viewBox="0 0 426 160"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <defs>
+          <rect id="path-1" x="0" y="0" width="426" height="163" />
           <path
-            d="M8,0 L473,-8.8817842e-16 C477.418278,-1.69980292e-15 481,3.581722 481,8 L481,197.798498 C481,201.892316 477.909418,205.32558 473.838128,205.754473 L243.899414,229.977539 L7.18498918,205.735809 C3.10362553,205.31784 5.02404285e-14,201.880142 4.97379915e-14,197.777432 L0,8 C-5.41083001e-16,3.581722 3.581722,-7.65539184e-17 8,-8.8817842e-16 Z"
-            id="path-1"
+            d="M8,0 L418,-1.77635684e-15 C422.418278,2.8805772e-14 426,3.581722 426,8 L426,178.205707 C426,182.292801 422.919269,185.722696 418.855618,186.15982 L216.010708,207.979688 L7.16797144,186.140864 C3.0940207,185.714848 -1.54855761e-14,182.280413 -1.59872116e-14,178.184248 L-2.84217094e-14,8 C-3.0924902e-14,3.581722 3.581722,-9.64732338e-16 8,-1.77635684e-15 Z"
+            id="path-3"
           />
           <filter
-            x="-0.7%"
-            y="-1.1%"
-            width="101.9%"
-            height="104.3%"
+            x="-0.8%"
+            y="-1.2%"
+            width="102.1%"
+            height="104.8%"
             filterUnits="objectBoundingBox"
-            id="filter-2"
+            id="filter-4"
           >
             <feOffset
               dx="1"
@@ -115,38 +116,56 @@ class Banner extends React.Component {
           </filter>
         </defs>
         <g
-          id="Page-1"
+          id="V2.0"
           stroke="none"
           strokeWidth="1"
           fill="none"
           fillRule="evenodd"
-          opacity="0.921648551"
         >
           <g
-            id="First-page-urbanization-Copy-11"
-            transform="translate(-1301.000000, -32.000000)"
+            id="Life-expectancy-Copy-3"
+            transform="translate(-1387.000000, -64.000000)"
           >
-            <g
-              id="infotickerbanner"
-              transform="translate(1302.000000, 32.000000)"
-            >
-              <g id="background">
-                <use
-                  fill="black"
-                  fillOpacity="1"
-                  filter="url(#filter-2)"
-                  xlinkHref="#path-1"
-                />
-                <use fill={color} fillRule="evenodd" xlinkHref="#path-1" />
-              </g>
-              <path
-                d="M242.854425,213.428613 L457.703328,191.731779 C461.278786,191.370706 464,188.360846 464,184.767202 L464,30 C464,26.1340068 460.865993,23 457,23 L24,23 C20.1340068,23 17,26.1340068 17,30 L17,184.752094 C17,188.351301 19.7293974,191.36392 23.3111345,191.718116 L242.854425,213.428613 Z"
-                id="whiteframe"
-                stroke="#FFFFFF"
-                strokeWidth="2"
-              />
-              <g id="dots" transform="translate(218, 168)" className="dots">
-                {dotsGroup}
+            <g id="Banner" transform="translate(1387.000000, 64.000000)">
+              <g id="infotickerbanner">
+                <mask id="mask-2" fill="white">
+                  <use xlinkHref="#path-1" />
+                </mask>
+                <use id="Mask" fill="#D8D8D8" opacity="0" xlinkHref="#path-1" />
+                <g
+                  id="infotickerbanner-copy"
+                  opacity="0.921648551"
+                  mask="url(#mask-2)"
+                >
+                  <g transform="translate(0.000000, -53.000000)">
+                    <g id="background" stroke="none">
+                      <use
+                        fill="black"
+                        fillOpacity="1"
+                        filter="url(#filter-4)"
+                        xlinkHref="#path-3"
+                      />
+                      <use
+                        fill={color}
+                        fillRule="evenodd"
+                        xlinkHref="#path-3"
+                      />
+                    </g>
+                    <path
+                      d="M215.159442,200.152495 L411.60832,180.592121 C415.188021,180.235691 417.914761,177.223966 417.914761,173.626565 L417.914761,35.1304348 C417.914761,31.2644415 414.780754,28.1304348 410.914761,28.1304348 L15.0852391,28.1304348 C11.2192458,28.1304348 8.08523909,31.2644415 8.08523909,35.1304348 L8.08523909,173.611645 C8.08523909,177.214536 10.8200594,180.228976 14.4059457,180.578607 L215.159442,200.152495 Z"
+                      id="whiteframe"
+                      stroke="#FFFFFF"
+                      strokeWidth="2"
+                    />
+                    <g
+                      id="dots"
+                      transform="translate(190, 170)"
+                      className="dots"
+                    >
+                      {dotsGroup}
+                    </g>
+                  </g>
+                </g>
               </g>
             </g>
           </g>
