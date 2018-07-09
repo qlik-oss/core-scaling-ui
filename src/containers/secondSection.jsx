@@ -44,7 +44,12 @@ class SecondSection extends React.Component {
   };
 
   async createModel() {
-    const { app, setBannerTextsFunc } = this.props;
+    const {
+      app,
+      setBannerTextsFunc,
+      selectedCountry,
+      selectedYear
+    } = this.props;
     try {
       const urbanKpiModel = await app.createSessionObject(
         urbanAfricanCountriesNbr
@@ -96,7 +101,11 @@ class SecondSection extends React.Component {
         avgWaterModel,
         urbSliderModel,
         urbSliderLayout,
-        urbanKpiNbr,
+        urbanKpi: {
+          nbr: urbanKpiNbr,
+          country: selectedCountry,
+          year: selectedYear
+        },
         avgLifeExpTotalNbr,
         avgGDPNbr,
         avgBirthsNbr,
@@ -139,9 +148,16 @@ class SecondSection extends React.Component {
 
   async updateUrbanKpi() {
     const { urbanKpiModel } = this.state;
+    const { selectedCountry, selectedYear } = this.props;
     const urbanKpiLayout = await urbanKpiModel.getLayout();
     const urbanKpiNbr = this.getText(urbanKpiLayout);
-    this.setState({ urbanKpiNbr });
+    this.setState({
+      urbanKpi: {
+        nbr: urbanKpiNbr,
+        country: selectedCountry,
+        year: selectedYear
+      }
+    });
   }
 
   async updateAvgLifeExpTotal() {
@@ -187,7 +203,7 @@ class SecondSection extends React.Component {
       loaded,
       urbSliderLayout,
       urbSliderModel,
-      urbanKpiNbr,
+      urbanKpi,
       avgLifeExpTotalNbr,
       avgGDPNbr,
       avgBirthsNbr,
@@ -215,11 +231,15 @@ class SecondSection extends React.Component {
           <div className="kpi2Container">
             <KPI
               className="kpi2"
-              nbr={urbanKpiNbr}
+              nbr={urbanKpi.nbr}
               text={
-                selectedCountry
-                  ? `Average urbanization in ${selectedCountry} ${selectedYear}`
-                  : `Average urbanization for countries in selected urbanization range ${selectedYear}`
+                urbanKpi.country
+                  ? `Average urbanization in ${urbanKpi.country} ${
+                      urbanKpi.year
+                    }`
+                  : `Average urbanization for countries in selected urbanization range ${
+                      urbanKpi.year
+                    }`
               }
               bgColor="#3E8DBA"
               fillColor="#AEDBF4"

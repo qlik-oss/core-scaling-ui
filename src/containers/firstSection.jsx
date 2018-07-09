@@ -33,7 +33,7 @@ class FirstSection extends React.Component {
   };
 
   async createModel() {
-    const { app, setBannerTextsFunc } = this.props;
+    const { app, setBannerTextsFunc, selectedYear } = this.props;
     try {
       // create the models
       const urbanizedCountriesModel = await app.createSessionObject(
@@ -88,8 +88,11 @@ class FirstSection extends React.Component {
           nbr: minUrbItem[1].qText
         },
         scatterplotLayout,
-        africanUrbanization,
-        worldUrbanization,
+        africanUrbanization: {
+          nbr: africanUrbanization,
+          year: selectedYear
+        },
+        worldUrbanization: { nbr: worldUrbanization, year: selectedYear },
         totalUrbanAfricaNbrModel,
         totalUrbanWorldNbrModel,
         loaded: true
@@ -150,19 +153,29 @@ class FirstSection extends React.Component {
   }
 
   async updateTotalUrbanAfrica() {
-    const { totalUrbanAfricaNbrModel } = this.state;
+    const { totalUrbanAfricaNbrModel, africanUrbanization } = this.state;
+    const { selectedYear } = this.props;
     const kpiHyperCubeLayout = await totalUrbanAfricaNbrModel.getLayout();
-    const africanUrbanization =
+    const updatedAfricanUrbanization =
       kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ africanUrbanization });
+
+    this.setState({
+      africanUrbanization: {
+        nbr: updatedAfricanUrbanization,
+        year: selectedYear
+      }
+    });
   }
 
   async updateTotalUrbanWorld() {
     const { totalUrbanWorldNbrModel } = this.state;
+    const { selectedYear } = this.props;
     const kpiHyperCubeLayout = await totalUrbanWorldNbrModel.getLayout();
     const worldUrbanization =
       kpiHyperCubeLayout.qHyperCube.qGrandTotalRow[0].qText;
-    this.setState({ worldUrbanization });
+    this.setState({
+      worldUrbanization: { nbr: worldUrbanization, year: selectedYear }
+    });
   }
 
   render() {
@@ -224,17 +237,17 @@ class FirstSection extends React.Component {
           <div className="kpiContainer">
             <KPI
               className="kpi"
-              nbr={africanUrbanization}
+              nbr={africanUrbanization.nbr}
               text={`
-                Urban population, Africa ${selectedYear}`}
+                Urban population, Africa ${africanUrbanization.year}`}
               bgColor="#3E8DBA"
               fillColor="#AEDBF4"
               animate
             />
             <KPI
               className="kpi"
-              nbr={worldUrbanization}
-              text={`Urban population, world ${selectedYear}`}
+              nbr={worldUrbanization.nbr}
+              text={`Urban population, world ${worldUrbanization.year}`}
               bgColor="#F68F00"
               fillColor="#FFAF41"
               animate
