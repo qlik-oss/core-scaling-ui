@@ -6,6 +6,6 @@ services:
     restart: always
     command: -S AcceptEULA=${ACCEPT_EULA} -S DocumentDirectory=/data/apps
     ports:
-      - "9076:9076"
+      - "9176:9076"
     volumes: 
       - ./data:/data/apps
