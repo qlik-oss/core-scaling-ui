@@ -153,7 +153,7 @@ class FirstSection extends React.Component {
   }
 
   async updateTotalUrbanAfrica() {
-    const { totalUrbanAfricaNbrModel, africanUrbanization } = this.state;
+    const { totalUrbanAfricaNbrModel } = this.state;
     const { selectedYear } = this.props;
     const kpiHyperCubeLayout = await totalUrbanAfricaNbrModel.getLayout();
     const updatedAfricanUrbanization =

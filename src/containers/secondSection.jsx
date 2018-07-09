@@ -209,7 +209,7 @@ class SecondSection extends React.Component {
       avgBirthsNbr,
       avgWaterNbr
     } = this.state;
-    const { selectedCountry, selectedYear } = this.props;
+    const { selectedCountry } = this.props;
     if (!loaded) {
       return null;
     }
