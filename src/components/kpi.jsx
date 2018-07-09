@@ -13,7 +13,9 @@ class KPI extends React.Component {
     const { nbr } = this.props;
     if (newProps.nbr !== nbr) {
       this.setState(
-        { animatePath: this.getAnimatePath(nbr, newProps.nbr) },
+        {
+          animatePath: this.getAnimatePath(nbr, newProps.nbr)
+        },
         () => this.startAnimation()
       );
     }
@@ -33,13 +35,20 @@ class KPI extends React.Component {
   }
 
   render() {
-    const { className, nbr, fillColor, bgColor, text } = this.props;
+    const { className, fillColor, bgColor, text, nbr } = this.props;
     const { animatePath } = this.state;
+
     return (
       <div className={className}>
         <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
           <g>
-            <linearGradient id={nbr} x1="0.5" y1="1" x2="0.5" y2="0">
+            <linearGradient
+              id={className + nbr}
+              x1="0.5"
+              y1="1"
+              x2="0.5"
+              y2="0"
+            >
               <stop offset="0%" stopOpacity="1" stopColor={fillColor} />
               <stop offset={nbr} stopOpacity="1" stopColor={fillColor}>
                 <animate
@@ -69,7 +78,7 @@ class KPI extends React.Component {
               cx="250"
               cy="250"
               r="245"
-              fill={`url(#${nbr})`}
+              fill={`url(#${className + nbr})`}
               stroke="white"
               strokeWidth="10"
             />
@@ -78,9 +87,7 @@ class KPI extends React.Component {
             </text>
           </g>
         </svg>
-        <div className="kpiText">
-          {text}
-        </div>
+        <div className="kpiText">{text}</div>
       </div>
     );
   }
