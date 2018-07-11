@@ -1,6 +1,6 @@
 import qixSchema from 'enigma.js/schemas/12.20.0.json';
 
-const backendAdress = process.env.NODE_ENV === 'production' ? `${process.env.BACKEND}/app/doc/Shared-Africa-Urbanization.qvf` : 'localhost:9176';
+const backendAdress = process.env.NODE_ENV === 'production' ? `${process.env.BACKEND}/app/doc/5f5f03fe-00f3-4a4b-ac52-db32152a7e44` : 'localhost:9176';
 
 const config = {
   schema: qixSchema,
