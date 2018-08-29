@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import enigma from "enigma.js";
 import { ViewPager, Frame, Track, View } from "react-view-pager";
 import ContainerDimensions from "react-container-dimensions";
-import enigmaConfig from "../enigma-config";
+import { enigmaConfig }from "../enigma-config";
 import Header from "./header";
 import FirstSection from "./firstSection";
 import SecondSection from "./secondSection";
