@@ -7,4 +7,4 @@ const enigmaConfig = {
   url: `${window.location.protocol.replace('http', 'ws')}${backendAdress}`,
 };
 
-export { enigmaConfig };
+export default enigmaConfig;
