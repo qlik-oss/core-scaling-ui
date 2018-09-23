@@ -30,7 +30,7 @@
     "react-scrollable-anchor": "0.6.1",
     "react-svg-text": "0.1.2",
     "react-view-pager": "0.6.0",
-    "picasso.js": "0.12.2",
+    "picasso.js": "0.13.1",
     "picasso-plugin-q": "0.12.2",
     "react-rangeslider": "2.2.0"
   },
