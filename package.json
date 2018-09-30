@@ -31,7 +31,7 @@
     "react-svg-text": "0.1.2",
     "react-view-pager": "0.6.0",
     "picasso.js": "0.13.2",
-    "picasso-plugin-q": "0.13.1",
+    "picasso-plugin-q": "0.13.3",
     "react-rangeslider": "2.2.0"
   },
   "devDependencies": {
