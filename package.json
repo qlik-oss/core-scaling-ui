@@ -30,8 +30,8 @@
     "react-scrollable-anchor": "0.6.1",
     "react-svg-text": "0.1.2",
     "react-view-pager": "0.6.0",
-    "picasso-plugin-q": "0.13.3",
-    "picasso.js": "0.13.3",
+    "picasso-plugin-q": "0.14.0",
+    "picasso.js": "0.14.0",
     "react-rangeslider": "2.2.0"
   },
   "devDependencies": {
@@ -53,7 +53,7 @@
     "eslint": "5.6.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
     "eslint-config-prettier": "3.1.0"
   }
