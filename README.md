@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/qlik-oss/core-scaling-ui.svg?style=svg&circle-token=edc9f2b813950763f71c7bf54b1fa85b1273e0d0)](https://circleci.com/gh/qlik-oss/core-scaling-ui)
+
 # Core Scaling UI
 
 This repository contains the source code for the Core Scaling UI.
