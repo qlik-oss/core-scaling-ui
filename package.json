@@ -42,7 +42,7 @@
     "image-webpack-loader": "4.6.0",
     "webpack": "4.32.2",
     "webpack-cli": "3.3.2",
-    "webpack-dev-server": "3.5.0",
+    "webpack-dev-server": "3.5.1",
     "@babel/cli": "7.4.4",
     "@babel/core": "7.4.5",
     "babel-eslint": "10.0.1",
