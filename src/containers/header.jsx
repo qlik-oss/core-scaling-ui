@@ -14,7 +14,7 @@ export default function Header(props) {
         src={qlikCoreImg}
         alt="Qlik Core Logo"
         onClick={() => {
-          window.open("https://qlikcore.com/use-cases/#african-urbanization");
+          window.open("https://core.qlik.com/use-cases/#african-urbanization");
         }}
       />
       <button
