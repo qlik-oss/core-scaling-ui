@@ -41,7 +41,7 @@
     "file-loader": "4.2.0",
     "image-webpack-loader": "5.0.0",
     "webpack": "4.39.2",
-    "webpack-cli": "3.3.6",
+    "webpack-cli": "3.3.7",
     "webpack-dev-server": "3.8.0",
     "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
