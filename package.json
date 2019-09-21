@@ -30,8 +30,8 @@
     "react-scrollable-anchor": "0.6.1",
     "react-svg-text": "0.1.2",
     "react-view-pager": "0.6.0",
-    "picasso-plugin-q": "0.26.1",
-    "picasso.js": "0.26.1",
+    "picasso-plugin-q": "0.27.0",
+    "picasso.js": "0.27.0",
     "react-rangeslider": "2.2.0"
   },
   "devDependencies": {
@@ -41,8 +41,8 @@
     "file-loader": "4.2.0",
     "image-webpack-loader": "5.1.0",
     "webpack": "4.40.2",
-    "webpack-cli": "3.3.8",
-    "webpack-dev-server": "3.8.0",
+    "webpack-cli": "3.3.9",
+    "webpack-dev-server": "3.8.1",
     "@babel/cli": "7.6.0",
     "@babel/core": "7.6.0",
     "babel-eslint": "10.0.3",
