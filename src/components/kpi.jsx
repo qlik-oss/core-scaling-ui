@@ -1,96 +1,87 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import "./kpi.css";
 
-class KPI extends React.Component {
-  constructor(...args) {
-    super(...args);
-    const { nbr } = this.props;
-    this.state = { animatePath: this.getAnimatePath(0, nbr) };
-  }
+const usePrevious = (value) => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
 
-  componentWillReceiveProps(newProps) {
-    const { nbr } = this.props;
-    if (newProps.nbr !== nbr) {
-      this.setState(
-        {
-          animatePath: this.getAnimatePath(nbr, newProps.nbr)
-        },
-        () => this.startAnimation()
-      );
-    }
-  }
+const KPI = ({ className, nbr, animate, text, bgColor, fillColor }) => {
+  const prevNbr = usePrevious(nbr);
 
-  getAnimatePath(from, to) {
-    const { animate } = this.props;
+  const getAnimatePath = (from, to) => {
     if (animate) {
       return `${parseFloat(from) / 100.0};${parseFloat(to) / 100.0}`;
     }
     return "1";
-  }
+  };
 
-  startAnimation() {
-    this.svg1.beginElement();
-    this.svg2.beginElement();
-  }
+  const [animatePath, setAnimatePath] = useState(getAnimatePath(0, nbr));
+  const svg1 = useRef();
+  const svg2  = useRef();
 
-  render() {
-    const { className, fillColor, bgColor, text, nbr } = this.props;
-    const { animatePath } = this.state;
+  const startAnimation = () => {
+    svg1.current.beginElement();
+    svg2.current.beginElement();
+  };
 
-    return (
-      <div className={className}>
-        <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
-          <g>
-            <linearGradient
-              id={className + nbr}
-              x1="0.5"
-              y1="1"
-              x2="0.5"
-              y2="0"
-            >
-              <stop offset="0%" stopOpacity="1" stopColor={fillColor} />
-              <stop offset={nbr} stopOpacity="1" stopColor={fillColor}>
-                <animate
-                  ref={svg1 => {
-                    this.svg1 = svg1;
-                  }}
-                  attributeName="offset"
-                  values={animatePath}
-                  dur="0.5s"
-                  begin="0s"
-                />
-              </stop>
-              <stop offset={nbr} stopOpacity="1" stopColor={bgColor}>
-                <animate
-                  ref={svg2 => {
-                    this.svg2 = svg2;
-                  }}
-                  attributeName="offset"
-                  values={animatePath}
-                  dur="0.5s"
-                  begin="0s"
-                />
-              </stop>
-              <stop offset="100%" stopOpacity="1" stopColor={bgColor} />
-            </linearGradient>
-            <circle
-              cx="250"
-              cy="250"
-              r="245"
-              fill={`url(#${className + nbr})`}
-              stroke="white"
-              strokeWidth="10"
-            />
-            <text x="50%" y="50%" textAnchor="middle" dy="0.3em" fill="white">
-              {nbr}
-            </text>
-          </g>
-        </svg>
-        <div className="kpiText">{text}</div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    setAnimatePath(getAnimatePath(prevNbr !== nbr ? prevNbr : 0, nbr));
+    startAnimation();
+  }, [nbr]);
+
+  return (
+    <div className={className}>
+      <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+        <g>
+          <linearGradient
+            id={className + nbr}
+            x1="0.5"
+            y1="1"
+            x2="0.5"
+            y2="0"
+          >
+            <stop offset="0%" stopOpacity="1" stopColor={fillColor} />
+            <stop offset={nbr} stopOpacity="1" stopColor={fillColor}>
+              <animate
+                ref={svg1}
+                attributeName="offset"
+                values={animatePath}
+                dur="0.5s"
+                begin="0s"
+              />
+            </stop>
+            <stop offset={nbr} stopOpacity="1" stopColor={bgColor}>
+              <animate
+                ref={svg2}
+                attributeName="offset"
+                values={animatePath}
+                dur="0.5s"
+                begin="0s"
+              />
+            </stop>
+            <stop offset="100%" stopOpacity="1" stopColor={bgColor} />
+          </linearGradient>
+          <circle
+            cx="250"
+            cy="250"
+            r="245"
+            fill={`url(#${className + nbr})`}
+            stroke="white"
+            strokeWidth="10"
+          />
+          <text x="50%" y="50%" textAnchor="middle" dy="0.3em" fill="white">
+            {nbr}
+          </text>
+        </g>
+      </svg>
+      <div className="kpiText">{text}</div>
+    </div>
+  );
 }
 
 KPI.propTypes = {
