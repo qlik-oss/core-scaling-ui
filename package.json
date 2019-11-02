@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "dotenv-webpack": "1.7.0",
-    "enigma.js": "2.4.1",
+    "enigma.js": "2.5.0",
     "prop-types": "15.7.2",
     "react-container-dimensions": "1.4.1",
     "react": "16.11.0",
@@ -43,7 +43,7 @@
     "file-loader": "4.2.0",
     "image-webpack-loader": "6.0.0",
     "webpack": "4.41.2",
-    "webpack-cli": "3.3.9",
+    "webpack-cli": "3.3.10",
     "webpack-dev-server": "3.9.0",
     "@babel/cli": "7.6.4",
     "@babel/core": "7.6.4",
