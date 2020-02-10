@@ -19,10 +19,10 @@ export default function Heart(props) {
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <title>
-Heart-union Copy
+          Heart-union Copy
         </title>
         <desc>
-Created with Sketch.
+          Created with Sketch.
         </desc>
         <defs>
           <path
