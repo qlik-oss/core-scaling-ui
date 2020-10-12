@@ -2,6 +2,8 @@
 
 # Core Scaling UI
 
+*As of 1 July 2020, Qlik Core is no longer available to new customers. No further maintenance will be done in this repository.*
+
 This repository contains the source code for the Core Scaling UI.
 
 ## Developing the UI
